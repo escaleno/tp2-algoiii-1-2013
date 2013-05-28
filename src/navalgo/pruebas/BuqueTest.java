@@ -14,7 +14,7 @@ public class BuqueTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		unaPosicion = new Punto(3,2);
-		unaOrientacion = new Orientacion("HORIZONTAL");
+		unaOrientacion = Orientacion.HORIZONTAL;
 		unBuque = new Buque(unaPosicion,unaOrientacion);
 	}
 
