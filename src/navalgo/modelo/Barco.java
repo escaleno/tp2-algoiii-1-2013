@@ -6,10 +6,7 @@ public abstract class Barco {
 
 	/*representa la ubicacion (x,y) de la primer casilla del barco*/
 	protected Punto posicion;
-	 
-	/*si su valor es falso esta totalmente destruido*/
-	protected boolean destruido;
-	
+	 	
 	/*Indica su orientacion, puede ser horizontal o vertical*/
 	protected Orientacion orientacion;
 	
@@ -28,7 +25,6 @@ public abstract class Barco {
 	public Barco(Punto unaPosicion, Orientacion unaOrientacion) {
 		
 		this.posicion = unaPosicion;
-		this.destruido = false;
 		this.orientacion = unaOrientacion;
 	}
 	
@@ -43,11 +39,7 @@ public abstract class Barco {
 		this.posicion = unaPosicion;
 	}
 	
-	public boolean getDestruido(){
-		
-		return this.destruido;
-	}
-	
+
 	public Orientacion getOrientacion(){
 		
 		return this.orientacion;
