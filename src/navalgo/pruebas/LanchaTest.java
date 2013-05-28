@@ -22,10 +22,6 @@ public class LanchaTest extends TestCase {
 		assertEquals(unaPosicion,unaLancha.getPosicion());
 	}
 	
-	public void testAlConstruirseNoEstaDestruido(){
-		
-		assertEquals(false,unaLancha.getDestruido());
-	}
 	
 	public void testAlConstruirseTieneOrientacionHorizontal(){
 		
