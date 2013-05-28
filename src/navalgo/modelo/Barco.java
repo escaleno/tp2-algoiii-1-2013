@@ -57,17 +57,12 @@ public abstract class Barco {
 	
 	/*retorna true si esta totalmente destruido*/
 	public boolean estaDestruido(){
-		int i = 0;
-		boolean sale = false;
-		while ( (i < this.cuerpo.size()) && (!sale)) {
-			if (this.cuerpo.get(i).estaDestruida()) {
-				i++;
-			}else {
-				sale = true;
-			}
+		for (Casilla pos : cuerpo )
+		{
+			if (!pos.estaDestruida())
+				return false;
 		}
-
-		return !sale;
+		return true;
 	}
 	
 
