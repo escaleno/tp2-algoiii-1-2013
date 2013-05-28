@@ -26,6 +26,7 @@ public abstract class Barco {
 		
 		this.posicion = unaPosicion;
 		this.orientacion = unaOrientacion;
+		
 	}
 	
 	/*accesors*/

@@ -14,7 +14,7 @@ public class PortaavionTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		unaPosicion = new Punto(3,2);
-		unaOrientacion = new Orientacion("VERTICAL");
+		unaOrientacion = Orientacion.HORIZONTAL;
 		unPortaaviones= new Portaavion(unaPosicion,unaOrientacion);
 	}
 	
