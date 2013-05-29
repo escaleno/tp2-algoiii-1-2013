@@ -22,6 +22,8 @@ public abstract class Barco {
 	/*indica la cantidad dano que requiere cada casilla para ser destruida*/
 	protected int resistencia;
 	
+	
+	
 	/*constructor*/
 	public Barco(Punto unaPosicion, Orientacion unaOrientacion) {
 		
@@ -82,10 +84,26 @@ public abstract class Barco {
 		return true;
 	}
 	
+	
 	/*
 	 * verifica el daño causado por un disparo
 	 */
-	public abstract void asimilarDisparo(Disparo unDisparo);
+
+	public void asimilarDisparo(Disparo unDisparo) {
+		if(unDisparo.getTurnosRestantes() == 0){
+			for(Casilla unaCasilla : cuerpo){
+				if( (unaCasilla.getPosicion().getX() == unDisparo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparo.getPosicion().getY()) ){
+					unaCasilla.asimilarDisparo();
+					break;
+				}
+			}
+			
+		}
+
+	
+	
+}
+
 	
 
 }

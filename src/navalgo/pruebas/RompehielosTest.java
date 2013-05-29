@@ -1,6 +1,5 @@
 package navalgo.pruebas;
 
-import navalgo.modelo.Buque;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Punto;

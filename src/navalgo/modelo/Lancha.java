@@ -14,18 +14,5 @@ public class Lancha extends Barco {
 		
 	}
 	
-	
-	public void asimilarDisparo(Disparo unDisparo) {
-		for(Casilla unaCasilla : cuerpo){
-			if( (unaCasilla.getPosicion().getX() == unDisparo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparo.getPosicion().getY()) ){
-				unaCasilla.asimilarDisparo(unDisparo);
-				break;
-			}
-		}
-		
-		
-	}
-
-	
 }
 

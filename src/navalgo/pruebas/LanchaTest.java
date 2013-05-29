@@ -24,12 +24,14 @@ public class LanchaTest extends TestCase {
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
+	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
+	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		posicion32 = new Punto(3,2);
 		posicion33 = new Punto(3,3);
-		posicion34 = new Punto(3,3);
+		posicion34 = new Punto(3,4);
 		posicion35 = new Punto(3,5);
 		posicion42 = new Punto(4, 2);
 		posicion52 = new Punto(5, 2);
@@ -45,6 +47,9 @@ public class LanchaTest extends TestCase {
 		disparoConvencional42 = new DisparoConvencional(posicion42);
 		disparoConvencional52 = new DisparoConvencional(posicion52);
 		disparoConvencional62 = new DisparoConvencional(posicion62);
+		minaSubmarinaPorContacto32 = new MinaSubmarinaPorContacto(posicion32);
+		minaSubmarinaPorContacto33 = new MinaSubmarinaPorContacto(posicion33);
+		
 		
 	}
 	
@@ -132,6 +137,13 @@ public class LanchaTest extends TestCase {
 	public void testNoEsDestruidaSiRecibeUnSoloDisparoConvencional(){
 		unaLanchaHorizontal.asimilarDisparo(disparoConvencional33);
 		assertFalse(unaLanchaHorizontal.estaDestruido());
+		
+	}
+	
+	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
+		unaLanchaHorizontal.asimilarDisparo(minaSubmarinaPorContacto32);
+		unaLanchaHorizontal.asimilarDisparo(minaSubmarinaPorContacto33);
+		assertTrue(unaLanchaHorizontal.estaDestruido());
 		
 	}
 }
