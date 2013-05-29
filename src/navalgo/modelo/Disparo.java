@@ -10,6 +10,14 @@ public abstract class Disparo {
 	 */
 	protected Punto posicion;
 	
+	/*indica cuantos turnos faltan para que actue, en el momento que vale cero debe actuar*/
+	protected int turnosRestantes;
+
+	/*representa la cantidad de casillas adyacentes con son afectadas, si no afecta ninguna
+	 * adyacente vale 0*/
+	protected int alcance;
+	
+	
 	/*
 	 * constructor
 	 */
@@ -30,6 +38,16 @@ public abstract class Disparo {
 	public Punto getPosicion(){
 		
 		return this.posicion;
+	}
+	
+	public int getTurnosRestantes(){
+		
+		return this.turnosRestantes;
+	}
+	
+	public int getAlcance(){
+		
+		return this.alcance;
 	}
 	
 

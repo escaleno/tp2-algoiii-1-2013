@@ -34,7 +34,7 @@ public class Casilla {
 	}
 	
 	/*establece el daño realizado por el disparo*/
-	public void asimilarDisparo(Disparo unDisparo){
+	public void asimilarDisparo(){
 		if(this.resistencia > 0) {
 			resistencia--;
 		}

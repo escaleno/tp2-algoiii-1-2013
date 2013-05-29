@@ -38,9 +38,7 @@ public class CasillaTest extends TestCase {
 	}
 	
 	public void testSeBajaLaResistenciaEnUnoSiRecibeUnDisparoConvencional(){
-		Punto unaPosicion = new Punto(4, 3);
-		DisparoConvencional unDisparo = new DisparoConvencional(unaPosicion);
-		unaCasilla.asimilarDisparo(unDisparo);
+		unaCasilla.asimilarDisparo();
 		assertEquals(2,unaCasilla.getResistencia());
 	}
 	
