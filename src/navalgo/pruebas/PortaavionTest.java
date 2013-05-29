@@ -1,5 +1,6 @@
 package navalgo.pruebas;
 
+import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
@@ -7,60 +8,128 @@ import junit.framework.TestCase;
 
 public class PortaavionTest extends TestCase {
 
-	private Portaavion unPortaaviones;
-	Punto unaPosicion;
-	Orientacion unaOrientacion;
+	private Portaavion unPortaavionHorizontal;
+	private Portaavion unPortaavionVertical;
+	Punto posicion32;
+	Punto posicion33;
+	Punto posicion34;
+	Punto posicion35;
+	Punto posicion36;
+	Punto posicion42;
+	Punto posicion52;
+	Punto posicion62;
+	Punto posicion72;
+	Orientacion orientacionHorizontal;
+	Orientacion orientacionVertical;
+	DisparoConvencional disparoConvencional32;
+	DisparoConvencional disparoConvencional33;
+	DisparoConvencional disparoConvencional34;
+	DisparoConvencional disparoConvencional35;
+	DisparoConvencional disparoConvencional36;
+	DisparoConvencional disparoConvencional42;
+	DisparoConvencional disparoConvencional52;
+	DisparoConvencional disparoConvencional62;
+	DisparoConvencional disparoConvencional72;
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		unaPosicion = new Punto(3,2);
-		unaOrientacion = Orientacion.HORIZONTAL;
-		unPortaaviones= new Portaavion(unaPosicion,unaOrientacion);
+		posicion32 = new Punto(3,2);
+		posicion33 = new Punto(3,3);
+		posicion34 = new Punto(3,4);
+		posicion35 = new Punto(3,5);
+		posicion36 = new Punto(3,6);
+		posicion42 = new Punto(4, 2);
+		posicion52 = new Punto(5, 2);
+		posicion62 = new Punto(6, 2);
+		posicion72 = new Punto(7, 2);
+		orientacionHorizontal = Orientacion.HORIZONTAL;
+		orientacionVertical = Orientacion.VERTICAL;
+		unPortaavionHorizontal = new Portaavion(posicion32,orientacionHorizontal);
+		unPortaavionVertical = new Portaavion(posicion32,orientacionVertical);
+		disparoConvencional32 = new DisparoConvencional(posicion32);
+		disparoConvencional33 = new DisparoConvencional(posicion33);
+		disparoConvencional34 = new DisparoConvencional(posicion34);
+		disparoConvencional35 = new DisparoConvencional(posicion35);
+		disparoConvencional36 = new DisparoConvencional(posicion36);
+		disparoConvencional42 = new DisparoConvencional(posicion42);
+		disparoConvencional52 = new DisparoConvencional(posicion52);
+		disparoConvencional62 = new DisparoConvencional(posicion62);
+		disparoConvencional72 = new DisparoConvencional(posicion72);
 	}
 	
 	public void testSeConstruyeConUnaPosicion(){
 		
-		assertEquals(unaPosicion,unPortaaviones.getPosicion());
-		
+		assertEquals(posicion32,unPortaavionHorizontal.getPosicion());
 	}
 	
 
 	public void testAlConstruirseTieneOrientacionHorizontal(){
 		
-		assertEquals(unaOrientacion,unPortaaviones.getOrientacion());
+		assertEquals(orientacionHorizontal,unPortaavionHorizontal.getOrientacion());
 	}
 		
 	public void testAlConstruirseTieneCincoCasillas(){
 		
-		assertEquals(5,unPortaaviones.getCuerpo().size());
+		assertEquals(5,unPortaavionHorizontal.getCuerpo().size());
 	}
 			
 	public void testAlConstruirseTieneResistencia1(){
-		assertEquals(1,unPortaaviones.getCuerpo().get(0).getResistencia());
+		assertEquals(1,unPortaavionHorizontal.getCuerpo().get(0).getResistencia());
 	}
 		
 	public void testAlConstruirseTieneTamanio5(){
-		assertEquals(5,unPortaaviones.getTamanio());
+		assertEquals(5,unPortaavionHorizontal.getTamanio());
+	}
+	
+	public void testAlRecibirUnDisparoConvencionalDisminuyeLaResistencia(){
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional32);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional33);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional34);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional35);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional36);
+		
+		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(0).getResistencia());
+		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(1).getResistencia());
+		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(2).getResistencia());
+		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(3).getResistencia());
+		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(4).getResistencia());
 	}
 
 	public void testEstaDestruidoSiTieneTodasLasCasillasDestruidas(){
-		unPortaaviones.getCuerpo().get(0).setResistencia(0);
-		unPortaaviones.getCuerpo().get(1).setResistencia(0);
-		unPortaaviones.getCuerpo().get(2).setResistencia(0);
-		unPortaaviones.getCuerpo().get(3).setResistencia(0);
-		unPortaaviones.getCuerpo().get(4).setResistencia(0);
-		assertTrue(unPortaaviones.estaDestruido());
+		unPortaavionHorizontal.getCuerpo().get(0).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(1).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(2).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(3).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(4).setResistencia(0);
+		assertTrue(unPortaavionHorizontal.estaDestruido());
 		
 	}
 
 	public void testNoEstaDestruidoSiTieneAlgunaCasillaSinDestruirTotalmente(){
-		unPortaaviones.getCuerpo().get(0).setResistencia(0);
-		unPortaaviones.getCuerpo().get(1).setResistencia(0);
-		unPortaaviones.getCuerpo().get(2).setResistencia(0);
-		unPortaaviones.getCuerpo().get(3).setResistencia(1);
-		unPortaaviones.getCuerpo().get(4).setResistencia(0);
-		assertFalse(unPortaaviones.estaDestruido());
+		unPortaavionHorizontal.getCuerpo().get(0).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(1).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(2).setResistencia(0);
+		unPortaavionHorizontal.getCuerpo().get(3).setResistencia(1);
+		unPortaavionHorizontal.getCuerpo().get(4).setResistencia(0);
+		assertFalse(unPortaavionHorizontal.estaDestruido());
 		
+	}
+	
+	public void testSiTieneAlgunaCasillaSinDestruirNoEstaTotalmenteDestruido(){
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional32);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional33);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional34);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional35);
+		assertFalse(unPortaavionHorizontal.estaDestruido());
+	}
+	
+	public void testSiTieneTodasLasCasillaDestruidasEstaTotalmenteDestruido(){
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional32);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional33);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional34);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional35);
+		unPortaavionHorizontal.asimilarDisparo(disparoConvencional36);
+		assertTrue(unPortaavionHorizontal.estaDestruido());
 	}
 
 }

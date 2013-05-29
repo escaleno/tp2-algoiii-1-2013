@@ -26,9 +26,14 @@ public class Buque extends Barco {
 		return sale;
 	}
 
-	@Override
 	public void asimilarDisparo(Disparo unDisparo) {
-		// TODO Auto-generated method stub
+		for(Casilla unaCasilla : cuerpo){
+			if( (unaCasilla.getPosicion().getX() == unDisparo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparo.getPosicion().getY()) ){
+				unaCasilla.asimilarDisparo(unDisparo);
+				break;
+			}
+		}
+		
 		
 	}
 	

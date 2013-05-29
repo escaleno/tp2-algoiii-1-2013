@@ -1,66 +1,114 @@
 package navalgo.pruebas;
 
 import navalgo.modelo.Buque;
+import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
 
 public class BuqueTest extends TestCase {
 	
-	private Buque unBuque;
-	Punto unaPosicion;
-	Orientacion unaOrientacion;
+	private Buque unBuqueHorizontal;
+	private Buque unBuqueVertical;
+	Punto posicion32;
+	Punto posicion33;
+	Punto posicion34;
+	Punto posicion35;
+	Punto posicion42;
+	Punto posicion52;
+	Punto posicion62;
+	Orientacion orientacionHorizontal;
+	Orientacion orientacionVertical;
+	DisparoConvencional disparoConvencional32;
+	DisparoConvencional disparoConvencional33;
+	DisparoConvencional disparoConvencional34;
+	DisparoConvencional disparoConvencional35;
+	DisparoConvencional disparoConvencional42;
+	DisparoConvencional disparoConvencional52;
+	DisparoConvencional disparoConvencional62;
+	
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		unaPosicion = new Punto(3,2);
-		unaOrientacion = Orientacion.HORIZONTAL;
-		unBuque = new Buque(unaPosicion,unaOrientacion);
+		posicion32 = new Punto(3,2);
+		posicion33 = new Punto(3,3);
+		posicion34 = new Punto(3,3);
+		posicion35 = new Punto(3,5);
+		posicion42 = new Punto(4, 2);
+		posicion52 = new Punto(5, 2);
+		posicion62 = new Punto(6, 2);
+		orientacionHorizontal = Orientacion.HORIZONTAL;
+		orientacionVertical = Orientacion.VERTICAL;
+		unBuqueHorizontal = new Buque(posicion32,orientacionHorizontal);
+		unBuqueVertical = new Buque(posicion32,orientacionVertical);
+		disparoConvencional32 = new DisparoConvencional(posicion32);
+		disparoConvencional33 = new DisparoConvencional(posicion33);
+		disparoConvencional34 = new DisparoConvencional(posicion34);
+		disparoConvencional35 = new DisparoConvencional(posicion35);
+		disparoConvencional42 = new DisparoConvencional(posicion42);
+		disparoConvencional52 = new DisparoConvencional(posicion52);
+		disparoConvencional62 = new DisparoConvencional(posicion62);
 	}
 
 	public void testSeConstruyeConUnaPosicion(){
 		
-		assertEquals(unaPosicion,unBuque.getPosicion());
+		assertEquals(posicion32,unBuqueHorizontal.getPosicion());
 	}
 	
 
 	public void testAlConstruirseTieneOrientacionHorizontal(){
 		
-		assertEquals(unaOrientacion,unBuque.getOrientacion());
+		assertEquals(orientacionHorizontal,unBuqueHorizontal.getOrientacion());
 	}
 	
 	public void testAlConstruirseTieneCuatroCasillas(){
 		
-		assertEquals(4,unBuque.getCuerpo().size());
+		assertEquals(4,unBuqueHorizontal.getCuerpo().size());
 	}
 		
 	public void testAlConstruirseCadaCasillaTieneResistencia1(){
-		assertEquals(1,unBuque.getCuerpo().get(0).getResistencia());
-		assertEquals(1,unBuque.getCuerpo().get(1).getResistencia());
-		assertEquals(1,unBuque.getCuerpo().get(2).getResistencia());
+		assertEquals(1,unBuqueHorizontal.getCuerpo().get(0).getResistencia());
+		assertEquals(1,unBuqueHorizontal.getCuerpo().get(1).getResistencia());
+		assertEquals(1,unBuqueHorizontal.getCuerpo().get(2).getResistencia());
 	}
 	
 	public void testAlConstruirseTieneTamanio4(){
-		assertEquals(4,unBuque.getTamanio());
+		assertEquals(4,unBuqueHorizontal.getTamanio());
 	}
 
+	public void testAlConstruirseNoEstaDestruido(){
+		assertFalse(unBuqueHorizontal.estaDestruido());
+	}
+	
 	public void testEstaDestruidoSiTieneAlgunaCasillaDestruida(){
-		unBuque.getCuerpo().get(0).setResistencia(1);
-		unBuque.getCuerpo().get(1).setResistencia(1);
-		unBuque.getCuerpo().get(2).setResistencia(0);
-		unBuque.getCuerpo().get(3).setResistencia(1);
-		assertTrue(unBuque.estaDestruido());
+		unBuqueHorizontal.getCuerpo().get(0).setResistencia(1);
+		unBuqueHorizontal.getCuerpo().get(1).setResistencia(1);
+		unBuqueHorizontal.getCuerpo().get(2).setResistencia(0);
+		unBuqueHorizontal.getCuerpo().get(3).setResistencia(1);
+		assertTrue(unBuqueHorizontal.estaDestruido());
 		
 	}
 	
 	public void testNoEstaDestruidoSiNoTieneAlgunaCasillaDestruida(){
-		unBuque.getCuerpo().get(0).setResistencia(1);
-		unBuque.getCuerpo().get(1).setResistencia(1);
-		unBuque.getCuerpo().get(2).setResistencia(1);
-		unBuque.getCuerpo().get(3).setResistencia(1);
-		assertFalse(unBuque.estaDestruido());
+		unBuqueHorizontal.getCuerpo().get(0).setResistencia(1);
+		unBuqueHorizontal.getCuerpo().get(1).setResistencia(1);
+		unBuqueHorizontal.getCuerpo().get(2).setResistencia(1);
+		unBuqueHorizontal.getCuerpo().get(3).setResistencia(1);
+		assertFalse(unBuqueHorizontal.estaDestruido());
 		
 	}
+	
+	public void testSiRecibeUnDisparoConvencionalEnCasillaUnoQuedaDestruido(){
+		unBuqueHorizontal.asimilarDisparo(disparoConvencional35);
+		assertTrue(unBuqueHorizontal.estaDestruido());
+	}
+	
+	public void testSiRecibeUnDisparoConvencionalEnCasillaTresQuedaDestruido(){
+		unBuqueHorizontal.asimilarDisparo(disparoConvencional34);
+		assertTrue(unBuqueHorizontal.estaDestruido());
+	}
+	
+
 		
 		
 
