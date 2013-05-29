@@ -6,14 +6,10 @@ public class Buque extends Barco {
 
 	public Buque(Punto unaPosicion, Orientacion unaOrientacion) {
 		super(unaPosicion, unaOrientacion);
-		Casilla casillaAux;
 		this.tamanio = 4;
 		this.resistencia = 1;
 		this.cuerpo = new ArrayList<Casilla>();
-		for (int i = 0; i < this.tamanio; i++) {
-			casillaAux = new Casilla(this.resistencia);
-			this.cuerpo.add(casillaAux);
-			}
+		this.construirCuerpo();
 	}
 	
 	public boolean estaDestruido(){
@@ -28,6 +24,12 @@ public class Buque extends Barco {
 		}
 
 		return sale;
+	}
+
+	@Override
+	public void asimilarDisparo(Disparo unDisparo) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

@@ -1,3 +1,4 @@
+
 package navalgo.modelo;
 
 import java.util.ArrayList;
@@ -27,6 +28,21 @@ public abstract class Barco {
 		this.posicion = unaPosicion;
 		this.orientacion = unaOrientacion;
 		
+	}
+	
+	/*metodo del constructor para cargar el cuerpo del barco*/
+	protected void construirCuerpo(){
+		Casilla casillaAux = null;
+		Punto posicionAux = null;
+		for (int i = 0; i < this.tamanio; i++) {
+			if(this.orientacion == Orientacion.HORIZONTAL){
+				posicionAux = new Punto(this.posicion.getX(),this.posicion.getY() + i);
+			}else if(this.orientacion == Orientacion.VERTICAL){
+				posicionAux = new Punto(this.posicion.getX() + i,this.posicion.getY());
+			}
+			casillaAux = new Casilla(this.resistencia,posicionAux);
+			this.cuerpo.add(casillaAux);
+			}
 	}
 	
 	/*accesors*/
@@ -65,6 +81,11 @@ public abstract class Barco {
 		}
 		return true;
 	}
+	
+	/*
+	 * verifica el daño causado por un disparo
+	 */
+	public abstract void asimilarDisparo(Disparo unDisparo);
 	
 
 }
