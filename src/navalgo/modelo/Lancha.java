@@ -43,5 +43,18 @@ public class Lancha extends Barco {
 		
 	}
 	
+	public void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo) {
+		if(unaMinaSubmarinaPuntualConRetardo.getTurnosRestantes() == 0){
+			for(Parte unaCasilla : cuerpo){
+				if( (unaCasilla.getPosicion().getX() == unaMinaSubmarinaPuntualConRetardo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unaMinaSubmarinaPuntualConRetardo.getPosicion().getY()) ){
+					unaCasilla.asimilarDisparo();
+					break;
+				}
+			}
+			
+		}
+		
+	}
+	
 }
 

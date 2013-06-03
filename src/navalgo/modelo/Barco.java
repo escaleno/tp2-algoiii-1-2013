@@ -74,6 +74,7 @@ public abstract class Barco {
 		return this.tamanio;
 	}
 	
+	
 	/*retorna true si esta totalmente destruido*/
 	public boolean estaDestruido(){
 		for (Parte pos : cuerpo )
@@ -91,6 +92,7 @@ public abstract class Barco {
 
 	public abstract void recibirAtaque(DisparoConvencional unDisparoConvencional);
 	public abstract void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto);
+	public abstract void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo);
 	
 
 }
