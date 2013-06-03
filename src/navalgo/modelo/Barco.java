@@ -17,7 +17,7 @@ public abstract class Barco {
 	/*representa el cuerpo del barco que esta compuesto por casillas
 	 * 
 	 */
-	protected ArrayList<Casilla> cuerpo;
+	protected ArrayList<Parte> cuerpo;
 	
 	/*indica la cantidad dano que requiere cada casilla para ser destruida*/
 	protected int resistencia;
@@ -34,7 +34,7 @@ public abstract class Barco {
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	protected void construirCuerpo(){
-		Casilla casillaAux = null;
+		Parte casillaAux = null;
 		Punto posicionAux = null;
 		for (int i = 0; i < this.tamanio; i++) {
 			if(this.orientacion == Orientacion.HORIZONTAL){
@@ -42,7 +42,7 @@ public abstract class Barco {
 			}else if(this.orientacion == Orientacion.VERTICAL){
 				posicionAux = new Punto(this.posicion.getX() + i,this.posicion.getY());
 			}
-			casillaAux = new Casilla(this.resistencia,posicionAux);
+			casillaAux = new Parte(this.resistencia,posicionAux);
 			this.cuerpo.add(casillaAux);
 			}
 	}
@@ -64,7 +64,7 @@ public abstract class Barco {
 		return this.orientacion;
 	}
 	
-	public ArrayList<Casilla> getCuerpo(){
+	public ArrayList<Parte> getCuerpo(){
 		
 		return this.cuerpo;
 	}
@@ -76,7 +76,7 @@ public abstract class Barco {
 	
 	/*retorna true si esta totalmente destruido*/
 	public boolean estaDestruido(){
-		for (Casilla pos : cuerpo )
+		for (Parte pos : cuerpo )
 		{
 			if (!pos.estaDestruida())
 				return false;
@@ -89,21 +89,8 @@ public abstract class Barco {
 	 * verifica el daño causado por un disparo
 	 */
 
-	public void asimilarDisparo(Disparo unDisparo) {
-		if(unDisparo.getTurnosRestantes() == 0){
-			for(Casilla unaCasilla : cuerpo){
-				if( (unaCasilla.getPosicion().getX() == unDisparo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparo.getPosicion().getY()) ){
-					unaCasilla.asimilarDisparo();
-					break;
-				}
-			}
-			
-		}
-
-	
-	
-}
-
+	public abstract void recibirAtaque(DisparoConvencional unDisparoConvencional);
+	public abstract void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto);
 	
 
 }

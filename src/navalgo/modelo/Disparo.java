@@ -51,6 +51,6 @@ public abstract class Disparo {
 	}
 	
 
-
+	public abstract void atacar(Barco unBarco);
 	
 }

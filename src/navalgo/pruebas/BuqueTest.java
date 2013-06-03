@@ -2,6 +2,7 @@ package navalgo.pruebas;
 
 import navalgo.modelo.Buque;
 import navalgo.modelo.DisparoConvencional;
+import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
@@ -26,6 +27,8 @@ public class BuqueTest extends TestCase {
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
+	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
+	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
 	
 
 	protected void setUp() throws Exception {
@@ -48,6 +51,8 @@ public class BuqueTest extends TestCase {
 		disparoConvencional42 = new DisparoConvencional(posicion42);
 		disparoConvencional52 = new DisparoConvencional(posicion52);
 		disparoConvencional62 = new DisparoConvencional(posicion62);
+		minaSubmarinaPorContacto32 = new MinaSubmarinaPorContacto(posicion32);
+		minaSubmarinaPorContacto33 = new MinaSubmarinaPorContacto(posicion33);
 	}
 
 	public void testSeConstruyeConUnaPosicion(){
@@ -99,12 +104,17 @@ public class BuqueTest extends TestCase {
 	}
 	
 	public void testSiRecibeUnDisparoConvencionalEnCasillaUnoQuedaDestruido(){
-		unBuqueHorizontal.asimilarDisparo(disparoConvencional35);
+		unBuqueHorizontal.recibirAtaque(disparoConvencional35);
 		assertTrue(unBuqueHorizontal.estaDestruido());
 	}
 	
 	public void testSiRecibeUnDisparoConvencionalEnCasillaTresQuedaDestruido(){
-		unBuqueHorizontal.asimilarDisparo(disparoConvencional34);
+		unBuqueHorizontal.recibirAtaque(disparoConvencional34);
+		assertTrue(unBuqueHorizontal.estaDestruido());
+	}
+	
+	public void testSiRecibeUnaMinaPorContactoQuedaDestruido(){
+		unBuqueHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
 		assertTrue(unBuqueHorizontal.estaDestruido());
 	}
 	

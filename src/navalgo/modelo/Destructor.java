@@ -8,14 +8,28 @@ public class Destructor extends Barco {
 		super(unaPosicion, unaOrientacion);
 		this.tamanio = 3;
 		this.resistencia = 1;
-		this.cuerpo = new ArrayList<Casilla>();
+		this.cuerpo = new ArrayList<Parte>();
 		this.construirCuerpo();
 
 	}
 
-	@Override
-	public void asimilarDisparo(Disparo unDisparo) {
-		// TODO Auto-generated method stub
+
+	public void recibirAtaque(DisparoConvencional unDisparoConvencional) {
+		if(unDisparoConvencional.getTurnosRestantes() == 0){
+			for(Parte unaCasilla : cuerpo){
+				if( (unaCasilla.getPosicion().getX() == unDisparoConvencional.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparoConvencional.getPosicion().getY()) ){
+					unaCasilla.asimilarDisparo();
+					break;
+				}
+			}
+			
+		}
+		
+	}
+
+
+	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto) {
+		//no hace nada
 		
 	}
 
