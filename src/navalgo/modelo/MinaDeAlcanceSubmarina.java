@@ -1,8 +1,8 @@
 package navalgo.modelo;
 
-public class AlcanceDeMinaSubmarina extends Disparo {
+public class MinaDeAlcanceSubmarina extends Disparo {
 
-	public AlcanceDeMinaSubmarina(Punto unaPosicion) {
+	public MinaDeAlcanceSubmarina(Punto unaPosicion) {
 		super(unaPosicion);
 		this.costo = 0;
 		this.alcance = 0;

@@ -1,6 +1,6 @@
 package navalgo.pruebas;
 
-import navalgo.modelo.AlcanceDeMinaSubmarina;
+import navalgo.modelo.MinaDeAlcanceSubmarina;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
 import navalgo.modelo.Lancha;
@@ -12,7 +12,7 @@ import navalgo.modelo.Rompehielos;
 import junit.framework.TestCase;
 
 public class AlcanceDeMinaSubmarinaTest extends TestCase {
-	private AlcanceDeMinaSubmarina alcanceDeMinaSubmarina;
+	private MinaDeAlcanceSubmarina minaDeAlcanceSubmarina;
 	private Punto posicion32;
 	Orientacion orientacionHorizontal;
 	Lancha unaLancha;
@@ -24,9 +24,9 @@ public class AlcanceDeMinaSubmarinaTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		posicion32 = new Punto(3,2);
-		alcanceDeMinaSubmarina = new AlcanceDeMinaSubmarina(posicion32);
+		minaDeAlcanceSubmarina = new MinaDeAlcanceSubmarina(posicion32);
 		orientacionHorizontal = Orientacion.HORIZONTAL;
-		alcanceDeMinaSubmarina = new AlcanceDeMinaSubmarina(posicion32);
+		minaDeAlcanceSubmarina = new MinaDeAlcanceSubmarina(posicion32);
 		unaLancha = new Lancha(posicion32,orientacionHorizontal);
 		unBuque = new Buque(posicion32, orientacionHorizontal);
 		unDestructor = new Destructor(posicion32, orientacionHorizontal);
@@ -35,27 +35,27 @@ public class AlcanceDeMinaSubmarinaTest extends TestCase {
 	}
 	
 	public void testAUnaLanchaLeSaca1DeResistencia(){
-		alcanceDeMinaSubmarina.atacar(unaLancha);
+		minaDeAlcanceSubmarina.atacar(unaLancha);
 		assertEquals(0,unaLancha.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnBuqueLeSaca1DeResistencia(){
-		alcanceDeMinaSubmarina.atacar(unBuque);
+		minaDeAlcanceSubmarina.atacar(unBuque);
 		assertEquals(0,unBuque.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnDestructorNoLeHaceNada(){
-		alcanceDeMinaSubmarina.atacar(unDestructor);
+		minaDeAlcanceSubmarina.atacar(unDestructor);
 		assertEquals(1,unDestructor.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnPortaavionLeSaca1DeResistencia(){
-		alcanceDeMinaSubmarina.atacar(unPortaavion);
+		minaDeAlcanceSubmarina.atacar(unPortaavion);
 		assertEquals(0,unPortaavion.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnRompehielosLeSaca1DeResistencia(){
-		alcanceDeMinaSubmarina.atacar(unRompehielos);
+		minaDeAlcanceSubmarina.atacar(unRompehielos);
 		assertEquals(1,unRompehielos.getCuerpo().get(0).getResistencia());
 	}
 
