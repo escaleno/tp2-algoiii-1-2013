@@ -93,6 +93,8 @@ public abstract class Barco {
 	public abstract void recibirAtaque(DisparoConvencional unDisparoConvencional);
 	public abstract void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto);
 	public abstract void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo);
+	public abstract void recibirAtaque(AlcanceDeMinaSubmarina alcanceDeMinaSubmarina);
+	public abstract void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo);
 	
 
 }
