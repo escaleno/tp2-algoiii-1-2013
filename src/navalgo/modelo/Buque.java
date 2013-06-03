@@ -68,10 +68,10 @@ public class Buque extends Barco {
 
 
 	
-	public void recibirAtaque(AlcanceDeMinaSubmarina alcanceDeMinaSubmarina) {
-		if(alcanceDeMinaSubmarina.getTurnosRestantes() == 0){
+	public void recibirAtaque(MinaDeAlcanceSubmarina minaDeAlcanceSubmarina) {
+		if(minaDeAlcanceSubmarina.getTurnosRestantes() == 0){
 			for(Parte unaCasilla : cuerpo){
-				if( (unaCasilla.getPosicion().getX() == alcanceDeMinaSubmarina.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == alcanceDeMinaSubmarina.getPosicion().getY()) ){
+				if( (unaCasilla.getPosicion().getX() == minaDeAlcanceSubmarina.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == minaDeAlcanceSubmarina.getPosicion().getY()) ){
 					unaCasilla.asimilarDisparo();
 					break;
 				}
