@@ -5,13 +5,13 @@ import navalgo.modelo.*;
 
 public class CasillaTest extends TestCase {
 	
-	private Casilla unaCasilla;
+	private Parte unaCasilla;
 	private Punto unaPosicion;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		unaPosicion = new Punto(2,3);
-		unaCasilla = new Casilla(3,unaPosicion);
+		unaCasilla = new Parte(3,unaPosicion);
 	}
 	
 	public void  testGetCasilla(){

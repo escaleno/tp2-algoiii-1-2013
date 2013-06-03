@@ -1,6 +1,6 @@
 package navalgo.modelo;
 
-public class Casilla {
+public class Parte {
 	/*representa la cantidad de disparos que soporta, cuando
 	 * vale cero representa que fue totalmente destruida
 	 */
@@ -9,7 +9,7 @@ public class Casilla {
 	/*representa la posicion de una casilla en el tabler*/
 	private Punto posicion;
 	
-	public Casilla(int cantDeResistencia,Punto unaPosicion){
+	public Parte(int cantDeResistencia,Punto unaPosicion){
 		
 		this.resistencia = cantDeResistencia;
 		this.posicion = unaPosicion;

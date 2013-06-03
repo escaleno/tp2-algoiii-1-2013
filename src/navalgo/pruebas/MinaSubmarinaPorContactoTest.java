@@ -2,17 +2,16 @@ package navalgo.pruebas;
 
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
-import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Lancha;
+import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
 import junit.framework.TestCase;
 
-public class DisparoConvencionalTest extends TestCase {
-	
-	private DisparoConvencional unDisparoConvencional;
+public class MinaSubmarinaPorContactoTest extends TestCase {
+	private MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto;
 	private Punto posicion32;
 	Orientacion orientacionHorizontal;
 	Lancha unaLancha;
@@ -20,15 +19,13 @@ public class DisparoConvencionalTest extends TestCase {
 	Destructor unDestructor;
 	Portaavion unPortaavion;
 	Rompehielos unRompehielos;
-	
-	
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		posicion32 = new Punto(3,2);
-		unDisparoConvencional = new DisparoConvencional(posicion32);
+		unaMinaSubmarinaPorContacto = new MinaSubmarinaPorContacto(posicion32);
 		orientacionHorizontal = Orientacion.HORIZONTAL;
-		unDisparoConvencional = new DisparoConvencional(posicion32);
+		unaMinaSubmarinaPorContacto = new MinaSubmarinaPorContacto(posicion32);
 		unaLancha = new Lancha(posicion32,orientacionHorizontal);
 		unBuque = new Buque(posicion32, orientacionHorizontal);
 		unDestructor = new Destructor(posicion32, orientacionHorizontal);
@@ -36,36 +33,37 @@ public class DisparoConvencionalTest extends TestCase {
 		unRompehielos = new Rompehielos(posicion32, orientacionHorizontal);
 	}
 
-	public void testGetCosto() {
-		assertEquals(200, unDisparoConvencional.getCosto());
+	public void testGetCosto(){
+		assertEquals(150, unaMinaSubmarinaPorContacto.getCosto());
+		
 	}
-
-	public void testGetPosicion() {
-		assertEquals(posicion32,unDisparoConvencional.getPosicion());
+	
+	public void testGetPosicion(){
+		assertEquals(posicion32,unaMinaSubmarinaPorContacto.getPosicion());
 	}
-
+	
 	public void testAUnaLanchaLeSaca1DeResistencia(){
-		unDisparoConvencional.atacar(unaLancha);
+		unaMinaSubmarinaPorContacto.atacar(unaLancha);
 		assertEquals(0,unaLancha.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnBuqueLeSaca1DeResistencia(){
-		unDisparoConvencional.atacar(unBuque);
+		unaMinaSubmarinaPorContacto.atacar(unBuque);
 		assertEquals(0,unBuque.getCuerpo().get(0).getResistencia());
 	}
 	
-	public void testAUnDestructorLeSaca1DeResistencia(){
-		unDisparoConvencional.atacar(unDestructor);
-		assertEquals(0,unDestructor.getCuerpo().get(0).getResistencia());
+	public void testAUnDestructorNoLeHaceNada(){
+		unaMinaSubmarinaPorContacto.atacar(unDestructor);
+		assertEquals(1,unDestructor.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnPortaavionLeSaca1DeResistencia(){
-		unDisparoConvencional.atacar(unPortaavion);
+		unaMinaSubmarinaPorContacto.atacar(unPortaavion);
 		assertEquals(0,unPortaavion.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testAUnRompehielosLeSaca1DeResistencia(){
-		unDisparoConvencional.atacar(unRompehielos);
+		unaMinaSubmarinaPorContacto.atacar(unRompehielos);
 		assertEquals(1,unRompehielos.getCuerpo().get(0).getResistencia());
 	}
 }

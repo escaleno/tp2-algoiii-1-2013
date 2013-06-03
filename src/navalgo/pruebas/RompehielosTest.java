@@ -84,20 +84,20 @@ public class RompehielosTest extends TestCase {
 	
 	public void testEstaDestruidoSiRecibeDosDisparosEnCadaCasilla(){
 		
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional32);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional32);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional33);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional33);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional34);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional34);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional34);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional34);
 		assertTrue(unRompehielosHorizontal.estaDestruido());
 	}
 	
 	
 	public void testNoEstaDestruidoSiNoTieneTodasLasCasillaDestruidas(){
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional33);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional33);
-		unRompehielosHorizontal.asimilarDisparo(disparoConvencional32);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
+		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
 		assertFalse(unRompehielosHorizontal.estaDestruido());
 	}
 }

@@ -108,41 +108,41 @@ public class LanchaTest extends TestCase {
 	
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaCasillaUnoAlSerAfectadaPorUnDisparoConvencional(){
-		unaLanchaHorizontal.asimilarDisparo(disparoConvencional32);
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional32);
 		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencional(){
-		unaLanchaHorizontal.asimilarDisparo(disparoConvencional33);
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
 		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
 	}
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaCasillaUnoAlSerAfectadaPorUnDisparoConvencionalEnLanchaVertical(){
-		unaLanchaVertical.asimilarDisparo(disparoConvencional32);
+		unaLanchaVertical.recibirAtaque(disparoConvencional32);
 		assertEquals(0,unaLanchaVertical.getCuerpo().get(0).getResistencia());
 	}
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencionalEnLanchaVertical(){
-		unaLanchaVertical.asimilarDisparo(disparoConvencional42);
+		unaLanchaVertical.recibirAtaque(disparoConvencional42);
 		assertEquals(0,unaLanchaVertical.getCuerpo().get(1).getResistencia());
 	}
 	
 	public void testEsDestruidaSiRecibeUnDisparoConvencionalEnCadaCasilla(){
-		unaLanchaHorizontal.asimilarDisparo(disparoConvencional32);
-		unaLanchaHorizontal.asimilarDisparo(disparoConvencional33);
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional32);
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
 		assertTrue(unaLanchaHorizontal.estaDestruido());
 		
 	}
 	
 	public void testNoEsDestruidaSiRecibeUnSoloDisparoConvencional(){
-		unaLanchaHorizontal.asimilarDisparo(disparoConvencional33);
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
 		assertFalse(unaLanchaHorizontal.estaDestruido());
 		
 	}
 	
 	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
-		unaLanchaHorizontal.asimilarDisparo(minaSubmarinaPorContacto32);
-		unaLanchaHorizontal.asimilarDisparo(minaSubmarinaPorContacto33);
+		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
+		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
 		assertTrue(unaLanchaHorizontal.estaDestruido());
 		
 	}

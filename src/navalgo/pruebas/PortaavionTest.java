@@ -82,11 +82,11 @@ public class PortaavionTest extends TestCase {
 	}
 	
 	public void testAlRecibirUnDisparoConvencionalDisminuyeLaResistencia(){
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional32);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional33);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional34);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional35);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional36);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional32);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional33);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional34);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional35);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional36);
 		
 		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(0).getResistencia());
 		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(1).getResistencia());
@@ -116,20 +116,21 @@ public class PortaavionTest extends TestCase {
 	}
 	
 	public void testSiTieneAlgunaCasillaSinDestruirNoEstaTotalmenteDestruido(){
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional32);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional33);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional34);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional35);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional32);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional33);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional34);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional35);
 		assertFalse(unPortaavionHorizontal.estaDestruido());
 	}
 	
 	public void testSiTieneTodasLasCasillaDestruidasEstaTotalmenteDestruido(){
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional32);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional33);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional34);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional35);
-		unPortaavionHorizontal.asimilarDisparo(disparoConvencional36);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional32);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional33);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional34);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional35);
+		unPortaavionHorizontal.recibirAtaque(disparoConvencional36);
 		assertTrue(unPortaavionHorizontal.estaDestruido());
 	}
-
+	
+	
 }
