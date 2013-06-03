@@ -45,6 +45,10 @@ public abstract class Disparo {
 		return this.turnosRestantes;
 	}
 	
+	public void setTurnosRestantes(int cantTurnos){
+		this.turnosRestantes = cantTurnos;
+	}
+	
 	public int getAlcance(){
 		
 		return this.alcance;
