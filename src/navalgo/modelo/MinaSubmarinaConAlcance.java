@@ -61,7 +61,7 @@ public abstract class MinaSubmarinaConAlcance extends Disparo {
 			}
 			
 			//esta en el borde izquierdo pero no en las esquinas
-			if ( (this.posicion.getY() == 1) && (this.posicion.getX() > 1) && (this.posicion.getY() < 10) ){
+			if ( (this.posicion.getY() == 1) && (this.posicion.getX() > 1) && (this.posicion.getX() < 10) ){
 				this.agregarMinaAlcanceSubmarinaPos1();
 				this.agregarMinaAlcanceSubmarinaPos2();
 				this.agregarMinaAlcanceSubmarinaPos6();
@@ -94,12 +94,12 @@ public abstract class MinaSubmarinaConAlcance extends Disparo {
 		return this.minasDeAlcance;
 	}
 	
-	protected void agregarMinaDeAlcanceSubmarina(Punto posicion) {
-		MinaDeAlcanceSubmarina unaMinaDeAlcance;
-		unaMinaDeAlcance = new MinaDeAlcanceSubmarina(posicion);
-		this.minasDeAlcance.add(unaMinaDeAlcance);
-		
-	}
+//	protected void agregarMinaDeAlcanceSubmarina(Punto posicion) {
+//		MinaDeAlcanceSubmarina unaMinaDeAlcance;
+//		unaMinaDeAlcance = new MinaDeAlcanceSubmarina(posicion);
+//		this.minasDeAlcance.add(unaMinaDeAlcance);
+//		
+//	}
 	
 	
 	/*   
