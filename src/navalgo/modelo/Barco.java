@@ -87,13 +87,53 @@ public abstract class Barco {
 	
 	
 	/*
-	 * verifica el daño causado por un disparo
+	 * verifica el daño causado por un DisparoConvencional
 	 */
 
-	public abstract void recibirAtaque(DisparoConvencional unDisparoConvencional);
-	public abstract void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto);
-	public abstract void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo);
-	public abstract void recibirAtaque(MinaDeAlcanceSubmarina minaDeAlcanceSubmarina);
+	public void recibirAtaque(DisparoConvencional unDisparoConvencional){
+		if(unDisparoConvencional.getTurnosRestantes() == 0){
+			for(Parte unaCasilla : cuerpo){
+				if( (unaCasilla.getPosicion().getX() == unDisparoConvencional.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparoConvencional.getPosicion().getY()) ){
+					unaCasilla.asimilarDisparo();
+					break;
+				}
+			}
+			
+		}
+	}
+	
+	/*
+	 * verifica el daño causado por una MinaSubmarinaPorContacto
+	 */
+	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto){
+		if(unaMinaSubmarinaPorContacto.getTurnosRestantes() == 0){
+			for(Parte unaCasilla : cuerpo){
+				if( (unaCasilla.getPosicion().getX() == unaMinaSubmarinaPorContacto.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unaMinaSubmarinaPorContacto.getPosicion().getY()) ){
+					unaCasilla.asimilarDisparo();
+					break;
+				}
+			}
+			
+		}
+	}
+	
+	/*
+	 * verifica el daño causado por una MinaSubmarinaPuntualConRetardo
+	 */
+	public void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo){
+		if(unaMinaSubmarinaPuntualConRetardo.getTurnosRestantes() == 0){
+			for(Parte unaCasilla : cuerpo){
+				if( (unaCasilla.getPosicion().getX() == unaMinaSubmarinaPuntualConRetardo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unaMinaSubmarinaPuntualConRetardo.getPosicion().getY()) ){
+					unaCasilla.asimilarDisparo();
+					break;
+				}
+			}
+			
+		}
+		
+	}
+	
+	
 	public abstract void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo);
 	
 

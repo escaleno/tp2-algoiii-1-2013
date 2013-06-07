@@ -7,17 +7,31 @@ public class Principal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		MinaSubmarinaDobleConRetardo unaMinaDobleConRetardoEnX10Y1;
-		Punto posicionX10Y1;
-		posicionX10Y1 = new Punto(10, 1);
-		unaMinaDobleConRetardoEnX10Y1 = new MinaSubmarinaDobleConRetardo(posicionX10Y1);
-		for (MinaDeAlcanceSubmarina unaMina : unaMinaDobleConRetardoEnX10Y1.getMinasDeAlcance()) {
-			System.out.println(unaMina.getPosicion().getX());
-			System.out.println(unaMina.getPosicion().getY());
-					
+		int posicionX = 3;
+		int posicionY = 3;
+		
+//		for (int i = posicionX -1; i <= posicionX +1; i++) {
+//			for (int j = posicionY -1; j <= posicionY+1; j++) {
+//				System.out.println(i);
+//				System.out.println(j);
+//			}
+//			
+//		}
+//					
+//		}
+	
+	for (int i = posicionX -1; i <= posicionX +1; i++) {
+		for (int j = posicionY -1; j <= posicionY +1; j++){
+			System.out.println(i);
+			System.out.println(j);
 		}
 		
-
+		
 	}
+				
+	}
+		
 
 }
+
+
