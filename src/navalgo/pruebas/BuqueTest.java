@@ -1,5 +1,6 @@
 package navalgo.pruebas;
 
+import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
@@ -262,7 +263,17 @@ public class BuqueTest extends TestCase {
 	 	assertEquals(8, posicion.getY());
 	}
 	
-	
+	public void testRandom(){
+		Barco barco = new Buque();
+		
+		System.out.println("Orientacio: " + barco.getOrientacion().name());
+		System.out.println("PosicionX: " + barco.getPosicion().getX() + ", PosicionY: " + barco.getPosicion().getY() );
+		System.out.println("DireccionX: " + barco.getDireccionX() + ", DireccionY: " + barco.getDireccionY() );
+		barco = new Buque();
+		System.out.println("Orientacio: " + barco.getOrientacion().name());
+		System.out.println("PosicionX: " + barco.getPosicion().getX() + ", PosicionY: " + barco.getPosicion().getY() );
+		System.out.println("DireccionX: " + barco.getDireccionX() + ", DireccionY: " + barco.getDireccionY() );
+	}
 
 		
 		

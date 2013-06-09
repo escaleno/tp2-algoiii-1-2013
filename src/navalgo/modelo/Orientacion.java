@@ -8,6 +8,6 @@ public enum Orientacion {
 	public static Orientacion getRandom(){
 		Orientacion o[] = Orientacion.values();
 		Random random = new Random();
-		return o[random.nextInt(o.length-1)];
+		return o[random.nextInt(o.length)];
 	}
 }
