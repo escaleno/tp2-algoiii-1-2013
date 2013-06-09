@@ -49,6 +49,10 @@ public abstract class Barco {
 	
 	public void setPosicion(Punto unaPosicion){
 		
+		if((unaPosicion.getX()<1)|(unaPosicion.getY()<1)|(unaPosicion.getX()>10)|(unaPosicion.getX()>10)|(unaPosicion.getY()>10)){
+			throw new PosicionInvalidaException();
+		}
+		
 		this.posicion = unaPosicion;
 	}
 	
