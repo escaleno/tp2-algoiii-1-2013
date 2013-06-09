@@ -4,13 +4,16 @@ import navalgo.modelo.Buque;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
+import navalgo.modelo.Rompehielos;
 import junit.framework.TestCase;
 
 public class BuqueTest extends TestCase {
 	
 	private Buque unBuqueHorizontal;
 	private Buque unBuqueVertical;
+	
 	Punto posicion32;
 	Punto posicion33;
 	Punto posicion34;
@@ -18,8 +21,11 @@ public class BuqueTest extends TestCase {
 	Punto posicion42;
 	Punto posicion52;
 	Punto posicion62;
+	Punto posicion20Y12;
+	
 	Orientacion orientacionHorizontal;
 	Orientacion orientacionVertical;
+	
 	DisparoConvencional disparoConvencional32;
 	DisparoConvencional disparoConvencional33;
 	DisparoConvencional disparoConvencional34;
@@ -27,6 +33,7 @@ public class BuqueTest extends TestCase {
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
+	
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
 	
@@ -40,10 +47,14 @@ public class BuqueTest extends TestCase {
 		posicion42 = new Punto(4, 2);
 		posicion52 = new Punto(5, 2);
 		posicion62 = new Punto(6, 2);
+		posicion20Y12 = new Punto(20, 12);
+		
 		orientacionHorizontal = Orientacion.HORIZONTAL;
 		orientacionVertical = Orientacion.VERTICAL;
+		
 		unBuqueHorizontal = new Buque(posicion32,orientacionHorizontal);
 		unBuqueVertical = new Buque(posicion32,orientacionVertical);
+		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
 		disparoConvencional34 = new DisparoConvencional(posicion34);
@@ -51,6 +62,7 @@ public class BuqueTest extends TestCase {
 		disparoConvencional42 = new DisparoConvencional(posicion42);
 		disparoConvencional52 = new DisparoConvencional(posicion52);
 		disparoConvencional62 = new DisparoConvencional(posicion62);
+		
 		minaSubmarinaPorContacto32 = new MinaSubmarinaPorContacto(posicion32);
 		minaSubmarinaPorContacto33 = new MinaSubmarinaPorContacto(posicion33);
 	}
@@ -60,7 +72,22 @@ public class BuqueTest extends TestCase {
 		assertEquals(posicion32,unBuqueHorizontal.getPosicion());
 	}
 	
-
+	public void testSeConstruyeEnUnaPosicionInvalida(){
+		
+		try{
+			
+			unBuqueHorizontal = new Buque(posicion20Y12,orientacionHorizontal);
+			
+		}
+		catch(PosicionInvalidaException e){
+			
+			assertTrue(true);
+			
+		}
+	}
+	
+	
+	
 	public void testAlConstruirseTieneOrientacionHorizontal(){
 		
 		assertEquals(orientacionHorizontal,unBuqueHorizontal.getOrientacion());

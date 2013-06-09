@@ -8,6 +8,7 @@ public class LanchaTest extends TestCase {
 	
 	private Lancha unaLanchaHorizontal;
 	private Lancha unaLanchaVertical;
+	
 	Punto posicion32;
 	Punto posicion33;
 	Punto posicion34;
@@ -15,8 +16,11 @@ public class LanchaTest extends TestCase {
 	Punto posicion42;
 	Punto posicion52;
 	Punto posicion62;
+	Punto posicion12Y15;
+	
 	Orientacion orientacionHorizontal;
 	Orientacion orientacionVertical;
+	
 	DisparoConvencional disparoConvencional32;
 	DisparoConvencional disparoConvencional33;
 	DisparoConvencional disparoConvencional34;
@@ -24,6 +28,7 @@ public class LanchaTest extends TestCase {
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
+	
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
 
@@ -36,10 +41,14 @@ public class LanchaTest extends TestCase {
 		posicion42 = new Punto(4, 2);
 		posicion52 = new Punto(5, 2);
 		posicion62 = new Punto(6, 2);
+		posicion12Y15 = new Punto(12, 15);
+		
 		orientacionHorizontal = Orientacion.HORIZONTAL;
 		orientacionVertical = Orientacion.VERTICAL;
+		
 		unaLanchaHorizontal = new Lancha(posicion32,orientacionHorizontal);
 		unaLanchaVertical = new Lancha(posicion32,orientacionVertical);
+		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
 		disparoConvencional34 = new DisparoConvencional(posicion34);
@@ -47,6 +56,7 @@ public class LanchaTest extends TestCase {
 		disparoConvencional42 = new DisparoConvencional(posicion42);
 		disparoConvencional52 = new DisparoConvencional(posicion52);
 		disparoConvencional62 = new DisparoConvencional(posicion62);
+		
 		minaSubmarinaPorContacto32 = new MinaSubmarinaPorContacto(posicion32);
 		minaSubmarinaPorContacto33 = new MinaSubmarinaPorContacto(posicion33);
 		
@@ -56,6 +66,21 @@ public class LanchaTest extends TestCase {
 	public void testSeConstruyeConUnaPosicion(){
 		
 		assertEquals(posicion32,unaLanchaHorizontal.getPosicion());
+	}
+	
+	
+	public void testSeConstruyeEnUnaPosicionInvalida(){
+		
+		try{
+			
+			unaLanchaHorizontal = new Lancha(posicion12Y15,orientacionHorizontal);
+			
+		}
+		catch(PosicionInvalidaException e){
+			
+			assertTrue(true);
+			
+		}
 	}
 	
 	

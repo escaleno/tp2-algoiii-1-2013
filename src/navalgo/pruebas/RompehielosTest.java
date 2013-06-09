@@ -2,6 +2,8 @@ package navalgo.pruebas;
 
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.Portaavion;
+import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
 import junit.framework.TestCase;
@@ -10,19 +12,24 @@ public class RompehielosTest extends TestCase {
 	
 	private Rompehielos unRompehielosHorizontal;
 	private Rompehielos unRompehielosVertical;
+	
 	Punto posicion32;
 	Punto posicion33;
 	Punto posicion34;
 	Punto posicion42;
 	Punto posicion52;
+	Punto posicion15Y3;
+	
 	Orientacion orientacionHorizontal;
 	Orientacion orientacionVertical;
+	
 	DisparoConvencional disparoConvencional32;
 	DisparoConvencional disparoConvencional33;
 	DisparoConvencional disparoConvencional34;
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 
+	
 	protected void setUp() throws Exception {
 		super.setUp();
 		posicion32 = new Punto(3,2);
@@ -30,10 +37,14 @@ public class RompehielosTest extends TestCase {
 		posicion34 = new Punto(3,4);
 		posicion42 = new Punto(4, 2);
 		posicion52 = new Punto(5, 2);
+		posicion15Y3 = new Punto(15, 3);
+		
 		orientacionHorizontal = Orientacion.HORIZONTAL;
 		orientacionVertical = Orientacion.VERTICAL;
+		
 		unRompehielosHorizontal = new Rompehielos(posicion32,orientacionHorizontal);
 		unRompehielosVertical = new Rompehielos(posicion32,orientacionVertical);
+		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
 		disparoConvencional34 = new DisparoConvencional(posicion34);
@@ -46,6 +57,21 @@ public class RompehielosTest extends TestCase {
 		assertEquals(posicion32,unRompehielosHorizontal.getPosicion());
 		
 	}
+	
+	public void testSeConstruyeEnUnaPosicionInvalida(){
+		
+		try{
+			
+			unRompehielosHorizontal = new Rompehielos(posicion15Y3,orientacionHorizontal);
+			
+		}
+		catch(PosicionInvalidaException e){
+			
+			assertTrue(true);
+			
+		}
+	}
+	
 	
 	
 	public void testAlConstruirseTieneOrientacionHorizontal(){
