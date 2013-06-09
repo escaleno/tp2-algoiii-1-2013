@@ -7,31 +7,15 @@ public class Principal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int posicionX = 3;
-		int posicionY = 3;
-		
-//		for (int i = posicionX -1; i <= posicionX +1; i++) {
-//			for (int j = posicionY -1; j <= posicionY+1; j++) {
-//				System.out.println(i);
-//				System.out.println(j);
-//			}
-//			
-//		}
-//					
-//		}
+		Orientacion orientacionHorizontal = Orientacion.HORIZONTAL;
+		Orientacion orientacionVertical = Orientacion.VERTICAL;
+		Punto posicion42 = new Punto(4, 2);
+		Punto posicion32 = new Punto(3, 2);
+		DisparoConvencional disparoConvencional42 = new DisparoConvencional(posicion42);
+		Lancha unaLanchaVertical = new Lancha(posicion32, orientacionVertical); 
+		unaLanchaVertical.recibirAtaque(disparoConvencional42);
+	}
 	
-	for (int i = posicionX -1; i <= posicionX +1; i++) {
-		for (int j = posicionY -1; j <= posicionY +1; j++){
-			System.out.println(i);
-			System.out.println(j);
-		}
-		
-		
-	}
-				
-	}
-		
-
 }
 
 

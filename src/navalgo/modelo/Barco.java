@@ -34,17 +34,11 @@ public abstract class Barco {
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	protected void construirCuerpo(){
-		Parte casillaAux = null;
-		Punto posicionAux = null;
+		Parte parteAux = null;
 		for (int i = 0; i < this.tamanio; i++) {
-			if(this.orientacion == Orientacion.HORIZONTAL){
-				posicionAux = new Punto(this.posicion.getX(),this.posicion.getY() + i);
-			}else if(this.orientacion == Orientacion.VERTICAL){
-				posicionAux = new Punto(this.posicion.getX() + i,this.posicion.getY());
-			}
-			casillaAux = new Parte(this.resistencia,posicionAux);
-			this.cuerpo.add(casillaAux);
-			}
+			parteAux = new Parte(this.resistencia);
+			this.cuerpo.add(parteAux);
+		}
 	}
 	
 	/*accesors*/
@@ -91,29 +85,44 @@ public abstract class Barco {
 	 */
 
 	public void recibirAtaque(DisparoConvencional unDisparoConvencional){
-		if(unDisparoConvencional.getTurnosRestantes() == 0){
-			for(Parte unaCasilla : cuerpo){
-				if( (unaCasilla.getPosicion().getX() == unDisparoConvencional.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unDisparoConvencional.getPosicion().getY()) ){
-					unaCasilla.asimilarDisparo();
-					break;
-				}
+		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+		if (this.orientacion == Orientacion.VERTICAL){
+			for (int i = 0; i < this.tamanio; i++) {
+				if (posicionBarco.equals(unDisparoConvencional.getPosicion())){
+					this.getCuerpo().get(i).asimilarDisparo();
+					}
+				posicionBarco.setX(posicionBarco.getX() + 1);
 			}
-			
+		}else{
+			for (int i = 0; i < this.tamanio; i++) {
+				if (posicionBarco.equals(unDisparoConvencional.getPosicion())){			
+					this.getCuerpo().get(i).asimilarDisparo();
+				}
+				posicionBarco.setY(posicionBarco.getY()+1);
+			}
 		}
 	}
+	
 	
 	/*
 	 * verifica el daño causado por una MinaSubmarinaPorContacto
 	 */
 	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto){
-		if(unaMinaSubmarinaPorContacto.getTurnosRestantes() == 0){
-			for(Parte unaCasilla : cuerpo){
-				if( (unaCasilla.getPosicion().getX() == unaMinaSubmarinaPorContacto.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unaMinaSubmarinaPorContacto.getPosicion().getY()) ){
-					unaCasilla.asimilarDisparo();
-					break;
-				}
+		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+		if (this.orientacion == Orientacion.VERTICAL){
+			for (int i = 0; i < this.tamanio; i++) {
+				if (posicionBarco.equals(unaMinaSubmarinaPorContacto.getPosicion())){
+					this.getCuerpo().get(i).asimilarDisparo();
+					}
+				posicionBarco.setX(posicionBarco.getX() +1);
 			}
-			
+		}else{
+			for (int i = 0; i < this.tamanio; i++) {
+				if (posicionBarco.equals(unaMinaSubmarinaPorContacto.getPosicion())){			
+					this.getCuerpo().get(i).asimilarDisparo();
+				}
+				posicionBarco.setY(posicionBarco.getY()+1);
+			}
 		}
 	}
 	
@@ -121,20 +130,25 @@ public abstract class Barco {
 	 * verifica el daño causado por una MinaSubmarinaPuntualConRetardo
 	 */
 	public void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo){
-		if(unaMinaSubmarinaPuntualConRetardo.getTurnosRestantes() == 0){
-			for(Parte unaCasilla : cuerpo){
-				if( (unaCasilla.getPosicion().getX() == unaMinaSubmarinaPuntualConRetardo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unaMinaSubmarinaPuntualConRetardo.getPosicion().getY()) ){
-					unaCasilla.asimilarDisparo();
-					break;
-				}
+		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+		if (this.orientacion == Orientacion.VERTICAL){
+			for (int i = 0; i < this.tamanio; i++) {
+				if (posicionBarco.equals(unaMinaSubmarinaPuntualConRetardo.getPosicion())){
+					this.getCuerpo().get(i).asimilarDisparo();
+					}
+				posicionBarco.setX(posicionBarco.getX()+1);
 			}
-			
+		}else{
+			for (int i = 0; i < this.tamanio; i++) {
+				if (posicionBarco.equals(unaMinaSubmarinaPuntualConRetardo.getPosicion())){			
+					this.getCuerpo().get(i).asimilarDisparo();
+				}
+				posicionBarco.setY(posicionBarco.getY()+1);
+			}
 		}
-		
-	}
+	}	
 	
-	
-	public abstract void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo);
+	//public abstract void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo);
 	
 
 }

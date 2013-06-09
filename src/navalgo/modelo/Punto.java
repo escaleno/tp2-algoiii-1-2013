@@ -26,11 +26,33 @@ public class Punto
 		return this.y;
 	}
 	
+	public void incrementarEnX(){
+		this.x++;
+	}
+	
+	public void incrementarEnY(){
+		this.y++;
+	}
+	
+	public void decrementarEnX(){
+		this.x--;
+	}
+	
+	public void decrementarEnY(){
+		this.y--;
+	}
+	
+	
 	/*Constructor*/
 	public Punto(int cx, int cy)
 	{
 		this.x=cx;
 		this.y=cy;
+	}
+	
+	public boolean equals(Object obj){
+		Punto otroPunto = (Punto) obj;
+		return ( (this.x == otroPunto.getX()) && (this.y == otroPunto.getY()) );
 	}
 
 };

@@ -11,6 +11,7 @@ public class PortaavionTest extends TestCase {
 	private Portaavion unPortaavionHorizontal;
 	private Portaavion unPortaavionVertical;
 	Punto posicion32;
+	Punto otraPos32;
 	Punto posicion33;
 	Punto posicion34;
 	Punto posicion35;
@@ -34,6 +35,7 @@ public class PortaavionTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		posicion32 = new Punto(3,2);
+		otraPos32 = new Punto(3, 2);
 		posicion33 = new Punto(3,3);
 		posicion34 = new Punto(3,4);
 		posicion35 = new Punto(3,5);
@@ -44,7 +46,7 @@ public class PortaavionTest extends TestCase {
 		posicion72 = new Punto(7, 2);
 		orientacionHorizontal = Orientacion.HORIZONTAL;
 		orientacionVertical = Orientacion.VERTICAL;
-		unPortaavionHorizontal = new Portaavion(posicion32,orientacionHorizontal);
+		unPortaavionHorizontal = new Portaavion(otraPos32,orientacionHorizontal);
 		unPortaavionVertical = new Portaavion(posicion32,orientacionVertical);
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
@@ -130,6 +132,7 @@ public class PortaavionTest extends TestCase {
 		unPortaavionHorizontal.recibirAtaque(disparoConvencional35);
 		unPortaavionHorizontal.recibirAtaque(disparoConvencional36);
 		assertTrue(unPortaavionHorizontal.estaDestruido());
+		
 	}
 	
 	

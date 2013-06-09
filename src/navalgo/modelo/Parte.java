@@ -5,23 +5,16 @@ public class Parte {
 	 * vale cero representa que fue totalmente destruida
 	 */
 	private int resistencia;
-	
-	/*representa la posicion de una casilla en el tabler*/
-	private Punto posicion;
-	
-	public Parte(int cantDeResistencia,Punto unaPosicion){
+		
+	/*constructor */
+	public Parte(int cantDeResistencia){
 		
 		this.resistencia = cantDeResistencia;
-		this.posicion = unaPosicion;
 	}
 	
 	public int getResistencia(){
 		
 		return this.resistencia;
-	}
-	
-	public Punto getPosicion(){
-		return this.posicion;
 	}
 	
 	public void setResistencia(int nivelDeResistencia){
