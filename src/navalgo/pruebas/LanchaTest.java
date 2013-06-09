@@ -64,41 +64,36 @@ public class LanchaTest extends TestCase {
 		assertEquals(orientacionHorizontal,unaLanchaHorizontal.getOrientacion());
 	}
 	
-	public void testAlConstruirseTieneDosCasillas(){
+	public void testAlConstruirseTieneDosPartes(){
 		
 		assertEquals(2,unaLanchaHorizontal.getCuerpo().size());
 	}
 	
 	public void testAlConstruirseTieneResistencia1(){
+		
 		assertEquals(1,unaLanchaHorizontal.getCuerpo().get(0).getResistencia());
+		assertEquals(1,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
 	}
 	
 	public void testAlConstruirseTieneTamanio2(){
 		assertEquals(2,unaLanchaHorizontal.getTamanio());
 	}
 	
-	public void testAlConstruirseSeCreaDosCasillaHorizontal(){
-		assertEquals(posicion32.getX(),unaLanchaHorizontal.getCuerpo().get(0).getPosicion().getX());
-		assertEquals(posicion32.getY(),unaLanchaHorizontal.getCuerpo().get(0).getPosicion().getY());
-		assertEquals(posicion33.getX(),unaLanchaHorizontal.getCuerpo().get(1).getPosicion().getX());
-		assertEquals(posicion33.getY(),unaLanchaHorizontal.getCuerpo().get(1).getPosicion().getY());
-		
-	}
-	
-	public void testAlConstruirseSeCreaDosCasillaVertical(){
-		assertEquals(3,unaLanchaVertical.getCuerpo().get(0).getPosicion().getX());
-		assertEquals(2,unaLanchaVertical.getCuerpo().get(0).getPosicion().getY());
-		assertEquals(4,unaLanchaVertical.getCuerpo().get(1).getPosicion().getX());
-		assertEquals(2,unaLanchaVertical.getCuerpo().get(1).getPosicion().getY());
-		
-	}
-	
-	public void testEstaDestruidoSiTieneTodasLasCasillasDestruidas(){
+
+	public void testUnaLanchaHorizontalEstaDestruidaSiTieneTodasLasPartesDestruidas(){
 		unaLanchaHorizontal.getCuerpo().get(0).setResistencia(0);
 		unaLanchaHorizontal.getCuerpo().get(1).setResistencia(0);
 		assertTrue(unaLanchaHorizontal.estaDestruido());
 		
 	}
+	
+	public void testUnaLanchaVerticalEstaDestruidaSiTieneTodasLasPartesDestruidas(){
+		unaLanchaVertical.getCuerpo().get(0).setResistencia(0);
+		unaLanchaVertical.getCuerpo().get(1).setResistencia(0);
+		assertTrue(unaLanchaVertical.estaDestruido());
+		
+	}
+
 
 	public void testNoEstaDestruidoSiTieneAlgunaCasillaSinDestruirTotalmente(){
 		unaLanchaHorizontal.getCuerpo().get(0).setResistencia(0);
@@ -112,7 +107,7 @@ public class LanchaTest extends TestCase {
 		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(0).getResistencia());
 	}
 	
-	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencional(){
+	public void testSeBajaEnUnoLaResistenciaDeLaParteDosAlSerAfectadaPorUnDisparoConvencional(){
 		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
 		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
 	}
@@ -140,10 +135,10 @@ public class LanchaTest extends TestCase {
 		
 	}
 	
-	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
-		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
-		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
-		assertTrue(unaLanchaHorizontal.estaDestruido());
-		
-	}
+//	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
+//		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
+//		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
+//		assertTrue(unaLanchaHorizontal.estaDestruido());
+//		
+//	}
 }

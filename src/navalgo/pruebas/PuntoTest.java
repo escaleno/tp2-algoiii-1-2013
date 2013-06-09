@@ -6,11 +6,13 @@ import junit.framework.TestCase;
 public class PuntoTest extends TestCase {
 	public Punto unPunto;
 	public Punto otroPunto;
+	public Punto unPuntoIgualAOUnPunto;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		unPunto = new Punto(5,3);
 		otroPunto = new Punto (4,2);
+		unPuntoIgualAOUnPunto = new Punto(5, 3);
 		
 	}
 	
@@ -40,6 +42,11 @@ public class PuntoTest extends TestCase {
 		
 		unPunto.setY(15);
 		assertEquals(15,unPunto.getY());
+	}
+	
+	public void testUnPuntoEsIgualAlOtro(){
+		assertEquals(unPunto,unPuntoIgualAOUnPunto);
+		
 	}
 	
 

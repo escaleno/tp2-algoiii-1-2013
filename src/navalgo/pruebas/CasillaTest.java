@@ -6,12 +6,10 @@ import navalgo.modelo.*;
 public class CasillaTest extends TestCase {
 	
 	private Parte unaCasilla;
-	private Punto unaPosicion;
-
 	protected void setUp() throws Exception {
 		super.setUp();
-		unaPosicion = new Punto(2,3);
-		unaCasilla = new Parte(3,unaPosicion);
+		new Punto(2,3);
+		unaCasilla = new Parte(3);
 	}
 	
 	public void  testGetCasilla(){
@@ -21,10 +19,6 @@ public class CasillaTest extends TestCase {
 	public void testConstructorDeCasilla(){
 		
 		assertEquals(3, unaCasilla.getResistencia());
-	}
-	
-	public void testGetPosicion(){
-		assertEquals(unaPosicion,unaCasilla.getPosicion());
 	}
 
 
