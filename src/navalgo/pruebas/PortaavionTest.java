@@ -3,6 +3,7 @@ package navalgo.pruebas;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Portaavion;
+import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
 
@@ -20,6 +21,9 @@ public class PortaavionTest extends TestCase {
 	Punto posicion52;
 	Punto posicion62;
 	Punto posicion72;
+	
+	Punto posicion03;
+	
 	Orientacion orientacionHorizontal;
 	Orientacion orientacionVertical;
 	DisparoConvencional disparoConvencional32;
@@ -44,6 +48,8 @@ public class PortaavionTest extends TestCase {
 		posicion52 = new Punto(5, 2);
 		posicion62 = new Punto(6, 2);
 		posicion72 = new Punto(7, 2);
+		posicion03 = new Punto(0, 3);
+		
 		orientacionHorizontal = Orientacion.HORIZONTAL;
 		orientacionVertical = Orientacion.VERTICAL;
 		unPortaavionHorizontal = new Portaavion(otraPos32,orientacionHorizontal);
@@ -65,6 +71,21 @@ public class PortaavionTest extends TestCase {
 	}
 	
 
+	public void testSeConstruyeEnUnaPosicionInvalida(){
+		
+		try{
+			
+			unPortaavionHorizontal = new Portaavion(posicion03,orientacionHorizontal);
+			
+		}
+		catch(PosicionInvalidaException e){
+			
+			assertTrue(true);
+			
+		}
+	}
+	
+	
 	public void testAlConstruirseTieneOrientacionHorizontal(){
 		
 		assertEquals(orientacionHorizontal,unPortaavionHorizontal.getOrientacion());
@@ -137,3 +158,4 @@ public class PortaavionTest extends TestCase {
 	
 	
 }
+
