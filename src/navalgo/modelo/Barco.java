@@ -34,8 +34,13 @@ public abstract class Barco {
 	public Barco(Punto unaPosicion, Orientacion unaOrientacion) {
 		
 		Random random = new Random();
-		this.direccionX = random.nextInt(2)-1;
-		this.direccionY = random.nextInt(2)-1;
+		this.direccionX = random.nextInt(3)-1;
+		this.direccionY = random.nextInt(3)-1;
+		if(this.direccionX==0 && this.direccionY==0)
+		{
+			this.direccionX = 1;
+			this.direccionY =-1;
+		}
 		
 		this.posicion = unaPosicion;
 		this.orientacion = unaOrientacion;
@@ -46,7 +51,11 @@ public abstract class Barco {
 		
 		this.direccionX = direccionX;
 		this.direccionY = direccionY;
-		
+		if(this.direccionX==0 && this.direccionY==0)
+		{
+			this.direccionX = 1;
+			this.direccionY =-1;
+		}
 		this.posicion = unaPosicion;
 		this.orientacion = unaOrientacion;
 		
@@ -55,10 +64,15 @@ public abstract class Barco {
 	public Barco() {
 		
 		Random random = new Random();
-		this.direccionX = random.nextInt(2)-1;
-		this.direccionY = random.nextInt(2)-1;
+		this.direccionX = random.nextInt(3)-1;
+		this.direccionY = random.nextInt(3)-1;
+		if(this.direccionX==0 && this.direccionY==0)
+		{
+			this.direccionX = 1;
+			this.direccionY =-1;
+		}
 		
-		this.posicion = new Punto((random.nextInt(9)+1),(random.nextInt(9)+1));
+		this.posicion = new Punto((random.nextInt(10)+1),(random.nextInt(10)+1));
 		this.orientacion = Orientacion.getRandom();		
 	}
 	
@@ -162,6 +176,13 @@ public abstract class Barco {
 		
 	}
 	
+	public int getDireccionX(){
+		return this.direccionX;
+	}
+	
+	public int getDireccionY(){
+		return this.direccionY;
+	}
 	/*
 	 * verifica el daño causado por un DisparoConvencional
 	 */
