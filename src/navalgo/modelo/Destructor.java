@@ -6,8 +6,8 @@ public class Destructor extends Barco {
 
 	public Destructor(Punto unaPosicion, Orientacion unaOrientacion) {
 		super(unaPosicion, unaOrientacion);
-		this.tamanio = 3;
-		this.resistencia = 1;
+		this.setTamanio(3);
+		this.setResistencia(1);
 		this.cuerpo = new ArrayList<Parte>();
 		this.construirCuerpo();
 
