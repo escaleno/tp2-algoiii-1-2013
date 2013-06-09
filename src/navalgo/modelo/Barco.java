@@ -2,6 +2,9 @@
 package navalgo.modelo;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import junit.framework.Protectable;
 
 public abstract class Barco {
 
@@ -23,13 +26,40 @@ public abstract class Barco {
 	protected ArrayList<Parte> cuerpo;
 	
 
+	protected int direccionX;
+	protected int direccionY;
+	
 	
 	/*constructor*/
 	public Barco(Punto unaPosicion, Orientacion unaOrientacion) {
 		
+		Random random = new Random();
+		this.direccionX = random.nextInt(2)-1;
+		this.direccionY = random.nextInt(2)-1;
+		
 		this.posicion = unaPosicion;
 		this.orientacion = unaOrientacion;
 		
+	}
+	
+	public Barco(Punto unaPosicion, Orientacion unaOrientacion, int direccionX, int direccionY) {
+		
+		this.direccionX = direccionX;
+		this.direccionY = direccionY;
+		
+		this.posicion = unaPosicion;
+		this.orientacion = unaOrientacion;
+		
+	}
+	
+	public Barco() {
+		
+		Random random = new Random();
+		this.direccionX = random.nextInt(2)-1;
+		this.direccionY = random.nextInt(2)-1;
+		
+		this.posicion = new Punto((random.nextInt(9)+1),(random.nextInt(9)+1));
+		this.orientacion = Orientacion.getRandom();		
 	}
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/
@@ -103,6 +133,34 @@ public abstract class Barco {
 		return true;
 	}
 	
+	
+	/*
+	 * Muevo el Barco una Posicion del Tablero
+	 */
+	public void mover(){
+		
+		int x=this.posicion.getX();
+		int y=this.posicion.getY();
+		int validarX = (this.orientacion==Orientacion.HORIZONTAL)? (x+this.cuerpo.size()): x;
+		int validarY = (this.orientacion==Orientacion.VERTICAL)? (y+this.cuerpo.size()): y;
+		
+		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de X del Tablero
+		if((x<=1 && this.direccionX==-1) ||
+		   (validarX>=10 && this.direccionX==1)){
+			this.direccionX*=-1;
+		}
+		
+		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de Y del Tablero
+		if((y<=1 && this.direccionY==-1) ||
+		   (validarY>=10 && this.direccionY==1)){
+			this.direccionY*=-1;
+		}
+		
+		//Muevo una posicion de X e Y
+		this.posicion.setX((x+this.direccionX));
+		this.posicion.setY((y+this.direccionY));
+		
+	}
 	
 	/*
 	 * verifica el daño causado por un DisparoConvencional
