@@ -1,11 +1,11 @@
 package navalgo.modelo;
 
-public class MinaSubmarinaDobleConRetardo extends MinaSubmarinaConAlcance {
+public class MinaSubmarinaTripleConRetardo extends MinaSubmarinaConAlcance {
 
-	public MinaSubmarinaDobleConRetardo(Punto unaPosicion) {
+	public MinaSubmarinaTripleConRetardo(Punto unaPosicion) {
 		super(unaPosicion);
-		this.costo = 100;
-		this.alcance = 1;
+		this.costo = 125;
+		this.alcance = 2;
 		this.turnosRestantes = 3;
 		for (int i = this.posicion.getX() - this.alcance; i <= this.posicion.getX() + this.alcance; i++) {
 			for (int j = this.posicion.getY() - this.alcance; j <= this.posicion.getY() + this.alcance; j++) {
@@ -17,11 +17,11 @@ public class MinaSubmarinaDobleConRetardo extends MinaSubmarinaConAlcance {
 			}
 		}
 	}
-	
 
-	
+
 	public void atacar(Barco unBarco) {
 		unBarco.recibirAtaque(this);
+
 	}
 
 }

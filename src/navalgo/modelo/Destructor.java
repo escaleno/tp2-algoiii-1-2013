@@ -27,10 +27,13 @@ public class Destructor extends Barco {
 
 
 
-	public void recibirAtaque(
-			MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo) {
+	public void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo) {
 		//no hace nada
 		
+	}
+	
+	public void recibirAtaque(MinaSubmarinaTripleConRetardo unaMinaSubmarinaTripleConRetardo){
+		//no hace nada
 	}
 
 }
