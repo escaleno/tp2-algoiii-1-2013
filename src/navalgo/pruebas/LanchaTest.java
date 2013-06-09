@@ -135,10 +135,10 @@ public class LanchaTest extends TestCase {
 		
 	}
 	
-//	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
-//		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
-//		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
-//		assertTrue(unaLanchaHorizontal.estaDestruido());
-//		
-//	}
+	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
+		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
+		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
+		assertTrue(unaLanchaHorizontal.estaDestruido());
+		
+	}
 }

@@ -22,25 +22,4 @@ public class Buque extends Barco {
 		return false;
 	}
 	
-//	public void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo) {
-//		if(unaMinaSubmarinaDobleConRetardo.getTurnosRestantes() == 0){
-//			for(Parte unaCasilla : cuerpo){
-//				if( (unaCasilla.getPosicion().getX() == unaMinaSubmarinaDobleConRetardo.getPosicion().getX()) && (unaCasilla.getPosicion().getY() == unaMinaSubmarinaDobleConRetardo.getPosicion().getY()) ){
-//					unaCasilla.asimilarDisparo();
-//					break;
-//				}
-//			}
-//			
-//		}
-//		
-//	}
-
-
-
-
-	
-
-	
-	
-
 }
