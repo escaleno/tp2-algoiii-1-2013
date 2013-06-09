@@ -6,8 +6,8 @@ public class Buque extends Barco {
 
 	public Buque(Punto unaPosicion, Orientacion unaOrientacion) {
 		super(unaPosicion, unaOrientacion);
-		this.tamanio = 4;
-		this.resistencia = 1;
+		this.setTamanio(4);
+		this.setResistencia(1);
 		this.cuerpo = new ArrayList<Parte>();
 		this.construirCuerpo();
 	}

@@ -6,21 +6,23 @@ import java.util.ArrayList;
 public abstract class Barco {
 
 	/*representa la ubicacion (x,y) de la primer casilla del barco*/
-	protected Punto posicion;
+	private Punto posicion;
 	 	
 	/*Indica su orientacion, puede ser horizontal o vertical*/
-	protected Orientacion orientacion;
+	private Orientacion orientacion;
 	
 	/*indica cuantas casillas conforman el barco*/
-	protected int tamanio;
+	private int tamanio;
+	
+	/*indica la cantidad dano que requiere cada casilla para ser destruida*/
+	private int resistencia;
 	
 	/*representa el cuerpo del barco que esta compuesto por casillas
 	 * 
 	 */
 	protected ArrayList<Parte> cuerpo;
 	
-	/*indica la cantidad dano que requiere cada casilla para ser destruida*/
-	protected int resistencia;
+
 	
 	/*constructor*/
 	public Barco(Punto unaPosicion, Orientacion unaOrientacion) {
@@ -70,6 +72,26 @@ public abstract class Barco {
 		return this.tamanio;
 	}
 	
+	public void setTamanio(int unTamanio){
+		if((unTamanio<2)|(unTamanio>5)){
+			throw new TamanioDeLaNaveInvalidaException();
+		}
+		
+		this.tamanio = unTamanio;
+		
+	}
+	
+	
+	public int getResistencia(){
+		
+		return this.resistencia;
+	}
+	
+	public void setResistencia(int unaResistencia){
+		
+		this.resistencia = unaResistencia;
+		
+	}
 	
 	/*retorna true si esta totalmente destruido*/
 	public boolean estaDestruido(){
