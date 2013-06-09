@@ -12,6 +12,22 @@ public class Buque extends Barco {
 		this.construirCuerpo();
 	}
 	
+	public Buque() {
+		super();
+		this.setTamanio(4);
+		this.setResistencia(1);
+		this.cuerpo = new ArrayList<Parte>();
+		this.construirCuerpo();
+	}
+	
+	public Buque(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
+		super(unaPosicion, unaOrientacion, direccionX, direccionY);
+		this.setTamanio(4);
+		this.setResistencia(1);
+		this.cuerpo = new ArrayList<Parte>();
+		this.construirCuerpo();
+	}
+	
 
 	public boolean estaDestruido(){
 		for(Parte unaCasilla : cuerpo){
