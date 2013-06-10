@@ -13,11 +13,8 @@ public class Buque extends Barco {
 	}
 	
 	public Buque() {
-		super();
-		this.setTamanio(4);
+		super(4);
 		this.setResistencia(1);
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
 	}
 	
 	public Buque(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {

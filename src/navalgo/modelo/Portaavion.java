@@ -13,11 +13,8 @@ public class Portaavion extends Barco {
 	}
 	
 	public Portaavion() {
-		super();
-		this.setTamanio(5);
+		super(5);
 		this.setResistencia(1);
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
 	}
 	
 	public Portaavion(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
