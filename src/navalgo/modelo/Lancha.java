@@ -15,13 +15,8 @@ public class Lancha extends Barco {
 	}
 	
 	public Lancha() {
-		super();
-		
-		this.setTamanio(2);
+		super(2);
 		this.setResistencia(1);
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
-		
 	}
 	
 	public Lancha(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {

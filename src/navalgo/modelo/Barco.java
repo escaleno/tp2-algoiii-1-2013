@@ -61,7 +61,7 @@ public abstract class Barco {
 		
 	}
 	
-	public Barco() {
+	public Barco(int tamanio) {
 		
 		Random random = new Random();
 		this.direccionX = random.nextInt(3)-1;
@@ -72,8 +72,13 @@ public abstract class Barco {
 			this.direccionY =-1;
 		}
 		
-		this.posicion = new Punto((random.nextInt(10)+1),(random.nextInt(10)+1));
-		this.orientacion = Orientacion.getRandom();		
+		this.tamanio = tamanio;
+		this.cuerpo = new ArrayList<Parte>();
+		this.construirCuerpo();
+		this.orientacion = Orientacion.getRandom();
+		int x = (this.orientacion==Orientacion.HORIZONTAL)? (10-tamanio) :10;
+		int y = (this.orientacion==Orientacion.VERTICAL)? (10-tamanio) :10;
+		this.posicion = new Punto((random.nextInt(x)+1),(random.nextInt(y)+1));		
 	}
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/

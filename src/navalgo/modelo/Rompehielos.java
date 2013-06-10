@@ -13,11 +13,8 @@ public class Rompehielos extends Barco {
 	}
 	
 	public Rompehielos() {
-		super();
-		this.setTamanio(3);
+		super(3);
 		this.setResistencia(2);
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
 	}
 	
 	public Rompehielos(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
