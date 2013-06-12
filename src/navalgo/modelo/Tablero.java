@@ -1,3 +1,4 @@
+
 package navalgo.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -88,26 +89,7 @@ public class Tablero
 			{
 				unBarco.mover();
 			}
-
 		}
-		
-		/*for (Disparo unDisparo: disparosEfectuados)
-		{
-			for (Barco unBarco: listaBarcos)
-			{
-				unDisparo.atacar(unBarco);
-			}
-		}
-		
-		for (Barco BarcoActual: listaBarcos)
-		{
-			if (BarcoActual.estaDestruido())
-			{
-				Barco barcoaAgregar=BarcoActual;
-				listaBarcos.remove(BarcoActual);
-				barcosHundidos.add(barcoaAgregar);
-			}
-		}*/
 	}	
 	
 	public ArrayList<Barco> getBarcos()
