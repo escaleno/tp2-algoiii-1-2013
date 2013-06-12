@@ -122,5 +122,33 @@ public class TestTablero extends TestCase
 			assertTrue(undestructor.estaDestruido());
 		}
 		
-
+		@ Test
+		public void testCorrectoDesplazamientoDeBarcosNoHundidosLuegoDelTurno()
+		{
+			alguntablero.ejecutarTurno();
+			assertTrue(unrompehielo.getPosicion().getX()==2);
+			assertTrue(unrompehielo.getPosicion().getY()==2);
+			assertTrue(unbuque.getPosicion().getX()==1);
+			assertTrue(unbuque.getPosicion().getY()==4);
+			assertTrue(undestructor.getPosicion().getX()==2);
+			assertTrue(undestructor.getPosicion().getY()==5);			
+		}
+		@Test
+		public void testNoMovimientoDeBarcosHundidos()
+		{
+			assertTrue(unalancha.getPosicion().getX()==1);
+			assertTrue(unalancha.getPosicion().getY()==1);
+		}
+		
+		@Test
+		public void testCorrectoDañoPorBarcosSuperpuestos()
+		{
+			Destructor destructorSuperpuesto=new Destructor(new Punto(1,5),Orientacion.VERTICAL,0,1);//este destructor se mueve enVertical
+			alguntablero.agregarBarco(destructorSuperpuesto);
+			alguntablero.ejecutarTurno();			
+			assertTrue(undestructor.getCuerpo().get(0).getResistencia()==0);
+			assertTrue(destructorSuperpuesto.getCuerpo().get(0).getResistencia()==0);
+			assertTrue(destructorSuperpuesto.getCuerpo().get(1).getResistencia()==1);
+			assertTrue(destructorSuperpuesto.getCuerpo().get(2).getResistencia()==1);	
+		}
 }
