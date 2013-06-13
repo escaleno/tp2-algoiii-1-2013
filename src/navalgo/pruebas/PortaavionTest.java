@@ -2,6 +2,8 @@ package navalgo.pruebas;
 
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
+import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
@@ -50,8 +52,8 @@ public class PortaavionTest extends TestCase {
 		posicion72 = new Punto(7, 2);
 		posicion03 = new Punto(0, 3);
 		
-		orientacionHorizontal = Orientacion.HORIZONTAL;
-		orientacionVertical = Orientacion.VERTICAL;
+		orientacionHorizontal = new OrientacionHorizontal();
+		orientacionVertical = new OrientacionVertical();
 		unPortaavionHorizontal = new Portaavion(otraPos32,orientacionHorizontal);
 		unPortaavionVertical = new Portaavion(posicion32,orientacionVertical);
 		disparoConvencional32 = new DisparoConvencional(posicion32);
@@ -105,17 +107,17 @@ public class PortaavionTest extends TestCase {
 	}
 	
 	public void testAlRecibirUnDisparoConvencionalDisminuyeLaResistencia(){
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional32);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional33);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional34);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional35);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional36);
+		unPortaavionVertical.recibirAtaque(disparoConvencional32);
+		unPortaavionVertical.recibirAtaque(disparoConvencional33);
+		unPortaavionVertical.recibirAtaque(disparoConvencional34);
+		unPortaavionVertical.recibirAtaque(disparoConvencional35);
+		unPortaavionVertical.recibirAtaque(disparoConvencional36);
 		
-		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(0).getResistencia());
-		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(1).getResistencia());
-		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(2).getResistencia());
-		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(3).getResistencia());
-		assertEquals(0,unPortaavionHorizontal.getCuerpo().get(4).getResistencia());
+		assertEquals(0,unPortaavionVertical.getCuerpo().get(0).getResistencia());
+		assertEquals(0,unPortaavionVertical.getCuerpo().get(1).getResistencia());
+		assertEquals(0,unPortaavionVertical.getCuerpo().get(2).getResistencia());
+		assertEquals(0,unPortaavionVertical.getCuerpo().get(3).getResistencia());
+		assertEquals(0,unPortaavionVertical.getCuerpo().get(4).getResistencia());
 	}
 
 	public void testEstaDestruidoSiTieneTodasLasCasillasDestruidas(){
@@ -147,12 +149,12 @@ public class PortaavionTest extends TestCase {
 	}
 	
 	public void testSiTieneTodasLasCasillaDestruidasEstaTotalmenteDestruido(){
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional32);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional33);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional34);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional35);
-		unPortaavionHorizontal.recibirAtaque(disparoConvencional36);
-		assertTrue(unPortaavionHorizontal.estaDestruido());
+		unPortaavionVertical.recibirAtaque(disparoConvencional32);
+		unPortaavionVertical.recibirAtaque(disparoConvencional33);
+		unPortaavionVertical.recibirAtaque(disparoConvencional34);
+		unPortaavionVertical.recibirAtaque(disparoConvencional35);
+		unPortaavionVertical.recibirAtaque(disparoConvencional36);
+		assertTrue(unPortaavionVertical.estaDestruido());
 		
 	}
 	

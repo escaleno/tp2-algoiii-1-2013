@@ -43,8 +43,8 @@ public class LanchaTest extends TestCase {
 		posicion62 = new Punto(6, 2);
 		posicion12Y15 = new Punto(12, 15);
 		
-		orientacionHorizontal = Orientacion.HORIZONTAL;
-		orientacionVertical = Orientacion.VERTICAL;
+		orientacionHorizontal = new OrientacionHorizontal();
+		orientacionVertical = new OrientacionVertical();
 		
 		unaLanchaHorizontal = new Lancha(posicion32,orientacionHorizontal);
 		unaLanchaVertical = new Lancha(posicion32,orientacionVertical);
@@ -128,42 +128,42 @@ public class LanchaTest extends TestCase {
 	
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaCasillaUnoAlSerAfectadaPorUnDisparoConvencional(){
-		unaLanchaHorizontal.recibirAtaque(disparoConvencional32);
-		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(0).getResistencia());
-	}
-	
-	public void testSeBajaEnUnoLaResistenciaDeLaParteDosAlSerAfectadaPorUnDisparoConvencional(){
-		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
-		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
-	}
-	
-	public void testSeBajaEnUnoLaResistenciaDeLaCasillaUnoAlSerAfectadaPorUnDisparoConvencionalEnLanchaVertical(){
 		unaLanchaVertical.recibirAtaque(disparoConvencional32);
 		assertEquals(0,unaLanchaVertical.getCuerpo().get(0).getResistencia());
 	}
 	
-	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencionalEnLanchaVertical(){
-		unaLanchaVertical.recibirAtaque(disparoConvencional42);
+	public void testSeBajaEnUnoLaResistenciaDeLaParteDosAlSerAfectadaPorUnDisparoConvencional(){
+		unaLanchaVertical.recibirAtaque(disparoConvencional33);
 		assertEquals(0,unaLanchaVertical.getCuerpo().get(1).getResistencia());
 	}
 	
-	public void testEsDestruidaSiRecibeUnDisparoConvencionalEnCadaCasilla(){
+	public void testSeBajaEnUnoLaResistenciaDeLaCasillaUnoAlSerAfectadaPorUnDisparoConvencionalEnLanchaHorizontal(){
 		unaLanchaHorizontal.recibirAtaque(disparoConvencional32);
-		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
-		assertTrue(unaLanchaHorizontal.estaDestruido());
+		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(0).getResistencia());
+	}
+	
+	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencionalEnLanchaHorizontal(){
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional42);
+		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
+	}
+	
+	public void testEsDestruidaSiRecibeUnDisparoConvencionalEnCadaCasilla(){
+		unaLanchaVertical.recibirAtaque(disparoConvencional32);
+		unaLanchaVertical.recibirAtaque(disparoConvencional33);
+		assertTrue(unaLanchaVertical.estaDestruido());
 		
 	}
 	
 	public void testNoEsDestruidaSiRecibeUnSoloDisparoConvencional(){
-		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
-		assertFalse(unaLanchaHorizontal.estaDestruido());
+		unaLanchaVertical.recibirAtaque(disparoConvencional33);
+		assertFalse(unaLanchaVertical.estaDestruido());
 		
 	}
 	
 	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
-		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
-		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
-		assertTrue(unaLanchaHorizontal.estaDestruido());
+		unaLanchaVertical.recibirAtaque(minaSubmarinaPorContacto32);
+		unaLanchaVertical.recibirAtaque(minaSubmarinaPorContacto33);
+		assertTrue(unaLanchaVertical.estaDestruido());
 		
 	}
 }

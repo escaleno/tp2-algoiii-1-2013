@@ -5,6 +5,7 @@ import navalgo.modelo.Destructor;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
@@ -27,7 +28,7 @@ public class DisparoConvencionalTest extends TestCase {
 		super.setUp();
 		posicion32 = new Punto(3,2);
 		unDisparoConvencional = new DisparoConvencional(posicion32);
-		orientacionHorizontal = Orientacion.HORIZONTAL;
+		orientacionHorizontal = new OrientacionHorizontal();
 		unDisparoConvencional = new DisparoConvencional(posicion32);
 		unaLancha = new Lancha(posicion32,orientacionHorizontal);
 		unBuque = new Buque(posicion32, orientacionHorizontal);

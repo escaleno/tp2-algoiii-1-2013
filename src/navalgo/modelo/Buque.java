@@ -12,11 +12,6 @@ public class Buque extends Barco {
 		this.construirCuerpo();
 	}
 	
-	public Buque() {
-		super(4);
-		this.setResistencia(1);
-	}
-	
 	public Buque(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
 		super(unaPosicion, unaOrientacion, direccionX, direccionY);
 		this.setTamanio(4);

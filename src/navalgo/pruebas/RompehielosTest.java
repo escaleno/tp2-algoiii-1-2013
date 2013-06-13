@@ -2,6 +2,8 @@ package navalgo.pruebas;
 
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
+import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
@@ -39,8 +41,8 @@ public class RompehielosTest extends TestCase {
 		posicion52 = new Punto(5, 2);
 		posicion15Y3 = new Punto(15, 3);
 		
-		orientacionHorizontal = Orientacion.HORIZONTAL;
-		orientacionVertical = Orientacion.VERTICAL;
+		orientacionHorizontal = new OrientacionHorizontal();
+		orientacionVertical = new OrientacionVertical();
 		
 		unRompehielosHorizontal = new Rompehielos(posicion32,orientacionHorizontal);
 		unRompehielosVertical = new Rompehielos(posicion32,orientacionVertical);
@@ -110,20 +112,20 @@ public class RompehielosTest extends TestCase {
 	
 	public void testEstaDestruidoSiRecibeDosDisparosEnCadaCasilla(){
 		
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional34);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional34);
-		assertTrue(unRompehielosHorizontal.estaDestruido());
+		unRompehielosVertical.recibirAtaque(disparoConvencional32);
+		unRompehielosVertical.recibirAtaque(disparoConvencional32);
+		unRompehielosVertical.recibirAtaque(disparoConvencional33);
+		unRompehielosVertical.recibirAtaque(disparoConvencional33);
+		unRompehielosVertical.recibirAtaque(disparoConvencional34);
+		unRompehielosVertical.recibirAtaque(disparoConvencional34);
+		assertTrue(unRompehielosVertical.estaDestruido());
 	}
 	
 	
 	public void testNoEstaDestruidoSiNoTieneTodasLasCasillaDestruidas(){
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
-		assertFalse(unRompehielosHorizontal.estaDestruido());
+		unRompehielosVertical.recibirAtaque(disparoConvencional33);
+		unRompehielosVertical.recibirAtaque(disparoConvencional33);
+		unRompehielosVertical.recibirAtaque(disparoConvencional32);
+		assertFalse(unRompehielosVertical.estaDestruido());
 	}
 }

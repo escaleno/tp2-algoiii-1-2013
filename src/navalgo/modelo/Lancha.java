@@ -14,10 +14,6 @@ public class Lancha extends Barco {
 		
 	}
 	
-	public Lancha() {
-		super(2);
-		this.setResistencia(1);
-	}
 	
 	public Lancha(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
 		super(unaPosicion, unaOrientacion, direccionX, direccionY);

@@ -61,25 +61,6 @@ public abstract class Barco {
 		
 	}
 	
-	public Barco(int tamanio) {
-		
-		Random random = new Random();
-		this.direccionX = random.nextInt(3)-1;
-		this.direccionY = random.nextInt(3)-1;
-		if(this.direccionX==0 && this.direccionY==0)
-		{
-			this.direccionX = 1;
-			this.direccionY =-1;
-		}
-		
-		this.tamanio = tamanio;
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
-		this.orientacion = Orientacion.getRandom();
-		int x = (this.orientacion==Orientacion.HORIZONTAL)? (10-tamanio) :10;
-		int y = (this.orientacion==Orientacion.VERTICAL)? (10-tamanio) :10;
-		this.posicion = new Punto((random.nextInt(x)+1),(random.nextInt(y)+1));		
-	}
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	protected void construirCuerpo(){
@@ -158,57 +139,57 @@ public abstract class Barco {
 	 */
 	public void mover(){
 		
-		int x=this.posicion.getX();
-		int y=this.posicion.getY();
-		int validarX = (this.orientacion==Orientacion.HORIZONTAL)? (x+this.cuerpo.size()): x;
-		int validarY = (this.orientacion==Orientacion.VERTICAL)? (y+this.cuerpo.size()): y;
-		
+		Punto posicionDeLaPrimeraParte = this.posicion;
+		int x= posicionDeLaPrimeraParte.getX();
+		int y = posicionDeLaPrimeraParte.getY();
+		int validarX = this.orientacion.calcularUltimaPosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);
+		int validarY = this.orientacion.calcularUltimaPosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);		
 		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de X del Tablero
-		if((x<=1 && this.direccionX==-1) ||
-		   (validarX>=10 && this.direccionX==1)){
+		if ((x==1&&this.direccionX==-1) ||
+			(validarX==10 && this.direccionX==-1)) {
 			this.direccionX*=-1;
-		}
-		
+		}	
 		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de Y del Tablero
-		if((y<=1 && this.direccionY==-1) ||
-		   (validarY>=10 && this.direccionY==1)){
-			this.direccionY*=-1;
+		if ((y==1&&this.direccionY==-1) ||
+		    (validarY==10 && this.direccionY==-1)) {
+				this.direccionY*=-1;
 		}
 		
 		//Muevo una posicion de X e Y
-		this.posicion.setX((x+this.direccionX));
-		this.posicion.setY((y+this.direccionY));
+		posicionDeLaPrimeraParte.setX((x+this.direccionX));
+		posicionDeLaPrimeraParte.setY((y+this.direccionY));
 		
 	}
 	
-	public int getDireccionX(){
-		return this.direccionX;
-	}
-	
-	public int getDireccionY(){
-		return this.direccionY;
-	}
 	/*
 	 * verifica el daño causado por un DisparoConvencional
 	 */
 
-	public void recibirAtaque(DisparoConvencional unDisparoConvencional){
-		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-		if (this.orientacion == Orientacion.VERTICAL){
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unDisparoConvencional.getPosicion())){
-					this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setX(posicionBarco.getX() + 1);
-			}
-		}else{
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unDisparoConvencional.getPosicion())){			
-					this.getCuerpo().get(i).asimilarDisparo();
-				}
-				posicionBarco.setY(posicionBarco.getY()+1);
-			}
+	public void realizarAtaqueSinAlcance(Disparo disparo){
+		int turnoRestante = disparo.getTurnosRestantes();
+		if (turnoRestante == 0){
+			this.orientacion.asimilarImpacto(this, disparo.getPosicion());
+		} else {
+			disparo.setTurnosRestantes(turnoRestante-1);
 		}
+	}
+	
+	public void realizarAtaqueConAlcance(MinaSubmarinaConAlcance disparo){
+		int turnoRestante = disparo.getTurnosRestantes();
+		if (turnoRestante == 0){
+			this.orientacion.asimilarImpacto(this, disparo.getPosicion());
+			
+			//ahora verifico si los punto de alcance matchean con el barco
+			for (Punto puntoDeAlcance : disparo.getPuntosDeAlcance()) {
+				this.orientacion.asimilarImpacto(this, puntoDeAlcance);
+			}
+		} else {
+			disparo.setTurnosRestantes(turnoRestante-1);
+		}
+	}
+	
+	public void recibirAtaque(DisparoConvencional unDisparoConvencional){
+		this.realizarAtaqueSinAlcance(unDisparoConvencional);
 	}
 	
 	
@@ -216,149 +197,147 @@ public abstract class Barco {
 	 * verifica el daño causado por una MinaSubmarinaPorContacto
 	 */
 	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto){
-		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-		if (this.orientacion == Orientacion.VERTICAL){
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unaMinaSubmarinaPorContacto.getPosicion())){
-					this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setX(posicionBarco.getX() +1);
-			}
-		}else{
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unaMinaSubmarinaPorContacto.getPosicion())){			
-					this.getCuerpo().get(i).asimilarDisparo();
-				}
-				posicionBarco.setY(posicionBarco.getY()+1);
-			}
-		}
+		this.realizarAtaqueSinAlcance(unaMinaSubmarinaPorContacto);
 	}
 	
 	/*
 	 * verifica el daño causado por una MinaSubmarinaPuntualConRetardo
 	 */
+//	public void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo){
+//		if (unaMinaSubmarinaPuntualConRetardo.getTurnosRestantes() == 0){
+//			Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//			if (this.orientacion == Orientacion.VERTICAL){
+//				for (int i = 0; i < this.tamanio; i++) {
+//					if (posicionBarco.equals(unaMinaSubmarinaPuntualConRetardo.getPosicion())){
+//						this.getCuerpo().get(i).asimilarDisparo();
+//						}
+//					posicionBarco.setX(posicionBarco.getX()+1);
+//				}
+//			}else{
+//				for (int i = 0; i < this.tamanio; i++) {
+//					if (posicionBarco.equals(unaMinaSubmarinaPuntualConRetardo.getPosicion())){			
+//						this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//					posicionBarco.setY(posicionBarco.getY()+1);
+//				}
+//			}
+//		}
+//	}
+	
 	public void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo){
-		if (unaMinaSubmarinaPuntualConRetardo.getTurnosRestantes() == 0){
-			Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-			if (this.orientacion == Orientacion.VERTICAL){
-				for (int i = 0; i < this.tamanio; i++) {
-					if (posicionBarco.equals(unaMinaSubmarinaPuntualConRetardo.getPosicion())){
-						this.getCuerpo().get(i).asimilarDisparo();
-						}
-					posicionBarco.setX(posicionBarco.getX()+1);
-				}
-			}else{
-				for (int i = 0; i < this.tamanio; i++) {
-					if (posicionBarco.equals(unaMinaSubmarinaPuntualConRetardo.getPosicion())){			
-						this.getCuerpo().get(i).asimilarDisparo();
-					}
-					posicionBarco.setY(posicionBarco.getY()+1);
-				}
-			}
-		}
-	}	
+		this.realizarAtaqueSinAlcance(unaMinaSubmarinaPuntualConRetardo);
+	}
 	
 	/*
 	 * verifica el dano causado por una MinaSubmarinaDobleConRetardo
 	 */
 
 	
+//	public void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo){
+//		if (unaMinaSubmarinaDobleConRetardo.getTurnosRestantes() == 0){
+//		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//		if (this.orientacion == Orientacion.VERTICAL){
+//			for (int i = 0; i < this.tamanio; i++) {
+//				if (posicionBarco.equals(unaMinaSubmarinaDobleConRetardo.getPosicion())){
+//					this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//				posicionBarco.setX(posicionBarco.getX() + 1);
+//			}
+//			
+//			//ahora verifico si los punto de alcance matchean con el barco
+//			
+//			for (Punto puntoDeAlcance : unaMinaSubmarinaDobleConRetardo.getPuntosDeAlcance()) {
+//				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//				for (int i = 0; i < this.tamanio; i++) {
+//					if (posicionBarco.equals(puntoDeAlcance)){
+//						this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//				posicionBarco.setX(posicionBarco.getX() +1);	
+//				}
+//			}
+//			
+//		}else{
+//			for (int i = 0; i < this.tamanio; i++) {
+//				if (posicionBarco.equals(unaMinaSubmarinaDobleConRetardo.getPosicion())){			
+//					this.getCuerpo().get(i).asimilarDisparo();
+//				}
+//				posicionBarco.setY(posicionBarco.getY()+1);
+//			}
+//			
+//			//ahora verifico si los punto de alcance matchean con el barco
+//			
+//			for (Punto puntoDeAlcance : unaMinaSubmarinaDobleConRetardo.getPuntosDeAlcance()) {
+//				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//				for (int i = 0; i < this.tamanio; i++) {
+//					if (posicionBarco.equals(puntoDeAlcance)){
+//						this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//				posicionBarco.setY(posicionBarco.getY() +1);	
+//				}
+//			}
+//			
+//		}
+//	}
+//}
 	public void recibirAtaque(MinaSubmarinaDobleConRetardo unaMinaSubmarinaDobleConRetardo){
-		if (unaMinaSubmarinaDobleConRetardo.getTurnosRestantes() == 0){
-		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-		if (this.orientacion == Orientacion.VERTICAL){
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unaMinaSubmarinaDobleConRetardo.getPosicion())){
-					this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setX(posicionBarco.getX() + 1);
-			}
-			
-			//ahora verifico si los punto de alcance matchean con el barco
-			
-			for (Punto puntoDeAlcance : unaMinaSubmarinaDobleConRetardo.getPuntosDeAlcance()) {
-				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-				for (int i = 0; i < this.tamanio; i++) {
-					if (posicionBarco.equals(puntoDeAlcance)){
-						this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setX(posicionBarco.getX() +1);	
-				}
-			}
-			
-		}else{
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unaMinaSubmarinaDobleConRetardo.getPosicion())){			
-					this.getCuerpo().get(i).asimilarDisparo();
-				}
-				posicionBarco.setY(posicionBarco.getY()+1);
-			}
-			
-			//ahora verifico si los punto de alcance matchean con el barco
-			
-			for (Punto puntoDeAlcance : unaMinaSubmarinaDobleConRetardo.getPuntosDeAlcance()) {
-				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-				for (int i = 0; i < this.tamanio; i++) {
-					if (posicionBarco.equals(puntoDeAlcance)){
-						this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setY(posicionBarco.getY() +1);	
-				}
-			}
-			
-		}
+		this.realizarAtaqueConAlcance(unaMinaSubmarinaDobleConRetardo);
 	}
-}
 	
 	
 	/*
 	 * verifica el dano causado por una MinaSubmarinaTripleConRetardo
 	 */
-	public void recibirAtaque(MinaSubmarinaTripleConRetardo unaMinaSubmarinaTripleConRetardo){
-		if (unaMinaSubmarinaTripleConRetardo.getTurnosRestantes() == 0){
-		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-		if (this.orientacion == Orientacion.VERTICAL){
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unaMinaSubmarinaTripleConRetardo.getPosicion())){
-					this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setX(posicionBarco.getX() + 1);
-			}
-			
-			//ahora verifico si los punto de alcance matchean con el barco
-			
-			for (Punto puntoDeAlcance : unaMinaSubmarinaTripleConRetardo.getPuntosDeAlcance()) {
-				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-				for (int i = 0; i < this.tamanio; i++) {
-					if (posicionBarco.equals(puntoDeAlcance)){
-						this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setX(posicionBarco.getX() +1);	
-				}
-			}
-			
-		}else{
-			for (int i = 0; i < this.tamanio; i++) {
-				if (posicionBarco.equals(unaMinaSubmarinaTripleConRetardo.getPosicion())){			
-					this.getCuerpo().get(i).asimilarDisparo();
-				}
-				posicionBarco.setY(posicionBarco.getY()+1);
-			}
-			
-			//ahora verifico si los punto de alcance matchean con el barco
-			
-			for (Punto puntoDeAlcance : unaMinaSubmarinaTripleConRetardo.getPuntosDeAlcance()) {
-				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
-				for (int i = 0; i < this.tamanio; i++) {
-					if (posicionBarco.equals(puntoDeAlcance)){
-						this.getCuerpo().get(i).asimilarDisparo();
-					}
-				posicionBarco.setY(posicionBarco.getY() +1);	
-				}
-			}
-			
-		}		
-	}
+//	public void recibirAtaque(MinaSubmarinaTripleConRetardo unaMinaSubmarinaTripleConRetardo){
+//		if (unaMinaSubmarinaTripleConRetardo.getTurnosRestantes() == 0){
+//		Punto posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//		if (this.orientacion == Orientacion.VERTICAL){
+//			for (int i = 0; i < this.tamanio; i++) {
+//				if (posicionBarco.equals(unaMinaSubmarinaTripleConRetardo.getPosicion())){
+//					this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//				posicionBarco.setX(posicionBarco.getX() + 1);
+//			}
+//			
+//			//ahora verifico si los punto de alcance matchean con el barco
+//			
+//			for (Punto puntoDeAlcance : unaMinaSubmarinaTripleConRetardo.getPuntosDeAlcance()) {
+//				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//				for (int i = 0; i < this.tamanio; i++) {
+//					if (posicionBarco.equals(puntoDeAlcance)){
+//						this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//				posicionBarco.setX(posicionBarco.getX() +1);	
+//				}
+//			}
+//			
+//		}else{
+//			for (int i = 0; i < this.tamanio; i++) {
+//				if (posicionBarco.equals(unaMinaSubmarinaTripleConRetardo.getPosicion())){			
+//					this.getCuerpo().get(i).asimilarDisparo();
+//				}
+//				posicionBarco.setY(posicionBarco.getY()+1);
+//			}
+//			
+//			//ahora verifico si los punto de alcance matchean con el barco
+//			
+//			for (Punto puntoDeAlcance : unaMinaSubmarinaTripleConRetardo.getPuntosDeAlcance()) {
+//				posicionBarco = new Punto(this.posicion.getX(), this.posicion.getY());
+//				for (int i = 0; i < this.tamanio; i++) {
+//					if (posicionBarco.equals(puntoDeAlcance)){
+//						this.getCuerpo().get(i).asimilarDisparo();
+//					}
+//				posicionBarco.setY(posicionBarco.getY() +1);	
+//				}
+//			}
+//			
+//		}		
+//	}
+//	
+//}
 	
-}
+	
+	public void recibirAtaque(MinaSubmarinaTripleConRetardo unaMinaSubmarinaTripleConRetardo){
+		this.realizarAtaqueConAlcance(unaMinaSubmarinaTripleConRetardo);
+	}
+
 }
