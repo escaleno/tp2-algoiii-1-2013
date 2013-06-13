@@ -5,6 +5,7 @@ import navalgo.modelo.Destructor;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
@@ -24,7 +25,7 @@ public class MinaSubmarinaPorContactoTest extends TestCase {
 		super.setUp();
 		posicion32 = new Punto(3,2);
 		unaMinaSubmarinaPorContacto = new MinaSubmarinaPorContacto(posicion32);
-		orientacionHorizontal = Orientacion.HORIZONTAL;
+		orientacionHorizontal = new OrientacionHorizontal();
 		unaMinaSubmarinaPorContacto = new MinaSubmarinaPorContacto(posicion32);
 		unaLancha = new Lancha(posicion32,orientacionHorizontal);
 		unBuque = new Buque(posicion32, orientacionHorizontal);

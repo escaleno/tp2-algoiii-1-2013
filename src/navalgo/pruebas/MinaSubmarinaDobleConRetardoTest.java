@@ -3,6 +3,8 @@ package navalgo.pruebas;
 import navalgo.modelo.Buque;
 import navalgo.modelo.MinaSubmarinaDobleConRetardo;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
+import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
 
@@ -46,8 +48,8 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		posicionX1Y1 = new Punto(1, 1);
 		posicionX2Y1 = new Punto(2, 1);
 		posicionX4Y2 = new Punto(4, 2);
-		unaOrientacionHorizontal = Orientacion.HORIZONTAL;
-		unaOrientacionVertical = Orientacion.VERTICAL;
+		unaOrientacionHorizontal = new OrientacionHorizontal();
+		unaOrientacionVertical = new OrientacionVertical();
 		unaMinaEnX2Y3 = new MinaSubmarinaDobleConRetardo(posicionX2Y3);
 		unaMinaEnX1Y3 = new MinaSubmarinaDobleConRetardo(posicionX1Y3);
 		unaMinaEnX1Y1 = new MinaSubmarinaDobleConRetardo(posicionX1Y1);
@@ -95,10 +97,8 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		unaMinaEnX3Y3.atacar(unBuqueEnX3Y2);
 		assertTrue(unBuqueEnX3Y2.getCuerpo().get(0).estaDestruida());
 		assertTrue(unBuqueEnX3Y2.getCuerpo().get(1).estaDestruida());
-		assertTrue(unBuqueEnX3Y2.getCuerpo().get(2).estaDestruida());
+		assertFalse(unBuqueEnX3Y2.getCuerpo().get(2).estaDestruida());
 		assertFalse(unBuqueEnX3Y2.getCuerpo().get(3).estaDestruida());
-		
-		
 		
 	}
 	
@@ -107,8 +107,9 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		unaMinaEnX4Y2.atacar(unBuqueVerticalEnX3Y2);
 		assertTrue(unBuqueVerticalEnX3Y2.getCuerpo().get(0).estaDestruida());
 		assertTrue(unBuqueVerticalEnX3Y2.getCuerpo().get(1).estaDestruida());
-		assertTrue(unBuqueVerticalEnX3Y2.getCuerpo().get(2).estaDestruida());
+		assertFalse(unBuqueVerticalEnX3Y2.getCuerpo().get(2).estaDestruida());
 		assertFalse(unBuqueVerticalEnX3Y2.getCuerpo().get(3).estaDestruida());
+		
 	}
 	
 	public void testSiHayUnBuqueHorizontalEnPosX1Y1LePegaEnLas2PrimerasPartes(){

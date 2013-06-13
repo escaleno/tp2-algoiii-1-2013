@@ -4,6 +4,8 @@ import navalgo.modelo.Buque;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.MinaSubmarinaTripleConRetardo;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
+import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
 
@@ -52,8 +54,8 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 	MinaSubmarinaTripleConRetardo unaMinaEnX4Y4;
 	MinaSubmarinaTripleConRetardo unaMinaEnX1Y5;
 	MinaSubmarinaTripleConRetardo unaMinaEnX4Y5;
-	Lancha unaLanchaHorizontalEnPosX6Y2;
-	Lancha unaLanchaVerticalEnPosX3Y7;
+	Lancha unaLanchaHorizontalEnPosX1Y4;
+	Lancha unaLanchaVerticalEnPosX4Y4;
 	Buque unBuqueVerticalEnPosX3Y5;
 
 	protected void setUp() throws Exception {
@@ -95,8 +97,8 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		posX6Y4 = new Punto(6, 4);
 		posX6Y5 = new Punto(6, 5);
 		posX6Y6 = new Punto(6, 6);
-		orientacionHorizontal = Orientacion.HORIZONTAL;
-		orientacionVertical = Orientacion.VERTICAL;
+		orientacionHorizontal = new OrientacionHorizontal();
+		orientacionVertical = new OrientacionVertical();
 		
 		
 		unaMinaEnX5Y5 = new MinaSubmarinaTripleConRetardo(posX5Y5);
@@ -104,8 +106,8 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		unaMinaEnX4Y4 = new MinaSubmarinaTripleConRetardo(posX4Y4);
 		unaMinaEnX1Y5 = new MinaSubmarinaTripleConRetardo(posX1Y5);
 		unaMinaEnX4Y5 = new MinaSubmarinaTripleConRetardo(posX4Y5);
-		unaLanchaVerticalEnPosX3Y7 = new Lancha(posX3Y7, orientacionVertical);
-		unaLanchaHorizontalEnPosX6Y2 = new Lancha(posX6Y2, orientacionHorizontal);
+		unaLanchaVerticalEnPosX4Y4 = new Lancha(posX4Y4, orientacionVertical);
+		unaLanchaHorizontalEnPosX1Y4 = new Lancha(posX1Y4, orientacionHorizontal);
 		unBuqueVerticalEnPosX3Y5 = new Buque(posX3Y5, orientacionVertical);
 	}
 	
@@ -168,17 +170,15 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		
 	}
 	
-	public void testSiHayLanchaEnX6Y2YEnPosX3Y7YUnBuqueEnPosX3Y5DestruyeElBuqueYLaSegundaLancha(){
+	public void testSiHayLanchaEnX1Y4YEnPosX4Y4YUnBuqueEnPosX3Y5DestruyeElBuqueYLaSegundaLancha(){
 		unaMinaEnX4Y5.setTurnosRestantes(0);
-		unaMinaEnX4Y5.atacar(unaLanchaVerticalEnPosX3Y7);
-		unaMinaEnX4Y5.atacar(unaLanchaHorizontalEnPosX6Y2);
+		unaMinaEnX4Y5.atacar(unaLanchaVerticalEnPosX4Y4);
+		unaMinaEnX4Y5.atacar(unaLanchaHorizontalEnPosX1Y4);
 		unaMinaEnX4Y5.atacar(unBuqueVerticalEnPosX3Y5);
-		assertTrue(unaLanchaVerticalEnPosX3Y7.estaDestruido());
+		assertTrue(unaLanchaVerticalEnPosX4Y4.estaDestruido());
 		assertTrue(unBuqueVerticalEnPosX3Y5.estaDestruido());
-		assertFalse(unaLanchaHorizontalEnPosX6Y2.estaDestruido());
-		assertFalse(unaLanchaHorizontalEnPosX6Y2.getCuerpo().get(0).estaDestruida());
-		assertTrue(unaLanchaHorizontalEnPosX6Y2.getCuerpo().get(1).estaDestruida());
+		assertFalse(unaLanchaHorizontalEnPosX1Y4.estaDestruido());
+		assertFalse(unaLanchaHorizontalEnPosX1Y4.getCuerpo().get(0).estaDestruida());
+		assertTrue(unaLanchaHorizontalEnPosX1Y4.getCuerpo().get(1).estaDestruida());
 	}
-	
-	
 }

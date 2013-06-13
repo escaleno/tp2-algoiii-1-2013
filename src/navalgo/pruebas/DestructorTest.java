@@ -5,6 +5,8 @@ import navalgo.modelo.Destructor;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
+import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
@@ -45,8 +47,8 @@ public class DestructorTest extends TestCase {
 		posicion52 = new Punto(5,2);
 		posicion14Y2 = new Punto(14,2);
 		
-		orientacionHorizontal = Orientacion.HORIZONTAL;
-		orientacionVertical = Orientacion.VERTICAL;
+		orientacionHorizontal = new OrientacionHorizontal();
+		orientacionVertical = new OrientacionVertical();
 		
 		unDestructorHorizontal = new Destructor(posicion32,orientacionHorizontal);
 		unDestructorVertical = new Destructor(posicion32,orientacionVertical);

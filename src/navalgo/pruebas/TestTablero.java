@@ -27,10 +27,10 @@ public class TestTablero extends TestCase
 			super.setUp();
 			alguntablero=new Tablero();
 			//genero 4 barcos con direcciones
-			unrompehielo=new Rompehielos(new Punto(2,1),Orientacion.VERTICAL,0,1);//intento que la direccion sea hacia abajo, aunque el rango es de [1..10,1..10]
-			unalancha=new Lancha(new Punto(1,1),Orientacion.HORIZONTAL,1,0);
-			unbuque=new Buque(new Punto(1,3),Orientacion.VERTICAL,0,1);
-			undestructor=new Destructor(new Punto(1,5),Orientacion.HORIZONTAL,1,0);
+			unrompehielo=new Rompehielos(new Punto(2,1),new OrientacionHorizontal(),0,1);//intento que la direccion sea hacia abajo, aunque el rango es de [1..10,1..10]
+			unalancha=new Lancha(new Punto(1,1),new OrientacionVertical(),1,0);
+			unbuque=new Buque(new Punto(1,3),new OrientacionHorizontal(),0,1);
+			undestructor=new Destructor(new Punto(1,5),new OrientacionVertical(),1,0);
 			//los inserto en el tablero
 			alguntablero.agregarBarco(unalancha);
 			alguntablero.agregarBarco(unrompehielo);
@@ -143,7 +143,7 @@ public class TestTablero extends TestCase
 		@Test
 		public void testCorrectoDañoPorBarcosSuperpuestos()
 		{
-			Destructor destructorSuperpuesto=new Destructor(new Punto(1,5),Orientacion.VERTICAL,0,1);//este destructor se mueve enVertical
+			Destructor destructorSuperpuesto=new Destructor(new Punto(1,5),new OrientacionHorizontal(),0,1);//este destructor se mueve enVertical
 			alguntablero.agregarBarco(destructorSuperpuesto);
 			alguntablero.ejecutarTurno();			
 			assertTrue(undestructor.getCuerpo().get(0).getResistencia()==0);
