@@ -4,14 +4,14 @@ public class OrientacionVertical implements Orientacion {
 
 	
 	@Override
-	public int calcularUltimaPosicionDelBarcoX(Punto puntoDeInicioBarco, 
+	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco, 
 			int tamanio) {
 		// TODO Auto-generated method stub
 		return puntoDeInicioBarco.getX();
 	}
 	
 	@Override
-	public int calcularUltimaPosicionDelBarcoY(Punto puntoDeInicioBarco, 
+	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, 
 			int tamanio){
 		// TODO Auto-generated method stub
 		return (puntoDeInicioBarco.getY()+tamanio);

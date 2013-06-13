@@ -8,9 +8,9 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 		Punto posX3Y2 = new Punto(3, 2);
-		Punto posX3Y3 =new Punto(3, 3);
+//		Punto posX3Y3 =new Punto(3, 3);
 		Punto posX4Y2 = new Punto(4, 2);
-		Orientacion orientacionHorizontal = new OrientacionHorizontal();
+//		Orientacion orientacionHorizontal = new OrientacionHorizontal();
 		Orientacion orientacionVertical = new OrientacionVertical();
 		MinaSubmarinaDobleConRetardo unaMinaEnX4Y2 = new MinaSubmarinaDobleConRetardo(posX4Y2);
 		Buque unBuqueENX3Y2 = new Buque(posX3Y2, orientacionVertical);

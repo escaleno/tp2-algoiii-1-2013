@@ -3,7 +3,6 @@ package navalgo.pruebas;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
 import navalgo.modelo.Lancha;
-import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.MinaSubmarinaPuntualConRetardo;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;

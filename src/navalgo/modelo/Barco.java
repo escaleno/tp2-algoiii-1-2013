@@ -4,8 +4,6 @@ package navalgo.modelo;
 import java.util.ArrayList;
 import java.util.Random;
 
-import junit.framework.Protectable;
-
 public abstract class Barco {
 
 	/*representa la ubicacion (x,y) de la primer casilla del barco*/
@@ -142,8 +140,8 @@ public abstract class Barco {
 		Punto posicionDeLaPrimeraParte = this.posicion;
 		int x= posicionDeLaPrimeraParte.getX();
 		int y = posicionDeLaPrimeraParte.getY();
-		int validarX = this.orientacion.calcularUltimaPosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);
-		int validarY = this.orientacion.calcularUltimaPosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);		
+		int validarX = this.orientacion.calcularFinDePosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);
+		int validarY = this.orientacion.calcularFinDePosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);		
 		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de X del Tablero
 		if ((x==1&&this.direccionX==-1) ||
 			(validarX==10 && this.direccionX==-1)) {

@@ -4,7 +4,6 @@ import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
-import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
