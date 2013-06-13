@@ -1,16 +1,16 @@
 package navalgo.pruebas;
 
-import java.util.ArrayList;
-
-import navalgo.modelo.Barco;
-import navalgo.modelo.Buque;
-import navalgo.modelo.Disparo;
-import navalgo.modelo.Lancha;
-import navalgo.modelo.MinaSubmarinaDobleConRetardo;
-import navalgo.modelo.Orientacion;
-import navalgo.modelo.Punto;
-
-import junit.framework.TestCase;
+//import java.util.ArrayList;
+//
+//import navalgo.modelo.Barco;
+//import navalgo.modelo.Buque;
+//import navalgo.modelo.Disparo;
+//import navalgo.modelo.Lancha;
+//import navalgo.modelo.MinaSubmarinaDobleConRetardo;
+//import navalgo.modelo.Orientacion;
+//import navalgo.modelo.Punto;
+//
+//import junit.framework.TestCase;
 
 //public class InteraccionDisparosYNavesTest extends TestCase {
 //	private ArrayList<Disparo> listaDeDisparos;
