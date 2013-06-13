@@ -1,5 +1,6 @@
 package navalgo.pruebas;
 
+import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
@@ -12,8 +13,8 @@ import junit.framework.TestCase;
 
 public class BuqueTest extends TestCase {
 	
-	private Buque unBuqueHorizontal;
-	private Buque unBuqueVertical;
+	private Barco unBuqueHorizontal;
+	private Barco unBuqueVertical;
 	
 	Punto posicion32;
 	Punto posicion33;

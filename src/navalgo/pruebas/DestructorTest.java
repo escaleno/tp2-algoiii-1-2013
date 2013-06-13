@@ -1,5 +1,6 @@
 package navalgo.pruebas;
 
+import navalgo.modelo.Barco;
 import navalgo.modelo.Destructor;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
@@ -12,7 +13,7 @@ import junit.framework.TestCase;
 
 public class DestructorTest extends TestCase {
 
-	private Destructor unDestructorHorizontal;
+	private Barco unDestructorHorizontal;
 	
 	Punto posicion32;
 	Punto posicion33;
