@@ -1,5 +1,6 @@
 package navalgo.pruebas;
 
+import navalgo.modelo.Barco;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
@@ -11,8 +12,8 @@ import junit.framework.TestCase;
 
 public class PortaavionTest extends TestCase {
 
-	private Portaavion unPortaavionHorizontal;
-	private Portaavion unPortaavionVertical;
+	private Barco unPortaavionHorizontal;
+	private Barco unPortaavionVertical;
 	Punto posicion32;
 	Punto otraPos32;
 	Punto posicion33;

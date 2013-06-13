@@ -6,8 +6,8 @@ import navalgo.modelo.*;
 
 public class LanchaTest extends TestCase {
 	
-	private Lancha unaLanchaHorizontal;
-	private Lancha unaLanchaVertical;
+	private Barco unaLanchaHorizontal;
+	private Barco unaLanchaVertical;
 	
 	Punto posicion32;
 	Punto posicion33;

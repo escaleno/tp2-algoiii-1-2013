@@ -1,5 +1,6 @@
 package navalgo.pruebas;
 
+import navalgo.modelo.Barco;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
@@ -11,8 +12,8 @@ import junit.framework.TestCase;
 
 public class RompehielosTest extends TestCase {
 	
-	private Rompehielos unRompehielosHorizontal;
-	private Rompehielos unRompehielosVertical;
+	private Barco unRompehielosHorizontal;
+	private Barco unRompehielosVertical;
 	
 	Punto posicion32;
 	Punto posicion33;
