@@ -3,18 +3,18 @@ package navalgo.modelo;
 public interface Orientacion {
 
 	/**
-	 * @param Punto es el punto de inicio del Barco
+	 * @param puntoDeInicioBarco es el punto de inicio del Barco
 	 * @param tamanio es el tamanio de casillas que tiene el Barco
-	 * @return Ultima Posicion de X del Barco
+	 * @return El fin de la Posicion de Y del Barco
 	 */
-	public abstract int calcularUltimaPosicionDelBarcoX(Punto puntoDeInicioBarco, int tamanio);
+	public abstract int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco, int tamanio);
 	
 	/**
-	 * @param Punto es el punto de inicio del Barco
+	 * @param puntoDeInicioBarco es el punto de inicio del Barco
 	 * @param tamanio es el tamanio de casillas que tiene el Barco
-	 * @return Ultima Posicion de Y del Barco
+	 * @return El fin de la Posicion de Y del Barco
 	 */
-	public abstract int calcularUltimaPosicionDelBarcoY(Punto puntoDeInicioBarco, int tamanio);
+	public abstract int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, int tamanio);
 	
 	/**
 	 * Asimila el Impacto en el Barco

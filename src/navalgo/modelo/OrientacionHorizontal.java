@@ -3,14 +3,14 @@ package navalgo.modelo;
 public class OrientacionHorizontal implements Orientacion {
 
 	@Override
-	public int calcularUltimaPosicionDelBarcoX(Punto puntoDeInicioBarco,
+	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco,
 			int tamanio) {
 		// TODO Auto-generated method stub
 		return puntoDeInicioBarco.getX()+tamanio;
 	}
 
 	@Override
-	public int calcularUltimaPosicionDelBarcoY(Punto puntoDeInicioBarco,
+	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco,
 			int tamanio) {
 		// TODO Auto-generated method stub
 		return puntoDeInicioBarco.getY();

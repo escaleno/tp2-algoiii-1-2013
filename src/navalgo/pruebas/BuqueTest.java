@@ -1,6 +1,5 @@
 package navalgo.pruebas;
 
-import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
@@ -9,7 +8,6 @@ import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
-import navalgo.modelo.Rompehielos;
 import junit.framework.TestCase;
 
 public class BuqueTest extends TestCase {

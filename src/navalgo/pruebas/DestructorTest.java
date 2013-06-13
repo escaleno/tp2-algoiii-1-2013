@@ -1,13 +1,11 @@
 package navalgo.pruebas;
 
-import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
-import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
@@ -15,7 +13,6 @@ import junit.framework.TestCase;
 public class DestructorTest extends TestCase {
 
 	private Destructor unDestructorHorizontal;
-	private Destructor unDestructorVertical;
 	
 	Punto posicion32;
 	Punto posicion33;
@@ -51,7 +48,6 @@ public class DestructorTest extends TestCase {
 		orientacionVertical = new OrientacionVertical();
 		
 		unDestructorHorizontal = new Destructor(posicion32,orientacionHorizontal);
-		unDestructorVertical = new Destructor(posicion32,orientacionVertical);
 		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
