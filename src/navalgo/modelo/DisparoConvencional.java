@@ -7,11 +7,14 @@ public class DisparoConvencional extends Disparo {
 		this.costo = 200;
 		this.turnosRestantes = 0;
 		this.alcance = 0;
+		this.detonado=false;
 	}
 
 	
-	public void atacar(Barco unBarco) {
+	public void atacar(Barco unBarco) 
+	{
 		unBarco.recibirAtaque(this);
+		this.chequearDetonacion();
 		
 	}
 

@@ -2,6 +2,7 @@
 package navalgo.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import navalgo.modelo.Barco;
 import navalgo.modelo.Disparo;
 
@@ -10,87 +11,66 @@ public class Tablero
 	private ArrayList<Barco> listaBarcos;
 	private ArrayList<Disparo> disparosEfectuados;
 	private ArrayList<Barco> barcosHundidos;
+	private int cantidadFilas;
+	private int cantidadColumnas;
 	
-	public Tablero()
+	public Tablero(int nf, int nc)
 	{
-		listaBarcos=new ArrayList<Barco>();
-		disparosEfectuados=new ArrayList<Disparo>();
-		barcosHundidos=new ArrayList<Barco>();
+		if ((nf>0)&&(nc>0))
+		{	
+			listaBarcos=new ArrayList<Barco>();
+			disparosEfectuados=new ArrayList<Disparo>();
+			barcosHundidos=new ArrayList<Barco>();
+			cantidadFilas=nf;
+			cantidadColumnas=nc;
+		}
 	}
 	
-	public void agregarBarco(Rompehielos b)
+	public void agregarBarco(Barco b)
 	{
 		listaBarcos.add(b);
 	}
-	public void agregarBarco(Lancha b)
-	{
-		listaBarcos.add(b);
-	}
-	public void agregarBarco(Buque b)
-	{
-		listaBarcos.add(b);
-	}
 	
-	public void agregarBarco(Destructor b)
-	{
-		listaBarcos.add(b);
-	}
-
-	public void agregarBarco(Portaavion b)
-	{
-		listaBarcos.add(b);
-	}
-
-	
-	public void agregarDisparo(MinaSubmarinaPorContacto d)
-	{
-		disparosEfectuados.add(d);
-	}
-	
-	public void agregarDisparo(DisparoConvencional d)
-	{
-		disparosEfectuados.add(d);
-	}	
-	
-	public void agregarDisparo(MinaSubmarinaPuntualConRetardo d)
-	{
-		disparosEfectuados.add(d);
-	}
-	
-	public void agregarDisparo(MinaSubmarinaDobleConRetardo d)
+	public void agregarDisparo(Disparo d)
 	{
 		disparosEfectuados.add(d);
 	}
 	
 	public void ejecutarTurno()
 	{
-		Iterator<Disparo> iteradorDisparos=disparosEfectuados.iterator();
-		while (iteradorDisparos.hasNext())
+		for(Disparo disparoactual:disparosEfectuados)
 		{	
-			Disparo disparoactual=iteradorDisparos.next();
-			Iterator<Barco> iteradorBarcos=listaBarcos.iterator();
-			while(iteradorBarcos.hasNext())
+			for(Barco unBarco:listaBarcos)
 			{	
-				Barco unBarco=iteradorBarcos.next();
 				disparoactual.atacar(unBarco);
+				if(unBarco.estaDestruido())
+				{
+					Barco barcodestruido=unBarco;
+					this.getBarcos().remove(unBarco);
+					barcosHundidos.add(barcodestruido);					
+				}
+				else
+				{
+					unBarco.mover();
+				}			
 			}
-			
 		}
-		Iterator<Barco> iteradorBarcos=listaBarcos.iterator();
-		while (iteradorBarcos.hasNext())
-		{
-			Barco unBarco=iteradorBarcos.next();
-			if(unBarco.estaDestruido())
+		//this.borrarDisparosExplotados();		
+	}
+
+/*		for(Barco barco:listaBarcos)
+		{	
+			if(barco.estaDestruido())
 			{
-				iteradorBarcos.remove();//remueve de la lista el elemento actual;
-				barcosHundidos.add(unBarco);
+				this.getBarcos().remove(barco);
+				barcosHundidos.add(barco);
 			}
 			else
 			{
-				unBarco.mover();
+				barco.mover();
 			}
-		}
-	}	
+		}*/
+	
 	
 	public ArrayList<Barco> getBarcos()
 	{
@@ -105,5 +85,35 @@ public class Tablero
 	public ArrayList<Barco> getDestruidos()
 	{
 		return barcosHundidos;
+	}
+	
+	public int getCantidadFilas()
+	{
+		return cantidadFilas;
+	}
+
+	public int getCantidadColumnas()
+	{
+		return cantidadColumnas;
+	}
+	
+	private void borrarDisparosExplotados()
+	{
+		if (disparosEfectuados.size()>0)
+		{	
+			ArrayList<Disparo> listadisparos=this.getDisparos();
+			Iterator<Disparo> iteradorDisparos=listadisparos.iterator();
+			/*for(Disparo disparoactual:listadisparos)
+			{*/
+			while (iteradorDisparos.hasNext())
+			{	
+				Disparo disparoactual=iteradorDisparos.next();
+				if (disparoactual.detonado())
+				{
+					disparosEfectuados.remove(disparoactual);
+				}
+			}
+			//}
+		}
 	}
 }

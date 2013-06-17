@@ -7,10 +7,13 @@ public class MinaSubmarinaPorContacto extends Disparo {
 		this.costo = 150;
 		this.alcance = 0;
 		this.turnosRestantes = 0;
+		this.detonado=false;
 	}
 
 	
-	public void atacar(Barco unBarco) {
+	public void atacar(Barco unBarco) 
+	{
+		this.chequearDetonacion();
 		unBarco.recibirAtaque(this);
 		
 	}

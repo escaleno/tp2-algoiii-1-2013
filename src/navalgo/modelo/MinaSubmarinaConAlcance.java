@@ -9,6 +9,7 @@ public abstract class MinaSubmarinaConAlcance extends Disparo {
 	//Constructor
 	public MinaSubmarinaConAlcance(Punto unaPosicion) {
 		super(unaPosicion);
+		this.detonado=false;
 		puntosDeAlcance = new ArrayList<Punto>(); 
 		
 	}

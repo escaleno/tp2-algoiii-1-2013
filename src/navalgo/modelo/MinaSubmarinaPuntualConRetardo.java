@@ -7,13 +7,14 @@ public class MinaSubmarinaPuntualConRetardo extends Disparo {
 		this.costo = 50;
 		this.alcance = 0;
 		this.turnosRestantes = 3;
+		this.detonado=false;
 	}
 
 	
-	public void atacar(Barco unBarco) {
+	public void atacar(Barco unBarco) 
+	{
+		this.chequearDetonacion();
 		unBarco.recibirAtaque(this);
-		
-
 	}
 
 }
