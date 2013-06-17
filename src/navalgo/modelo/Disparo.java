@@ -1,6 +1,9 @@
 package navalgo.modelo;
 
-public abstract class Disparo {
+public abstract class Disparo 
+{
+	//lo utilizo en el tablero, lo logico seria sacar del tablero los disparos detonados
+	protected boolean detonado;
 	
 	/*representa el costo de utilizar un disparo*/
 	protected int costo;
@@ -56,5 +59,21 @@ public abstract class Disparo {
 	
 
 	public abstract void atacar(Barco unBarco);
+	
+	public boolean detonado()
+	{
+		return detonado;
+	}
+	
+	public void marcarComoDetonado()
+	{
+		detonado=true;
+	}
+	
+	public void chequearDetonacion()
+	{
+		if (turnosRestantes==0)
+			this.marcarComoDetonado();
+	}
 	
 }

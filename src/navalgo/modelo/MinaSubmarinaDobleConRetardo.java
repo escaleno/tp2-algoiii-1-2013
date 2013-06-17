@@ -7,6 +7,7 @@ public class MinaSubmarinaDobleConRetardo extends MinaSubmarinaConAlcance {
 		this.costo = 100;
 		this.alcance = 1;
 		this.turnosRestantes = 3;
+		this.detonado=false;
 		for (int i = this.posicion.getX() - this.alcance; i <= this.posicion.getX() + this.alcance; i++) {
 			for (int j = this.posicion.getY() - this.alcance; j <= this.posicion.getY() + this.alcance; j++) {
 			  if( ( (i >= 1) && (i <= 10) ) && ( (j >=1) && (j <= 10) ) && ( (i != this.posicion.getX() ) || ( j != this.posicion.getY() )) ){
@@ -20,7 +21,9 @@ public class MinaSubmarinaDobleConRetardo extends MinaSubmarinaConAlcance {
 	
 
 	
-	public void atacar(Barco unBarco) {
+	public void atacar(Barco unBarco) 
+	{
+		this.chequearDetonacion();
 		unBarco.recibirAtaque(this);
 	}
 
