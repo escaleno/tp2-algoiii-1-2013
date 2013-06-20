@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import navalgo.modelo.*;
 
 
-public class TestTablero extends TestCase 
+public class TableroTest extends TestCase 
 {
 
 		private Tablero alguntablero;
@@ -24,7 +24,7 @@ public class TestTablero extends TestCase
 		@Before
 		public void setUp()
 		{
-			alguntablero=new Tablero(10,10);
+			alguntablero=new Tablero(10,10,1,1);
 			//genero 4 barcos con direcciones
 			unrompehielo=new Rompehielos(new Punto(2,1),new OrientacionVertical(),0,1);//intento que la direccion sea hacia abajo, aunque el rango es de [1..10,1..10]
 			unalancha=new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
@@ -48,6 +48,16 @@ public class TestTablero extends TestCase
 			alguntablero.agregarDisparo(otroDisparo);
 			alguntablero.agregarDisparo(disparo);			
 			
+		}
+		
+		@Test
+		public void testGetCantidadMinimaDeFilas(){
+			assertEquals(1,alguntablero.getCantidadMinimaDeFilas());
+		}
+		
+		@Test
+		public void testGetCantidadMinimaDeColumnas(){
+			assertEquals(1, alguntablero.getCantidadMinimaDeColumnas());
 		}
 		
 		@Test
