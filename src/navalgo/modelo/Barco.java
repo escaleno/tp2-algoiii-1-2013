@@ -160,7 +160,7 @@ public abstract class Barco {
 	}
 	
 	/*
-	 * verifica el daño causado por un DisparoConvencional
+	 * verifica el danio causado por un DisparoConvencional
 	 */
 
 	public void realizarAtaqueSinAlcance(Disparo disparo){
@@ -192,14 +192,14 @@ public abstract class Barco {
 	
 	
 	/*
-	 * verifica el daño causado por una MinaSubmarinaPorContacto
+	 * verifica el danio causado por una MinaSubmarinaPorContacto
 	 */
 	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto){
 		this.realizarAtaqueSinAlcance(unaMinaSubmarinaPorContacto);
 	}
 	
 	/*
-	 * verifica el daño causado por una MinaSubmarinaPuntualConRetardo
+	 * verifica el danio causado por una MinaSubmarinaPuntualConRetardo
 	 */
 //	public void recibirAtaque(MinaSubmarinaPuntualConRetardo unaMinaSubmarinaPuntualConRetardo){
 //		if (unaMinaSubmarinaPuntualConRetardo.getTurnosRestantes() == 0){

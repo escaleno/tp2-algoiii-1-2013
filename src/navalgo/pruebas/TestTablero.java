@@ -105,7 +105,7 @@ public class TestTablero extends TestCase
 			assertTrue(unalancha.estaDestruido());
 		}
 		@Test
-		public void testCorrectoAñadidoDeLanchaaListaDestruidos()
+		public void testCorrectoAnadidoDeLanchaaListaDestruidos()
 		{
 			alguntablero.ejecutarTurno();
 			//deberia pasar la prueba ya que le pegue con un disparo convencional en cada casilla
@@ -171,7 +171,7 @@ public class TestTablero extends TestCase
 		}
 		
 /*		@Test
-		public void testCorrectoDañoPorBarcosSuperpuestos()
+		public void testCorrectoDanoPorBarcosSuperpuestos()
 		{	
 			Destructor destructorSuperpuesto=new Destructor(new Punto(1,5),new OrientacionVertical(),0,1);//este destructor se mueve enVertical
 			alguntablero.agregarBarco(destructorSuperpuesto);
