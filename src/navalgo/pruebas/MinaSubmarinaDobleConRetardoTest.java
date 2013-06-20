@@ -99,7 +99,7 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		unaMinaEnX3Y3.atacar(unBuqueEnX3Y2);
 		assertTrue(unBuqueEnX3Y2.getCuerpo().get(0).estaDestruida());
 		assertTrue(unBuqueEnX3Y2.getCuerpo().get(1).estaDestruida());
-		assertFalse(unBuqueEnX3Y2.getCuerpo().get(2).estaDestruida());
+		assertTrue(unBuqueEnX3Y2.getCuerpo().get(2).estaDestruida());
 		assertFalse(unBuqueEnX3Y2.getCuerpo().get(3).estaDestruida());
 		
 	}
@@ -109,7 +109,7 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		unaMinaEnX4Y2.atacar(unBuqueVerticalEnX3Y2);
 		assertTrue(unBuqueVerticalEnX3Y2.getCuerpo().get(0).estaDestruida());
 		assertTrue(unBuqueVerticalEnX3Y2.getCuerpo().get(1).estaDestruida());
-		assertFalse(unBuqueVerticalEnX3Y2.getCuerpo().get(2).estaDestruida());
+		assertTrue(unBuqueVerticalEnX3Y2.getCuerpo().get(2).estaDestruida());
 		assertFalse(unBuqueVerticalEnX3Y2.getCuerpo().get(3).estaDestruida());
 		
 	}

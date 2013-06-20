@@ -146,17 +146,17 @@ public class BuqueTest extends TestCase {
 	}
 	
 	public void testSiRecibeUnDisparoConvencionalEnCasillaUnoQuedaDestruido(){
-		unBuqueVertical.recibirAtaque(disparoConvencional35);
+		unBuqueVertical.recibirAtaque(disparoConvencional32);
 		assertTrue(unBuqueVertical.estaDestruido());
 	}
 	
 	public void testSiRecibeUnDisparoConvencionalEnCasillaTresQuedaDestruido(){
-		unBuqueVertical.recibirAtaque(disparoConvencional34);
-		assertTrue(unBuqueVertical.estaDestruido());
+		unBuqueHorizontal.recibirAtaque(disparoConvencional34);
+		assertTrue(unBuqueHorizontal.estaDestruido());
 	}
 	
 	public void testSiRecibeUnaMinaPorContactoQuedaDestruido(){
-		unBuqueVertical.recibirAtaque(minaSubmarinaPorContacto33);
+		unBuqueVertical.recibirAtaque(minaSubmarinaPorContacto32);
 		assertTrue(unBuqueVertical.estaDestruido());
 	}
 	

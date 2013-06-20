@@ -1,7 +1,5 @@
 package navalgo.pruebas;
 
-import navalgo.modelo.Barco;
-import navalgo.modelo.Lancha;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Punto;
@@ -28,11 +26,6 @@ public class OrientacionVerticalTest extends TestCase {
 		assertEquals(x,7);
 	}
 	
-	public void testImpactoDisparoEnBarco(){
-		Barco barco = new Lancha(this.punto, this.orientacion, direccionX, direccionY);
-		this.orientacion.asimilarImpacto(barco, new Punto(2, 4));
-		assertTrue(barco.getCuerpo().get(1).estaDestruida());
-	}
 	
 	public void testRetornaLaSiguientePosicion(){
 		

@@ -112,10 +112,10 @@ public class PortaavionTest extends TestCase {
 	
 	public void testAlRecibirUnDisparoConvencionalDisminuyeLaResistencia(){
 		unPortaavionVertical.recibirAtaque(disparoConvencional32);
-		unPortaavionVertical.recibirAtaque(disparoConvencional33);
-		unPortaavionVertical.recibirAtaque(disparoConvencional34);
-		unPortaavionVertical.recibirAtaque(disparoConvencional35);
-		unPortaavionVertical.recibirAtaque(disparoConvencional36);
+		unPortaavionVertical.recibirAtaque(disparoConvencional42);
+		unPortaavionVertical.recibirAtaque(disparoConvencional52);
+		unPortaavionVertical.recibirAtaque(disparoConvencional62);
+		unPortaavionVertical.recibirAtaque(disparoConvencional72);
 		
 		assertEquals(0,unPortaavionVertical.getCuerpo().get(0).getResistencia());
 		assertEquals(0,unPortaavionVertical.getCuerpo().get(1).getResistencia());
@@ -154,10 +154,10 @@ public class PortaavionTest extends TestCase {
 	
 	public void testSiTieneTodasLasCasillaDestruidasEstaTotalmenteDestruido(){
 		unPortaavionVertical.recibirAtaque(disparoConvencional32);
-		unPortaavionVertical.recibirAtaque(disparoConvencional33);
-		unPortaavionVertical.recibirAtaque(disparoConvencional34);
-		unPortaavionVertical.recibirAtaque(disparoConvencional35);
-		unPortaavionVertical.recibirAtaque(disparoConvencional36);
+		unPortaavionVertical.recibirAtaque(disparoConvencional42);
+		unPortaavionVertical.recibirAtaque(disparoConvencional52);
+		unPortaavionVertical.recibirAtaque(disparoConvencional62);
+		unPortaavionVertical.recibirAtaque(disparoConvencional72);
 		assertTrue(unPortaavionVertical.estaDestruido());
 		
 	}

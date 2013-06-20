@@ -16,13 +16,6 @@ public interface Orientacion {
 	 */
 	public abstract int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, int tamanio);
 	
-	/**
-	 * Asimila el Impacto en el Barco
-	 * 
-	 * @param Barco
-	 * @param posicionDelDisparo
-	 */
-	public abstract void asimilarImpacto(Barco barco, Punto puntoDeDisparo);
 	
 	/*
 	 * retorna la siguiente posicion respecto de posicionDeReferencia
