@@ -13,7 +13,7 @@ public class Principal {
 //		Orientacion orientacionHorizontal = new OrientacionHorizontal();
 		Orientacion orientacionVertical = new OrientacionVertical();
 		MinaSubmarinaDobleConRetardo unaMinaEnX4Y2 = new MinaSubmarinaDobleConRetardo(posX4Y2);
-		Buque unBuqueENX3Y2 = new Buque(posX3Y2, orientacionVertical);
+		Buque unBuqueENX3Y2 = new Buque(posX3Y2, orientacionVertical, 1, 1);
 		unaMinaEnX4Y2.atacar(unBuqueENX3Y2);
 }
 	

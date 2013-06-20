@@ -24,4 +24,9 @@ public interface Orientacion {
 	 */
 	public abstract void asimilarImpacto(Barco barco, Punto puntoDeDisparo);
 	
+	/*
+	 * retorna la siguiente posicion respecto de posicionDeReferencia
+	 */
+	public abstract Punto getSiguientePosicion(Punto posicionDeReferencia);
+	
 }

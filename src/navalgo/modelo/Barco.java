@@ -2,7 +2,6 @@
 package navalgo.modelo;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class Barco {
 
@@ -29,23 +28,7 @@ public abstract class Barco {
 	
 	
 	/*constructor*/
-	public Barco(Punto unaPosicion, Orientacion unaOrientacion) {
-		
-		Random random = new Random();
-		this.direccionX = random.nextInt(3)-1;
-		this.direccionY = random.nextInt(3)-1;
-		if(this.direccionX==0 && this.direccionY==0)
-		{
-			this.direccionX = 1;
-			this.direccionY =-1;
-		}
-		
-		this.posicion = unaPosicion;
-		this.orientacion = unaOrientacion;
-		
-	}
-	
-	public Barco(Punto unaPosicion, Orientacion unaOrientacion, int direccionX, int direccionY) {
+	public Barco(Punto posicion, Orientacion orientacion,int tamanio, int resistencia, int direccionX, int direccionY) {
 		
 		this.direccionX = direccionX;
 		this.direccionY = direccionY;
@@ -54,8 +37,12 @@ public abstract class Barco {
 			this.direccionX = 1;
 			this.direccionY =-1;
 		}
-		this.posicion = unaPosicion;
-		this.orientacion = unaOrientacion;
+		this.posicion = posicion;
+		this.orientacion = orientacion;
+		this.tamanio = tamanio;
+		this.resistencia = resistencia;
+		this.cuerpo = new ArrayList<Parte>();
+		this.construirCuerpo();
 		
 	}
 	
@@ -63,9 +50,14 @@ public abstract class Barco {
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	protected void construirCuerpo(){
 		Parte parteAux = null;
-		for (int i = 0; i < this.tamanio; i++) {
-			parteAux = new Parte(this.resistencia);
+		Punto posicionDeReferencia = new Punto(this.posicion.getX(),this.posicion.getY());
+		parteAux = new Parte(this.resistencia, this.posicion); //la primera parte es la posicionInicial del barco
+		this.cuerpo.add(parteAux);
+		
+		for (int i = 1; i < this.tamanio; i++) {
+			parteAux = new Parte(this.resistencia,this.orientacion.getSiguientePosicion(posicionDeReferencia));
 			this.cuerpo.add(parteAux);
+			posicionDeReferencia = parteAux.getPosicion();
 		}
 	}
 	

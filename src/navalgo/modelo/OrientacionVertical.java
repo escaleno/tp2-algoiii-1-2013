@@ -29,4 +29,12 @@ public class OrientacionVertical implements Orientacion {
 		}
 	}
 
+	@Override
+	public Punto getSiguientePosicion(Punto posicionDeReferencia) {
+		Punto auxPosicion = new Punto(posicionDeReferencia.getX(), posicionDeReferencia.getY());
+		auxPosicion.incrementarEnX();
+		return auxPosicion;
+		
+	}
+
 }

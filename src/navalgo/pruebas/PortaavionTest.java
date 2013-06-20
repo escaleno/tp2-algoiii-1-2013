@@ -38,6 +38,9 @@ public class PortaavionTest extends TestCase {
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
 	DisparoConvencional disparoConvencional72;
+	
+	int direccionX = 1;
+	int direccionY = 1;
 
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -55,8 +58,8 @@ public class PortaavionTest extends TestCase {
 		
 		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
-		unPortaavionHorizontal = new Portaavion(otraPos32,orientacionHorizontal);
-		unPortaavionVertical = new Portaavion(posicion32,orientacionVertical);
+		unPortaavionHorizontal = new Portaavion(otraPos32,orientacionHorizontal, direccionX, direccionY);
+		unPortaavionVertical = new Portaavion(posicion32,orientacionVertical, direccionX, direccionY);
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
 		disparoConvencional34 = new DisparoConvencional(posicion34);
@@ -78,7 +81,7 @@ public class PortaavionTest extends TestCase {
 		
 		try{
 			
-			unPortaavionHorizontal = new Portaavion(posicion03,orientacionHorizontal);
+			unPortaavionHorizontal = new Portaavion(posicion03,orientacionHorizontal, direccionX, direccionY);
 			
 		}
 		catch(PosicionInvalidaException e){
