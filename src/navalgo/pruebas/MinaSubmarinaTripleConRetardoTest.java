@@ -7,6 +7,7 @@ import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Punto;
+import navalgo.modelo.Tablero;
 import junit.framework.TestCase;
 
 public class MinaSubmarinaTripleConRetardoTest extends TestCase {
@@ -59,6 +60,7 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 	Buque unBuqueVerticalEnPosX3Y5;
 	int direccionX = 1;
 	int direccionY = 1;
+	Tablero tablero;
 
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -101,16 +103,18 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		posX6Y6 = new Punto(6, 6);
 		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
+		tablero = new Tablero(10, 10, 1, 1);
 		
 		
-		unaMinaEnX5Y5 = new MinaSubmarinaTripleConRetardo(posX5Y5);
-		unaMinaEnX1Y1 = new MinaSubmarinaTripleConRetardo(posX1Y1);
-		unaMinaEnX4Y4 = new MinaSubmarinaTripleConRetardo(posX4Y4);
-		unaMinaEnX1Y5 = new MinaSubmarinaTripleConRetardo(posX1Y5);
-		unaMinaEnX4Y5 = new MinaSubmarinaTripleConRetardo(posX4Y5);
+		unaMinaEnX5Y5 = new MinaSubmarinaTripleConRetardo(posX5Y5, tablero);
+		unaMinaEnX1Y1 = new MinaSubmarinaTripleConRetardo(posX1Y1, tablero);
+		unaMinaEnX4Y4 = new MinaSubmarinaTripleConRetardo(posX4Y4, tablero);
+		unaMinaEnX1Y5 = new MinaSubmarinaTripleConRetardo(posX1Y5, tablero);
+		unaMinaEnX4Y5 = new MinaSubmarinaTripleConRetardo(posX4Y5, tablero);
 		unaLanchaVerticalEnPosX4Y4 = new Lancha(posX4Y4, orientacionVertical, direccionX, direccionY);
 		unaLanchaHorizontalEnPosX1Y4 = new Lancha(posX1Y4, orientacionHorizontal, direccionX, direccionY);
 		unBuqueVerticalEnPosX3Y5 = new Buque(posX3Y5, orientacionVertical, direccionX, direccionY);
+		
 	}
 	
 	public void testCuandoNoEstaEnUnBordeDeTableroTiene24PuntosDealcance(){

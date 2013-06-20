@@ -13,18 +13,24 @@ public class Tablero
 	private ArrayList<Barco> barcosHundidos;
 	private int cantidadFilas;
 	private int cantidadColumnas;
+	private int cantidadMinimaDeFilas;
+	private int cantidadMinimaDeColumnas;
 	
-	public Tablero(int nf, int nc)
+	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas)
 	{
-		if ((nf>0)&&(nc>0))
+		if ((nf>0)&&(nc>0) && (minimoFilas > 0) && (minimoColumnas > 0))
 		{	
 			listaBarcos=new ArrayList<Barco>();
 			disparosEfectuados=new ArrayList<Disparo>();
 			barcosHundidos=new ArrayList<Barco>();
 			cantidadFilas=nf;
 			cantidadColumnas=nc;
+			this.cantidadMinimaDeFilas = minimoFilas;
+			this.cantidadMinimaDeColumnas = minimoColumnas;
+			
 		}
 	}
+	
 	
 	public void agregarBarco(Barco b)
 	{
@@ -95,6 +101,16 @@ public class Tablero
 	public int getCantidadColumnas()
 	{
 		return cantidadColumnas;
+	}
+	
+	public int getCantidadMinimaDeFilas(){
+		
+		return this.cantidadMinimaDeFilas;
+	}
+	
+	public int getCantidadMinimaDeColumnas(){
+		
+		return this.cantidadMinimaDeColumnas;
 	}
 	
 	private void borrarDisparosExplotados()
