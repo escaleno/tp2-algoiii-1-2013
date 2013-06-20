@@ -30,7 +30,9 @@ public class RompehielosTest extends TestCase {
 	DisparoConvencional disparoConvencional34;
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
-
+	
+	int direccionX = 1;
+	int direccionY = 1;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -44,8 +46,8 @@ public class RompehielosTest extends TestCase {
 		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
-		unRompehielosHorizontal = new Rompehielos(posicion32,orientacionHorizontal);
-		unRompehielosVertical = new Rompehielos(posicion32,orientacionVertical);
+		unRompehielosHorizontal = new Rompehielos(posicion32,orientacionHorizontal, direccionX, direccionY);
+		unRompehielosVertical = new Rompehielos(posicion32,orientacionVertical, direccionX, direccionY);
 		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
@@ -64,7 +66,7 @@ public class RompehielosTest extends TestCase {
 		
 		try{
 			
-			unRompehielosHorizontal = new Rompehielos(posicion15Y3,orientacionHorizontal);
+			unRompehielosHorizontal = new Rompehielos(posicion15Y3,orientacionHorizontal, direccionX, direccionY);
 			
 		}
 		catch(PosicionInvalidaException e){

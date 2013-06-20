@@ -20,6 +20,8 @@ public class MinaSubmarinaPuntualConRetardoTest extends TestCase {
 	Destructor unDestructor;
 	Portaavion unPortaavion;
 	Rompehielos unRompehielos;
+	int direccionX = 1;
+	int direccionY = 1;
 
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -27,11 +29,11 @@ public class MinaSubmarinaPuntualConRetardoTest extends TestCase {
 		unaMinaSubmarinaSubmarinaPuntualConRetardo = new MinaSubmarinaPuntualConRetardo(posicion32);
 		orientacionHorizontal = new OrientacionHorizontal();
 		unaMinaSubmarinaSubmarinaPuntualConRetardo = new MinaSubmarinaPuntualConRetardo(posicion32);
-		unaLancha = new Lancha(posicion32,orientacionHorizontal);
-		unBuque = new Buque(posicion32, orientacionHorizontal);
-		unDestructor = new Destructor(posicion32, orientacionHorizontal);
-		unPortaavion = new Portaavion(posicion32, orientacionHorizontal);
-		unRompehielos = new Rompehielos(posicion32, orientacionHorizontal);
+		unaLancha = new Lancha(posicion32,orientacionHorizontal, direccionX, direccionY);
+		unBuque = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unDestructor = new Destructor(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unPortaavion = new Portaavion(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unRompehielos = new Rompehielos(posicion32, orientacionHorizontal, direccionX, direccionY);
 	}
 	
 	public void testAUnaLanchaLeSaca1DeResistencia(){

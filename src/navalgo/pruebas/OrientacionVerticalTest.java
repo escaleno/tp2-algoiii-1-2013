@@ -10,6 +10,9 @@ import junit.framework.TestCase;
 public class OrientacionVerticalTest extends TestCase {
 	private Orientacion orientacion;
 	private Punto punto;
+	int direccionX = 1;
+	int direccionY = 1;
+	
 	protected void setUp() throws Exception {
 		super.setUp();
 		this.orientacion = new OrientacionVertical();
@@ -26,9 +29,14 @@ public class OrientacionVerticalTest extends TestCase {
 	}
 	
 	public void testImpactoDisparoEnBarco(){
-		Barco barco = new Lancha(this.punto, this.orientacion);
+		Barco barco = new Lancha(this.punto, this.orientacion, direccionX, direccionY);
 		this.orientacion.asimilarImpacto(barco, new Punto(2, 4));
 		assertTrue(barco.getCuerpo().get(1).estaDestruida());
+	}
+	
+	public void testRetornaLaSiguientePosicion(){
+		
+		assertEquals(new Punto(4, 2), orientacion.getSiguientePosicion(new Punto(3, 2)));
 	}
 	
 

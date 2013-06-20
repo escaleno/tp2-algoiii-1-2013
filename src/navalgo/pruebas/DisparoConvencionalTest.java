@@ -21,6 +21,8 @@ public class DisparoConvencionalTest extends TestCase {
 	Destructor unDestructor;
 	Portaavion unPortaavion;
 	Rompehielos unRompehielos;
+	int direccionX = 1;
+	int direccionY = 1;
 	
 	
 
@@ -30,11 +32,11 @@ public class DisparoConvencionalTest extends TestCase {
 		unDisparoConvencional = new DisparoConvencional(posicion32);
 		orientacionHorizontal = new OrientacionHorizontal();
 		unDisparoConvencional = new DisparoConvencional(posicion32);
-		unaLancha = new Lancha(posicion32,orientacionHorizontal);
-		unBuque = new Buque(posicion32, orientacionHorizontal);
-		unDestructor = new Destructor(posicion32, orientacionHorizontal);
-		unPortaavion = new Portaavion(posicion32, orientacionHorizontal);
-		unRompehielos = new Rompehielos(posicion32, orientacionHorizontal);
+		unaLancha = new Lancha(posicion32,orientacionHorizontal, direccionX, direccionY);
+		unBuque = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unDestructor = new Destructor(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unPortaavion = new Portaavion(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unRompehielos = new Rompehielos(posicion32, orientacionHorizontal, direccionX, direccionY);
 	}
 
 	public void testGetCosto() {

@@ -32,6 +32,8 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 	Buque unBuqueEnX3Y2;
 	Buque unBuqueVerticalEnX3Y2;
 	Buque unBuqueVerticaEnX1Y1;
+	int direccionX = 1;
+	int direccionY = 1;
 	
 
 	protected void setUp() throws Exception {
@@ -55,9 +57,9 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		unaMinaEnX1Y1 = new MinaSubmarinaDobleConRetardo(posicionX1Y1);
 		unaMinaEnX3Y3 = new MinaSubmarinaDobleConRetardo(posicionX3Y3);
 		unaMinaEnX4Y2 = new MinaSubmarinaDobleConRetardo(posicionX4Y2);
-		unBuqueEnX3Y2 = new Buque(posicionX3Y2, unaOrientacionHorizontal);
-		unBuqueVerticalEnX3Y2 = new Buque(posicionX3Y2, unaOrientacionVertical);
-		unBuqueVerticaEnX1Y1 = new Buque(posicionX1Y1, unaOrientacionVertical);
+		unBuqueEnX3Y2 = new Buque(posicionX3Y2, unaOrientacionHorizontal,direccionX, direccionY);
+		unBuqueVerticalEnX3Y2 = new Buque(posicionX3Y2, unaOrientacionVertical,direccionX, direccionY);
+		unBuqueVerticaEnX1Y1 = new Buque(posicionX1Y1, unaOrientacionVertical, direccionX, direccionY);
 		
 	}
 	

@@ -29,6 +29,9 @@ public class LanchaTest extends TestCase {
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
 	
+	int direccionX = 1;
+	int direccionY = 1;
+	
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
 
@@ -46,8 +49,9 @@ public class LanchaTest extends TestCase {
 		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
-		unaLanchaHorizontal = new Lancha(posicion32,orientacionHorizontal);
-		unaLanchaVertical = new Lancha(posicion32,orientacionVertical);
+		
+		unaLanchaHorizontal = new Lancha(posicion32, orientacionHorizontal, direccionX, direccionY);
+		unaLanchaVertical = new Lancha(posicion32, orientacionVertical, direccionX, direccionY);
 		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
@@ -73,7 +77,7 @@ public class LanchaTest extends TestCase {
 		
 		try{
 			
-			unaLanchaHorizontal = new Lancha(posicion12Y15,orientacionHorizontal);
+			unaLanchaHorizontal = new Lancha(posicion12Y15,orientacionHorizontal, direccionX, direccionY);
 			
 		}
 		catch(PosicionInvalidaException e){

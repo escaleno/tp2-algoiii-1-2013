@@ -1,25 +1,15 @@
 package navalgo.modelo;
 
-import java.util.ArrayList;
-
 public class Destructor extends Barco {
 
-	public Destructor(Punto unaPosicion, Orientacion unaOrientacion) {
-		super(unaPosicion, unaOrientacion);
-		this.setTamanio(3);
-		this.setResistencia(1);
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
+	/*
+	 * constructor
+	 */
+	public Destructor(Punto posicion, Orientacion orientacion, int direccionX,  int direccionY) {
+		super(posicion, orientacion, 3, 1, direccionX, direccionY);
 
 	}
-	
-	public Destructor(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
-		super(unaPosicion, unaOrientacion, direccionX, direccionY);
-		this.setTamanio(3);
-		this.setResistencia(1);
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
-	}
+
 
 
 	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto) {

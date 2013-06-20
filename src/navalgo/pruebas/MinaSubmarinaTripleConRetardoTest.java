@@ -57,6 +57,8 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 	Lancha unaLanchaHorizontalEnPosX1Y4;
 	Lancha unaLanchaVerticalEnPosX4Y4;
 	Buque unBuqueVerticalEnPosX3Y5;
+	int direccionX = 1;
+	int direccionY = 1;
 
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -106,9 +108,9 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		unaMinaEnX4Y4 = new MinaSubmarinaTripleConRetardo(posX4Y4);
 		unaMinaEnX1Y5 = new MinaSubmarinaTripleConRetardo(posX1Y5);
 		unaMinaEnX4Y5 = new MinaSubmarinaTripleConRetardo(posX4Y5);
-		unaLanchaVerticalEnPosX4Y4 = new Lancha(posX4Y4, orientacionVertical);
-		unaLanchaHorizontalEnPosX1Y4 = new Lancha(posX1Y4, orientacionHorizontal);
-		unBuqueVerticalEnPosX3Y5 = new Buque(posX3Y5, orientacionVertical);
+		unaLanchaVerticalEnPosX4Y4 = new Lancha(posX4Y4, orientacionVertical, direccionX, direccionY);
+		unaLanchaHorizontalEnPosX1Y4 = new Lancha(posX1Y4, orientacionHorizontal, direccionX, direccionY);
+		unBuqueVerticalEnPosX3Y5 = new Buque(posX3Y5, orientacionVertical, direccionX, direccionY);
 	}
 	
 	public void testCuandoNoEstaEnUnBordeDeTableroTiene24PuntosDealcance(){

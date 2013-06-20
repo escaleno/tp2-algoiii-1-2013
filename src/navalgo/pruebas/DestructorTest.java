@@ -31,6 +31,9 @@ public class DestructorTest extends TestCase {
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 	
+	int direccionX = 1;
+	int direccionY = 1;
+	
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto34;
@@ -45,10 +48,11 @@ public class DestructorTest extends TestCase {
 		posicion52 = new Punto(5,2);
 		posicion14Y2 = new Punto(14,2);
 		
+		
 		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
-		unDestructorHorizontal = new Destructor(posicion32,orientacionHorizontal);
+		unDestructorHorizontal = new Destructor(posicion32, orientacionHorizontal, direccionX, direccionY);
 		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
@@ -71,7 +75,7 @@ public class DestructorTest extends TestCase {
 		
 		try{
 			
-			unDestructorHorizontal = new Destructor(posicion14Y2,orientacionHorizontal);
+			unDestructorHorizontal = new Destructor(posicion14Y2,orientacionHorizontal, direccionX, direccionY);
 			
 		}
 		catch(PosicionInvalidaException e){

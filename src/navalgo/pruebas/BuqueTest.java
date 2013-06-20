@@ -25,6 +25,9 @@ public class BuqueTest extends TestCase {
 	Punto posicion62;
 	Punto posicion20Y12;
 	
+	int direccionX = 1;
+	int direccionY = 1;
+	
 	Orientacion orientacionHorizontal;
 	Orientacion orientacionVertical;
 	
@@ -54,8 +57,9 @@ public class BuqueTest extends TestCase {
 		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
-		unBuqueHorizontal = new Buque(posicion32,orientacionHorizontal);
-		unBuqueVertical = new Buque(posicion32,orientacionVertical);
+		unBuqueHorizontal = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);
+		
+		unBuqueVertical = new Buque(posicion32,orientacionVertical,direccionX, direccionY);
 		
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
@@ -77,8 +81,8 @@ public class BuqueTest extends TestCase {
 	public void testSeConstruyeEnUnaPosicionInvalida(){
 		
 		try{
-			
-			unBuqueHorizontal = new Buque(posicion20Y12,orientacionHorizontal);
+
+			unBuqueHorizontal = new Buque(posicion20Y12, orientacionHorizontal, direccionX, direccionY);
 			
 		}
 		catch(PosicionInvalidaException e){
@@ -98,6 +102,15 @@ public class BuqueTest extends TestCase {
 	public void testAlConstruirseTieneCuatroCasillas(){
 		
 		assertEquals(4,unBuqueHorizontal.getCuerpo().size());
+	}
+	
+	public void testAlConstruirseUnBuqueHorizontalCadaParteTienePosicionCorrecta(){
+		
+		assertEquals(new Punto(3, 2),unBuqueHorizontal.getCuerpo().get(0).getPosicion());
+		assertEquals(new Punto(3, 3),unBuqueHorizontal.getCuerpo().get(1).getPosicion());
+		assertEquals(new Punto(3, 4),unBuqueHorizontal.getCuerpo().get(2).getPosicion());
+		assertEquals(new Punto(3, 5),unBuqueHorizontal.getCuerpo().get(3).getPosicion());
+
 	}
 		
 	public void testAlConstruirseCadaCasillaTieneResistencia1(){
