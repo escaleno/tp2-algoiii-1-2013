@@ -26,7 +26,7 @@ public class Parte {
 		return (this.resistencia == 0);
 	}
 	
-	/*establece el daño realizado por el disparo*/
+	/*establece el danio realizado por el disparo*/
 	public void asimilarDisparo(){
 		if(this.resistencia > 0) {
 			resistencia--;
