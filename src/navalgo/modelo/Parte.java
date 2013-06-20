@@ -12,14 +12,6 @@ public class Parte {
 	 */
 	private Punto posicion;
 	
-		
-	/*
-	 * ESTE CONSTRUCTOR DEBE SER BORRADO
-	 */
-	public Parte(int cantDeResistencia){
-		
-		this.resistencia = cantDeResistencia;
-	}
 	
 	/*constructor */
 	public Parte(int resistencia, Punto posicion){

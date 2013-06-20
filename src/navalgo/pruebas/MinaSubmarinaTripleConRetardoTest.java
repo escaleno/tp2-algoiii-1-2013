@@ -181,6 +181,6 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		assertTrue(unBuqueVerticalEnPosX3Y5.estaDestruido());
 		assertFalse(unaLanchaHorizontalEnPosX1Y4.estaDestruido());
 		assertFalse(unaLanchaHorizontalEnPosX1Y4.getCuerpo().get(0).estaDestruida());
-		assertTrue(unaLanchaHorizontalEnPosX1Y4.getCuerpo().get(1).estaDestruida());
+		assertFalse(unaLanchaHorizontalEnPosX1Y4.getCuerpo().get(1).estaDestruida());
 	}
 }

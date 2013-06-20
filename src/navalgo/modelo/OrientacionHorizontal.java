@@ -17,19 +17,6 @@ public class OrientacionHorizontal implements Orientacion {
 	}
 
 	@Override
-	public void asimilarImpacto(Barco barco, Punto puntoDeDisparo) {
-		// TODO Auto-generated method stub
-		Punto posicionBarco = new Punto(barco.getPosicion().getX(), barco.getPosicion().getY());
-		for (int i = 0; i < barco.getTamanio(); i++) {
-			if (posicionBarco.equals(puntoDeDisparo)){
-				barco.getCuerpo().get(i).asimilarDisparo();
-			}
-			posicionBarco.setX(posicionBarco.getX() + 1);
-		}
-
-	}
-
-	@Override
 	public Punto getSiguientePosicion(Punto posicionDeReferencia) {
 		
 		Punto auxPosicion = new Punto(posicionDeReferencia.getX(), posicionDeReferencia.getY());
