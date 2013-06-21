@@ -106,11 +106,21 @@ public class BuqueTest extends TestCase {
 	
 	public void testAlConstruirseUnBuqueHorizontalCadaParteTienePosicionCorrecta(){
 		
+		assertEquals(4, unBuqueHorizontal.getCuerpo().size());
 		assertEquals(new Punto(3, 2),unBuqueHorizontal.getCuerpo().get(0).getPosicion());
 		assertEquals(new Punto(3, 3),unBuqueHorizontal.getCuerpo().get(1).getPosicion());
 		assertEquals(new Punto(3, 4),unBuqueHorizontal.getCuerpo().get(2).getPosicion());
 		assertEquals(new Punto(3, 5),unBuqueHorizontal.getCuerpo().get(3).getPosicion());
 
+	}
+	
+	public void testAlConstruirseUnBuqueVerticalCadaParteTienePosicionCorrecta(){
+		
+		assertEquals(4, unBuqueVertical.getCuerpo().size());
+		assertEquals(new Punto(3, 2),unBuqueVertical.getCuerpo().get(0).getPosicion());
+		assertEquals(new Punto(4, 2),unBuqueVertical.getCuerpo().get(1).getPosicion());
+		assertEquals(new Punto(5, 2),unBuqueVertical.getCuerpo().get(2).getPosicion());
+		assertEquals(new Punto(6, 2),unBuqueVertical.getCuerpo().get(3).getPosicion());
 	}
 		
 	public void testAlConstruirseCadaCasillaTieneResistencia1(){
