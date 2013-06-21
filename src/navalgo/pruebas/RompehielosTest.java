@@ -114,13 +114,13 @@ public class RompehielosTest extends TestCase {
 	
 	public void testEstaDestruidoSiRecibeDosDisparosEnCadaCasilla(){
 		
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional32);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional33);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional34);
-		unRompehielosHorizontal.recibirAtaque(disparoConvencional34);
-		assertTrue(unRompehielosHorizontal.estaDestruido());
+		unRompehielosVertical.recibirAtaque(disparoConvencional32);
+		unRompehielosVertical.recibirAtaque(disparoConvencional32);
+		unRompehielosVertical.recibirAtaque(disparoConvencional33);
+		unRompehielosVertical.recibirAtaque(disparoConvencional33);
+		unRompehielosVertical.recibirAtaque(disparoConvencional34);
+		unRompehielosVertical.recibirAtaque(disparoConvencional34);
+		assertTrue(unRompehielosVertical.estaDestruido());
 	}
 	
 	

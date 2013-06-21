@@ -20,7 +20,7 @@ public class OrientacionHorizontal implements Orientacion {
 	public Punto getSiguientePosicion(Punto posicionDeReferencia) {
 		
 		Punto auxPosicion = new Punto(posicionDeReferencia.getX(), posicionDeReferencia.getY());
-		auxPosicion.incrementarEnY();
+		auxPosicion.incrementarEnX();
 		return auxPosicion;
 	}
 

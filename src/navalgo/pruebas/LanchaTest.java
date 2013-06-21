@@ -137,8 +137,8 @@ public class LanchaTest extends TestCase {
 	}
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaParteDosAlSerAfectadaPorUnDisparoConvencional(){
-		unaLanchaVertical.recibirAtaque(disparoConvencional42);
-		assertEquals(0,unaLanchaVertical.getCuerpo().get(1).getResistencia());
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional42);
+		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
 	}
 	
 	public void testSeBajaEnUnoLaResistenciaDeLaCasillaUnoAlSerAfectadaPorUnDisparoConvencionalEnLanchaHorizontal(){
@@ -146,15 +146,15 @@ public class LanchaTest extends TestCase {
 		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(0).getResistencia());
 	}
 	
-	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencionalEnLanchaHorizontal(){
-		unaLanchaHorizontal.recibirAtaque(disparoConvencional33);
-		assertEquals(0,unaLanchaHorizontal.getCuerpo().get(1).getResistencia());
+	public void testSeBajaEnUnoLaResistenciaDeLaCasillaDosAlSerAfectadaPorUnDisparoConvencionalEnLanchaVertical(){
+		unaLanchaVertical.recibirAtaque(disparoConvencional33);
+		assertEquals(0,unaLanchaVertical.getCuerpo().get(1).getResistencia());
 	}
 	
 	public void testEsDestruidaSiRecibeUnDisparoConvencionalEnCadaCasilla(){
-		unaLanchaVertical.recibirAtaque(disparoConvencional32);
-		unaLanchaVertical.recibirAtaque(disparoConvencional42);
-		assertTrue(unaLanchaVertical.estaDestruido());
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional32);
+		unaLanchaHorizontal.recibirAtaque(disparoConvencional42);
+		assertTrue(unaLanchaHorizontal.estaDestruido());
 		
 	}
 	
@@ -165,9 +165,9 @@ public class LanchaTest extends TestCase {
 	}
 	
 	public void testEsDestruidaSiRecibeUnaMinaSubmarinaPorContactoEnCadaCasilla(){
-		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto32);
-		unaLanchaHorizontal.recibirAtaque(minaSubmarinaPorContacto33);
-		assertTrue(unaLanchaHorizontal.estaDestruido());
+		unaLanchaVertical.recibirAtaque(minaSubmarinaPorContacto32);
+		unaLanchaVertical.recibirAtaque(minaSubmarinaPorContacto33);
+		assertTrue(unaLanchaVertical.estaDestruido());
 		
 	}
 }

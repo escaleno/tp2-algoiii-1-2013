@@ -129,26 +129,33 @@ public abstract class Barco {
 	 */
 	public void mover(){
 		
-		Punto posicionDeLaPrimeraParte = this.posicion;
-		int x= posicionDeLaPrimeraParte.getX();
-		int y = posicionDeLaPrimeraParte.getY();
-		int validarX = this.orientacion.calcularFinDePosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);
-		int validarY = this.orientacion.calcularFinDePosicionDelBarcoX(posicionDeLaPrimeraParte, this.tamanio);		
+		int tamanio = this.cuerpo.size()-1;
+		Punto posicionDeLaPrimeraParte = this.cuerpo.get(0).getPosicion();
+		Punto posicionDeLaUltimaParte = this.cuerpo.get(tamanio).getPosicion();
+		int inicioX= posicionDeLaPrimeraParte.getX();
+		int inicioY = posicionDeLaPrimeraParte.getY();
+		int finX = posicionDeLaUltimaParte.getX();
+		int finY = posicionDeLaUltimaParte.getY();
+		
 		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de X del Tablero
-		if ((x==1&&this.direccionX==-1) ||
-			(validarX==10 && this.direccionX==-1)) {
+		if ((inicioX==1&&this.direccionX==-1) ||
+			(finX==10 && this.direccionX==1)) {
 			this.direccionX*=-1;
 		}	
 		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de Y del Tablero
-		if ((y==1&&this.direccionY==-1) ||
-		    (validarY==10 && this.direccionY==-1)) {
+		if ((inicioY==1&&this.direccionY==-1) ||
+		    (finY==10 && this.direccionY==1)) {
 				this.direccionY*=-1;
 		}
 		
 		//Muevo una posicion de X e Y
-		posicionDeLaPrimeraParte.setX((x+this.direccionX));
-		posicionDeLaPrimeraParte.setY((y+this.direccionY));
+		for (Parte parte: this.cuerpo){
+			Punto posicion = parte.getPosicion();
+			posicion.setX(posicion.getX()+this.direccionX);
+			posicion.setY(posicion.getY()+this.direccionY);
+		}
 		
+		this.posicion = posicionDeLaPrimeraParte;
 	}
 	
 	/*

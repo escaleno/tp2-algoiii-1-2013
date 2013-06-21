@@ -15,19 +15,10 @@ public class OrientacionHorizontalTest extends TestCase {
 		this.orientacion = new OrientacionHorizontal();
 		this.punto = new Punto(2, 3);
 	}
-	public void testCaluclarValorX(){
-		int x = this.orientacion.calcularFinDePosicionDelBarcoX(this.punto, 4);
-		assertEquals(x,6);
-	}
-	
-	public void testCalcularValorY(){
-		int x = this.orientacion.calcularFinDePosicionDelBarcoY(this.punto, 4);
-		assertEquals(x,3);
-	}
 	
 	public void testRetornaSiguientePosicion(){
 		
-		assertEquals(new Punto(1, 2), orientacion.getSiguientePosicion(new Punto(1, 1)));
+		assertEquals(new Punto(2, 1), orientacion.getSiguientePosicion(new Punto(1, 1)));
 	}
 
 }
