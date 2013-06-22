@@ -3,10 +3,12 @@ package navalgo.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+
 import navalgo.modelo.Barco;
 import navalgo.modelo.Disparo;
 
-public class Tablero 
+public class Tablero implements ObjetoVivo
 {
 	private ArrayList<Barco> listaBarcos;
 	private ArrayList<Disparo> disparosEfectuados;
@@ -131,5 +133,9 @@ public class Tablero
 			}
 			//}
 		}
+	}
+	
+	public void vivir(){
+		this.ejecutarTurno();
 	}
 }
