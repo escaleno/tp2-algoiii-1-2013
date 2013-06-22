@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import navalgo.controlador.*;
-//import titiritero.ejemplo5.modelo.ObjetoMultiforma;
+import navalgo.modelo.Tablero;
 import fiuba.algo3.titiritero.modelo.*;
 import fiuba.algo3.titiritero.dibujables.*;
 
@@ -62,90 +62,126 @@ public class VentanaPrincipal {
 	 */
 	private void initialize() throws IOException {
 		frame = new JFrame();
-		frame.setForeground(new Color(0, 0, 0));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setForeground(Color.blue);
+		frame.setBounds(1,1, 620, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-//		JButton btnIniciar = new JButton("Iniciar");
-//
-//		btnIniciar.addActionListener(new EscuchaIniciar(this));
-//		btnIniciar.setBounds(42, 16, 77, 25);
-//		frame.getContentPane().add(btnIniciar);
-//		
-//		JButton btnDetener = new JButton("Detener");
-//		btnDetener.addActionListener(new EscuchaDetener(this));
-//		btnDetener.setBounds(325, 16, 92, 25);
-//		frame.getContentPane().add(btnDetener);
+		final JButton btnDispConvencional = new JButton("Disparo Conviecional");
+		final JButton btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
+		final JButton btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
+		final JButton btnMinaSubConRetAlcDoble = new JButton("Mina con Ret. y Alc. 2");
+		final JButton btnMinaSubConRetAlcTriple = new JButton("Mina con Ret. y Alc. 3");
 		
-		JButton btnDisparoConvencional = new JButton("DisparoConvencional");
-		btnDisparoConvencional.addActionListener(new EscuchaDisparoConvencional(this));
-		btnDisparoConvencional.setBounds(25, 600, 250, 25);
-		frame.getContentPane().add(btnDisparoConvencional);
+		btnDispConvencional.setBounds(100, 565, 170, 25);
+		btnMinaSubXContacto.setBounds(300, 565, 170, 25);
+		btnMinaSubConRetAlc.setBounds(40, 610, 170, 25);
+		btnMinaSubConRetAlcDoble.setBounds(215, 610, 170, 25);
+		btnMinaSubConRetAlcTriple.setBounds(390, 610, 170, 25);
 		
-		JButton btnMinaSubmarinaPuntualConRetardo = new JButton("MinaSubmarinaPuntualConRetardo");
-		btnMinaSubmarinaPuntualConRetardo.addActionListener(new EscuchaMinaSubmarinaPuntualConRetardo(this));
-		btnMinaSubmarinaPuntualConRetardo.setBounds(280, 600, 250, 25);
-		frame.getContentPane().add(btnMinaSubmarinaPuntualConRetardo);
+		frame.getContentPane().add(btnDispConvencional);
+		frame.getContentPane().add(btnMinaSubXContacto);
+		frame.getContentPane().add(btnMinaSubConRetAlc);
+		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
+		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
 		
-		JButton btnMinaSubmarinaDobleConRetardo = new JButton("MinaSubmarinaDobleConRetardo");
-		btnMinaSubmarinaDobleConRetardo.addActionListener(new EscuchaMinaSubmarinaDobleConRetardo(this));
-		btnMinaSubmarinaDobleConRetardo.setBounds(535, 600, 250, 25);
-		frame.getContentPane().add(btnMinaSubmarinaDobleConRetardo);
+		btnDispConvencional.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnDispConvencional.setEnabled(false);
+				btnMinaSubXContacto.setEnabled(true);
+				btnMinaSubConRetAlc.setEnabled(true);
+				btnMinaSubConRetAlcDoble.setEnabled(true);
+				btnMinaSubConRetAlcTriple.setEnabled(true);
+			}
+		});
 		
-		JButton btnMinaSubmarinaTripleConRetardo = new JButton("MinaSubmarinaTripleConRetardo");
-		btnMinaSubmarinaTripleConRetardo.addActionListener(new EscuchaMinaSubmarinaTripleConRetardo(this));
-		btnMinaSubmarinaTripleConRetardo.setBounds(25, 630, 250, 25);
-		frame.getContentPane().add(btnMinaSubmarinaTripleConRetardo);
+		btnMinaSubXContacto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnDispConvencional.setEnabled(true);
+				btnMinaSubXContacto.setEnabled(false);
+				btnMinaSubConRetAlc.setEnabled(true);
+				btnMinaSubConRetAlcDoble.setEnabled(true);
+				btnMinaSubConRetAlcTriple.setEnabled(true);
+			}
+		});
 		
-		JButton btnMinaSubmarinaPorContacto = new JButton("MinaSubmarinaPorContacto");
-		btnMinaSubmarinaPorContacto.addActionListener(new EscuchaMinaSubmarinaPorContacto(this));
-		btnMinaSubmarinaPorContacto.setBounds(280, 630, 250, 25);
-		frame.getContentPane().add(btnMinaSubmarinaPorContacto);
+		btnMinaSubConRetAlc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnDispConvencional.setEnabled(true);
+				btnMinaSubXContacto.setEnabled(true);
+				btnMinaSubConRetAlc.setEnabled(false);
+				btnMinaSubConRetAlcDoble.setEnabled(true);
+				btnMinaSubConRetAlcTriple.setEnabled(true);
+			}
+		});
 		
-		JPanel panel = new SuperficiePanel();
+		btnMinaSubConRetAlcDoble.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnDispConvencional.setEnabled(true);
+				btnMinaSubXContacto.setEnabled(true);
+				btnMinaSubConRetAlc.setEnabled(true);
+				btnMinaSubConRetAlcDoble.setEnabled(false);
+				btnMinaSubConRetAlcTriple.setEnabled(true);
+			}
+		});
 		
-		//panel.setBackground(new Color(0, 0, 0));
-		panel.setBackground(Color.BLUE);
-		//panel.setSize(1500,800);
-		//panel.setBounds(42, 53, 375, 187);
-		panel.setBounds(42, 53, 400, 400);
-		//Imagen unaImagen = new Imagen(this.class.getResource("/imagenes/imagenFondo.jpg"));
+		btnMinaSubConRetAlcTriple.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnDispConvencional.setEnabled(true);
+				btnMinaSubXContacto.setEnabled(true);
+				btnMinaSubConRetAlc.setEnabled(true);
+				btnMinaSubConRetAlcDoble.setEnabled(true);
+				btnMinaSubConRetAlcTriple.setEnabled(false);
+			}
+		});
+		
+		
+		final JPanel panel = new SuperficiePanel();
+		
+//		panel.setBackground(new Color(0, 0, 0));
+		//FONDO DE LA SUPERFICIE DE DIBUJO
+		panel.setBackground(Color.GRAY);
+		
+		//ubicacion y tamanio de la superficie de dibujo
+		panel.setBounds(50, 50, 500, 500);
 		frame.getContentPane().add(panel);
+		int y = panel.getHeight()/10;
+		int x = panel.getWidth()/10;
 		
 
 		
-//		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
-//		final ObjetoMultiforma modelo = new ObjetoMultiforma();
-//		this.gameLoop.agregar(modelo);
-//		Circulo circulo = new VistaObjetoMultiforma(modelo);
-//		this.gameLoop.agregar(circulo);
-//		
-//		ObjetoMultiforma modelo2 = new ObjetoMultiforma();
-//		modelo2.mutar();
-//		this.gameLoop.agregar(modelo2);
-//		Figura cuadrado = new Vista2ObjetoMultiforma(modelo2);
-//		this.gameLoop.agregar(cuadrado);
-//
-//		ObjetoMultiforma modelo3 = new ObjetoMultiforma();
-//		modelo3.inmutar();
-//		this.gameLoop.agregar(modelo3);
-//		Imagen imagen = new Vista3ObjetoMultiforma(modelo3);
-//		this.gameLoop.agregar(imagen);
+		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
+		final Tablero modelo = new Tablero(10,10,1,1);
+		this.gameLoop.agregar(modelo); 
 		
+		for (int tx = 1; tx < 10; tx++) {
+			Posicion posicion = new Posicion(tx*x, 1);
+			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
+			this.gameLoop.agregar(linea);
+		}
 		
-		
-//		panel.addMouseListener(new MouseAdapter() {
-//					
-//			@Override
-//			public void mouseClicked(MouseEvent arg0) {
-//				modelo.moverA(arg0.getX(), arg0.getY());
-//					
-//			}});
-//
-//		frame.setFocusable(true);
-//		btnDetener.setFocusable(false);
-//		btnIniciar.setFocusable(false);
+		for (int ty = 1; ty < 10; ty++) {
+			Posicion posicion = new Posicion(1, ty*y);
+			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
+			this.gameLoop.agregar(linea);
+		}
+				
+		panel.addMouseListener(new MouseAdapter() {
+					
+			@Override
+			public void mouseClicked(MouseEvent event) {
+				btnMinaSubXContacto.setEnabled(true);
+				btnDispConvencional.setEnabled(true);
+				btnMinaSubConRetAlc.setEnabled(true);
+				btnMinaSubConRetAlcDoble.setEnabled(true);
+				btnMinaSubConRetAlcTriple.setEnabled(true);
+				System.out.println("Click mouse");
+				System.out.println("X" + ((event.getX()/(panel.getWidth()/10)) +1) );
+				System.out.println("Y" + ((event.getY()/(panel.getHeight()/10))+1) );
+				//modelo.moverA(arg0.getX(), arg0.getY());	
+			}});
+
+		frame.setFocusable(true);
 				
 		frame.addKeyListener(new KeyListener(
 				) {
@@ -169,12 +205,57 @@ public class VentanaPrincipal {
 			}  
 			 	
 		});
+		JButton btnIniciar = new JButton("Iniciar");
+		btnIniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel.setBackground(Color.BLUE);
+				btnMinaSubXContacto.setVisible(true);
+				btnDispConvencional.setVisible(true);
+				btnMinaSubConRetAlc.setVisible(true);
+				btnMinaSubConRetAlcDoble.setVisible(true);
+				btnMinaSubConRetAlcTriple.setVisible(true);
+				gameLoop.iniciarEjecucion();
+			}
+		});
+		btnIniciar.setBounds(42, 16, 77, 25);
+		frame.getContentPane().add(btnIniciar);
 		
 		
-		
+		JButton btnDetener = new JButton("Detener");
+		btnDetener.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnMinaSubXContacto.setVisible(false);
+				btnDispConvencional.setVisible(false);
+				btnMinaSubConRetAlc.setVisible(false);
+				btnMinaSubConRetAlcDoble.setVisible(false);
+				btnMinaSubConRetAlcTriple.setVisible(false);
+				gameLoop.detenerEjecucion();
+				
+			}
+		});
+		btnDetener.setBounds(325, 16, 92, 25);
+		frame.getContentPane().add(btnDetener);
+		//panel.setVisible(false);
 	}
-	public GameLoop getGameLoop(){
-		return this.gameLoop;
+	
+	class Posicion implements ObjetoPosicionable {
+		int x;
+		int y;
+		
+		public Posicion(int x,int y){
+			this.x = x;
+			this.y = y;
+		}
+		
+		public int getX(){
+			return this.x;
+		}
+		
+		public int getY(){
+			return this.y;
+			
+		}
+		
 	}
 }
 
