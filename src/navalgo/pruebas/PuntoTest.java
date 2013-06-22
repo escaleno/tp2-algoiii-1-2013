@@ -18,30 +18,30 @@ public class PuntoTest extends TestCase {
 	
 	public void testGetX(){
 		
-		assertEquals(5, unPunto.getX());
+		assertEquals(5, unPunto.obtenerX());
 	}
 	
 	public void testGetY(){
 		
-		assertEquals(3, unPunto.getY());
+		assertEquals(3, unPunto.obtenerY());
 	}
 	
 	public void testConstructorConXY(){
 		
-		assertEquals(5,unPunto.getX());
-		assertEquals(3, unPunto.getY());
+		assertEquals(5,unPunto.obtenerX());
+		assertEquals(3, unPunto.obtenerY());
 	}
 	
 	public void testSetX(){
 		
-		unPunto.setX(10);
-		assertEquals(10,unPunto.getX());
+		unPunto.ponerX(10);
+		assertEquals(10,unPunto.obtenerX());
 	}
 	
 	public void testSetY(){
 		
-		unPunto.setY(15);
-		assertEquals(15,unPunto.getY());
+		unPunto.ponerY(15);
+		assertEquals(15,unPunto.obtenerY());
 	}
 	
 	public void testUnPuntoEsIgualAlOtro(){

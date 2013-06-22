@@ -50,7 +50,7 @@ public abstract class Barco {
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	private void construirCuerpo(){
 		Parte parteAux = null;
-		Punto posicionDeReferencia = new Punto(this.posicion.getX(),this.posicion.getY());
+		Punto posicionDeReferencia = new Punto(this.posicion.obtenerX(),this.posicion.obtenerY());
 		parteAux = new Parte(this.resistencia, this.posicion); //la primera parte es la posicionInicial del barco
 		this.cuerpo.add(parteAux);
 		
@@ -69,7 +69,7 @@ public abstract class Barco {
 	
 	public void setPosicion(Punto unaPosicion){
 		
-		if((unaPosicion.getX()<1)|(unaPosicion.getY()<1)|(unaPosicion.getX()>10)|(unaPosicion.getX()>10)|(unaPosicion.getY()>10)){
+		if((unaPosicion.obtenerX()<1)|(unaPosicion.obtenerY()<1)|(unaPosicion.obtenerX()>10)|(unaPosicion.obtenerX()>10)|(unaPosicion.obtenerY()>10)){
 			throw new PosicionInvalidaException();
 		}
 		
@@ -132,10 +132,10 @@ public abstract class Barco {
 		int tamanio = this.cuerpo.size()-1;
 		Punto posicionDeLaPrimeraParte = this.cuerpo.get(0).getPosicion();
 		Punto posicionDeLaUltimaParte = this.cuerpo.get(tamanio).getPosicion();
-		int inicioX= posicionDeLaPrimeraParte.getX();
-		int inicioY = posicionDeLaPrimeraParte.getY();
-		int finX = posicionDeLaUltimaParte.getX();
-		int finY = posicionDeLaUltimaParte.getY();
+		int inicioX= posicionDeLaPrimeraParte.obtenerX();
+		int inicioY = posicionDeLaPrimeraParte.obtenerY();
+		int finX = posicionDeLaUltimaParte.obtenerX();
+		int finY = posicionDeLaUltimaParte.obtenerY();
 		
 		//Cambio de direccion si le Barco se encuentra en uno de los extrmos de X del Tablero
 		if ((inicioX==1&&this.direccionX==-1) ||
@@ -151,8 +151,8 @@ public abstract class Barco {
 		//Muevo una posicion de X e Y
 		for (Parte parte: this.cuerpo){
 			Punto posicion = parte.getPosicion();
-			posicion.setX(posicion.getX()+this.direccionX);
-			posicion.setY(posicion.getY()+this.direccionY);
+			posicion.ponerX(posicion.obtenerX()+this.direccionX);
+			posicion.ponerY(posicion.obtenerY()+this.direccionY);
 		}
 		
 		this.posicion = posicionDeLaPrimeraParte;

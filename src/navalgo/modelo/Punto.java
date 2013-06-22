@@ -1,27 +1,29 @@
 package navalgo.modelo;
 
-public class Punto 
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+
+public class Punto implements ObjetoPosicionable
 {
 	/*coordenadas en (x,y)*/
 	private int x;
 	private int y;
 	
-	public int getX() 
+	public int obtenerX() 
 	{
 		return this.x;
 	}
 	
-	public void setX(int unx)
+	public void ponerX(int unx)
 	{
 		this.x = unx;
 	}
 	
-	public void setY(int uny)
+	public void ponerY(int uny)
 	{
 		this.y= uny;
 	}
 
-	public int getY() 
+	public int obtenerY() 
 	{
 		return this.y;
 	}
@@ -52,7 +54,19 @@ public class Punto
 	
 	public boolean equals(Object obj){
 		Punto otroPunto = (Punto) obj;
-		return ( (this.x == otroPunto.getX()) && (this.y == otroPunto.getY()) );
+		return ( (this.x == otroPunto.obtenerX()) && (this.y == otroPunto.obtenerY()) );
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 50*(this.x-1);
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 50*(this.y-1);
 	}
 
 };
