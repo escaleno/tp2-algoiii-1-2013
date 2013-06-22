@@ -1,7 +1,7 @@
 
 package navalgo.modelo;
 import java.util.ArrayList;
-import java.util.Iterator;
+//import java.util.Iterator;
 
 import javax.swing.JPanel;
 
@@ -92,23 +92,8 @@ public class Tablero implements ObjetoVivo
 		}
 		listaBarcos.removeAll(barcosHundidos);
 		disparosEfectuados.removeAll(disparosRemover);
-		disparosRemover.clear();
-		//this.borrarDisparosExplotados();		
+		disparosRemover.clear();	
 	}
-
-/*		for(Barco barco:listaBarcos)
-		{	
-			if(barco.estaDestruido())
-			{
-				this.getBarcos().remove(barco);
-				barcosHundidos.add(barco);
-			}
-			else
-			{
-				barco.mover();
-			}
-		}*/
-	
 	
 	public ArrayList<Barco> getBarcos()
 	{
@@ -145,26 +130,7 @@ public class Tablero implements ObjetoVivo
 		return this.cantidadMinimaDeColumnas;
 	}
 	
-	private void borrarDisparosExplotados()
-	{
-		if (disparosEfectuados.size()>0)
-		{	
-			ArrayList<Disparo> listadisparos=this.getDisparos();
-			Iterator<Disparo> iteradorDisparos=listadisparos.iterator();
-			/*for(Disparo disparoactual:listadisparos)
-			{*/
-			while (iteradorDisparos.hasNext())
-			{	
-				Disparo disparoactual=iteradorDisparos.next();
-				if (disparoactual.detonado())
-				{
-					disparosEfectuados.remove(disparoactual);
-				}
-			}
-			//}
-		}
-	}
-	
+
 	public void vivir(){
 		if(contparaRealizarTurnos == 4){
 			this.ejecutarTurno();

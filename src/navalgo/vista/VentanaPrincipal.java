@@ -39,6 +39,11 @@ public class VentanaPrincipal {
 	private JFrame frame;
 	private GameLoop gameLoop;
 	private int tipoDeDisparo = 0;
+	private JButton btnDispConvencional;
+	private JButton btnMinaSubXContacto;
+	private JButton btnMinaSubConRetAlc;
+	private JButton btnMinaSubConRetAlcDoble;
+	private JButton btnMinaSubConRetAlcTriple;
 
 	/**
 	 * Launch the application.
@@ -70,12 +75,54 @@ public class VentanaPrincipal {
 		}
 	}
 
+	public void habilitarTodos()
+	{
+		btnDispConvencional.setEnabled(true);
+		btnMinaSubXContacto.setEnabled(true);
+		btnMinaSubConRetAlc.setEnabled(true);
+		btnMinaSubConRetAlcDoble.setEnabled(true);
+		btnMinaSubConRetAlcTriple.setEnabled(true);
+	}
+	
+	public void deshabilitar(JButton unBoton)
+	{
+		unBoton.setEnabled(false);
+	}
+	
+	private void generarBotones()
+	{
+		btnDispConvencional = new JButton("Disparo Conviecional");
+		btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
+		btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
+		btnMinaSubConRetAlcDoble = new JButton("Mina con Ret. y Alc. 2");
+		btnMinaSubConRetAlcTriple = new JButton("Mina con Ret. y Alc. 3");
+		btnDispConvencional.setBounds(100, 565, 170, 25);
+		btnMinaSubXContacto.setBounds(300, 565, 170, 25);
+		btnMinaSubConRetAlc.setBounds(40, 610, 170, 25);
+		btnMinaSubConRetAlcDoble.setBounds(215, 610, 170, 25);
+		btnMinaSubConRetAlcTriple.setBounds(390, 610, 170, 25);
+
+	}
+	
+	public void mostrar()
+	{
+		btnDispConvencional.setFocusable(true);
+		btnMinaSubXContacto.setFocusable(true);
+		btnMinaSubConRetAlc.setFocusable(true);
+		btnMinaSubConRetAlcDoble.setFocusable(true);
+		btnMinaSubConRetAlcTriple.setFocusable(true);
+		btnDispConvencional.setVisible(true);
+		btnMinaSubXContacto.setVisible(true);
+		btnMinaSubConRetAlc.setVisible(true);
+		btnMinaSubConRetAlcDoble.setVisible(true);
+		btnMinaSubConRetAlcTriple.setVisible(true);
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws IOException 
 	 */
 	private void initialize() throws IOException {
-		frame = new JFrame("Nabalgo");
+		frame = new JFrame("Navalgo");
 		frame.setVisible(true);
 		frame.setFocusable(true);
 		frame.setForeground(Color.blue);
@@ -83,69 +130,45 @@ public class VentanaPrincipal {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		final JButton btnDispConvencional = new JButton("Disparo Conviecional");
-		final JButton btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
-		final JButton btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
-		final JButton btnMinaSubConRetAlcDoble = new JButton("Mina con Ret. y Alc. 2");
-		final JButton btnMinaSubConRetAlcTriple = new JButton("Mina con Ret. y Alc. 3");
-		
-		btnDispConvencional.setBounds(100, 565, 170, 25);
-		btnMinaSubXContacto.setBounds(300, 565, 170, 25);
-		btnMinaSubConRetAlc.setBounds(40, 610, 170, 25);
-		btnMinaSubConRetAlcDoble.setBounds(215, 610, 170, 25);
-		btnMinaSubConRetAlcTriple.setBounds(390, 610, 170, 25);
+		generarBotones();
 		
 		btnDispConvencional.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnDispConvencional.setEnabled(false);
-				btnMinaSubXContacto.setEnabled(true);
-				btnMinaSubConRetAlc.setEnabled(true);
-				btnMinaSubConRetAlcDoble.setEnabled(true);
-				btnMinaSubConRetAlcTriple.setEnabled(true);
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				habilitarTodos();
+				deshabilitar(btnDispConvencional);
 				tipoDeDisparo = 1;
 			}
 		});
 		
 		btnMinaSubXContacto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnDispConvencional.setEnabled(true);
-				btnMinaSubXContacto.setEnabled(false);
-				btnMinaSubConRetAlc.setEnabled(true);
-				btnMinaSubConRetAlcDoble.setEnabled(true);
-				btnMinaSubConRetAlcTriple.setEnabled(true);
+				habilitarTodos();
+				deshabilitar(btnMinaSubXContacto);
 				tipoDeDisparo = 2;
 			}
 		});
 		
 		btnMinaSubConRetAlc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnDispConvencional.setEnabled(true);
-				btnMinaSubXContacto.setEnabled(true);
-				btnMinaSubConRetAlc.setEnabled(false);
-				btnMinaSubConRetAlcDoble.setEnabled(true);
-				btnMinaSubConRetAlcTriple.setEnabled(true);
+				habilitarTodos();
+				deshabilitar(btnMinaSubConRetAlc);
 				tipoDeDisparo = 3;
 			}
 		});
 		
 		btnMinaSubConRetAlcDoble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnDispConvencional.setEnabled(true);
-				btnMinaSubXContacto.setEnabled(true);
-				btnMinaSubConRetAlc.setEnabled(true);
-				btnMinaSubConRetAlcDoble.setEnabled(false);
-				btnMinaSubConRetAlcTriple.setEnabled(true);
+				habilitarTodos();
+				deshabilitar(btnMinaSubConRetAlcDoble);
 				tipoDeDisparo = 4;
 			}
 		});
 		
 		btnMinaSubConRetAlcTriple.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnDispConvencional.setEnabled(true);
-				btnMinaSubXContacto.setEnabled(true);
-				btnMinaSubConRetAlc.setEnabled(true);
-				btnMinaSubConRetAlcDoble.setEnabled(true);
-				btnMinaSubConRetAlcTriple.setEnabled(false);
+				habilitarTodos();
+				deshabilitar(btnMinaSubConRetAlcTriple);
 				tipoDeDisparo = 5;
 			}
 		});
@@ -166,16 +189,7 @@ public class VentanaPrincipal {
 		frame.getContentPane().add(btnMinaSubConRetAlc);
 		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
 		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
-		btnDispConvencional.setFocusable(true);
-		btnMinaSubXContacto.setFocusable(true);
-		btnMinaSubConRetAlc.setFocusable(true);
-		btnMinaSubConRetAlcDoble.setFocusable(true);
-		btnMinaSubConRetAlcTriple.setFocusable(true);
-		btnDispConvencional.setVisible(true);
-		btnMinaSubXContacto.setVisible(true);
-		btnMinaSubConRetAlc.setVisible(true);
-		btnMinaSubConRetAlcDoble.setVisible(true);
-		btnMinaSubConRetAlcTriple.setVisible(true);
+		mostrar();
 		//Hago lineas de X para diferenciar el tablero
 		for (int tx = 1; tx < 10; tx++) {
 			Posicion posicion = new Posicion(tx*x, 1);
@@ -206,11 +220,7 @@ public class VentanaPrincipal {
 					
 			@Override
 			public void mouseClicked(MouseEvent event) {
-				btnMinaSubXContacto.setEnabled(true);
-				btnDispConvencional.setEnabled(true);
-				btnMinaSubConRetAlc.setEnabled(true);
-				btnMinaSubConRetAlcDoble.setEnabled(true);
-				btnMinaSubConRetAlcTriple.setEnabled(true);
+				habilitarTodos();
 				Disparo disparo = null;
 				int x = ((event.getX()/(panel.getWidth()/10)) +1);
 				int y = ((event.getY()/(panel.getHeight()/10)) +1);
