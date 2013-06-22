@@ -83,48 +83,6 @@ public class VentanaPrincipal {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		final JPanel panel = new SuperficiePanel();
-		
-//		panel.setBackground(new Color(0, 0, 0));
-		//FONDO DE LA SUPERFICIE DE DIBUJO
-		panel.setBackground(Color.BLUE);
-		
-		//ubicacion y tamanio de la superficie de dibujo
-		panel.setBounds(50, 50, 500, 500);
-		frame.getContentPane().add(panel);
-		int y = panel.getHeight()/10;
-		int x = panel.getWidth()/10;
-		
-
-		
-		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
-		
-		for (int tx = 1; tx < 10; tx++) {
-			Posicion posicion = new Posicion(tx*x, 1);
-			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
-			this.gameLoop.agregar(linea);
-		}
-		
-		for (int ty = 1; ty < 10; ty++) {
-			Posicion posicion = new Posicion(1, ty*y);
-			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
-			this.gameLoop.agregar(linea);
-		}
-		
-		final Tablero tablero = new Tablero(10,10,1,1,this.gameLoop);
-		this.gameLoop.agregar(tablero);
-		Lancha unalancha = new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
-		Buque unbuque = new Buque(new Punto(1,3),new OrientacionVertical(),0,1);;
-		Destructor undestructor = new Destructor(new Punto(1,5),new OrientacionHorizontal(),1,1);
-		Rompehielos unrompehielo = new Rompehielos(new Punto(2,1),new OrientacionVertical(),0,1);
-		
-		tablero.agregarBarco(unalancha);
-		tablero.agregarBarco(unbuque);
-		tablero.agregarBarco(undestructor);
-		tablero.agregarBarco(unrompehielo);
-		
-		
-		
 		final JButton btnDispConvencional = new JButton("Disparo Conviecional");
 		final JButton btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
 		final JButton btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
@@ -191,6 +149,58 @@ public class VentanaPrincipal {
 				tipoDeDisparo = 5;
 			}
 		});
+		final JPanel panel = new SuperficiePanel();
+		
+//		panel.setBackground(new Color(0, 0, 0));
+		//FONDO DE LA SUPERFICIE DE DIBUJO
+		panel.setBackground(Color.BLUE);
+		
+		//ubicacion y tamanio de la superficie de dibujo
+		panel.setBounds(50, 50, 500, 500);
+		frame.getContentPane().add(panel);
+		int y = panel.getHeight()/10;
+		int x = panel.getWidth()/10;
+		this.gameLoop = new GameLoop(250,(SuperficieDeDibujo) panel);
+		frame.getContentPane().add(btnDispConvencional);
+		frame.getContentPane().add(btnMinaSubXContacto);
+		frame.getContentPane().add(btnMinaSubConRetAlc);
+		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
+		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
+		btnDispConvencional.setFocusable(true);
+		btnMinaSubXContacto.setFocusable(true);
+		btnMinaSubConRetAlc.setFocusable(true);
+		btnMinaSubConRetAlcDoble.setFocusable(true);
+		btnMinaSubConRetAlcTriple.setFocusable(true);
+		btnDispConvencional.setVisible(true);
+		btnMinaSubXContacto.setVisible(true);
+		btnMinaSubConRetAlc.setVisible(true);
+		btnMinaSubConRetAlcDoble.setVisible(true);
+		btnMinaSubConRetAlcTriple.setVisible(true);
+		//Hago lineas de X para diferenciar el tablero
+		for (int tx = 1; tx < 10; tx++) {
+			Posicion posicion = new Posicion(tx*x, 1);
+			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
+			this.gameLoop.agregar(linea);
+		}
+		//Hago lineas de Y para diferenciar el tablero
+		for (int ty = 1; ty < 10; ty++) {
+			Posicion posicion = new Posicion(1, ty*y);
+			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
+			this.gameLoop.agregar(linea);
+		}
+		
+		final Tablero tablero = new Tablero(10,10,1,1,this.gameLoop);
+		this.gameLoop.agregar(tablero);
+		Lancha unalancha = new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
+		Buque unbuque = new Buque(new Punto(1,3),new OrientacionVertical(),0,1);;
+		Destructor undestructor = new Destructor(new Punto(1,5),new OrientacionHorizontal(),1,1);
+		Rompehielos unrompehielo = new Rompehielos(new Punto(2,1),new OrientacionVertical(),0,1);
+		
+		tablero.agregarBarco(unalancha);
+		tablero.agregarBarco(unbuque);
+		tablero.agregarBarco(undestructor);
+		tablero.agregarBarco(unrompehielo);
+		
 				
 		panel.addMouseListener(new MouseAdapter() {
 					
@@ -257,17 +267,12 @@ public class VentanaPrincipal {
 			 	
 		});
 		
+		
 		for (Barco barco : tablero.getBarcos()){
 			for (Parte parte : barco.getCuerpo()){
 				this.gameLoop.agregar(parte);
 			}
 		}
-		frame.getContentPane().add(btnDispConvencional);
-		frame.getContentPane().add(btnMinaSubXContacto);
-		frame.getContentPane().add(btnMinaSubConRetAlc);
-		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
-		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
-		
 		
 		//panel.setVisible(false);
 	}

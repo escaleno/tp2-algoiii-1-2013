@@ -22,6 +22,7 @@ public class Tablero implements ObjetoVivo
 	private int cantidadColumnas;
 	private int cantidadMinimaDeFilas;
 	private int cantidadMinimaDeColumnas;
+	private int contparaRealizarTurnos = 0;
 	private GameLoop game;
 	
 	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas)
@@ -165,6 +166,11 @@ public class Tablero implements ObjetoVivo
 	}
 	
 	public void vivir(){
-		this.ejecutarTurno();
+		if(contparaRealizarTurnos == 4){
+			this.ejecutarTurno();
+			this.contparaRealizarTurnos = 0;
+		} else {
+			this.contparaRealizarTurnos++;
+		}
 	}
 }
