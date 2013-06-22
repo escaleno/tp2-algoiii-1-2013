@@ -6,20 +6,20 @@ public class OrientacionHorizontal implements Orientacion {
 	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco,
 			int tamanio) {
 		// TODO Auto-generated method stub
-		return puntoDeInicioBarco.getX()+tamanio;
+		return puntoDeInicioBarco.obtenerX()+tamanio;
 	}
 
 	@Override
 	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco,
 			int tamanio) {
 		// TODO Auto-generated method stub
-		return puntoDeInicioBarco.getY();
+		return puntoDeInicioBarco.obtenerY();
 	}
 
 	@Override
 	public Punto getSiguientePosicion(Punto posicionDeReferencia) {
 		
-		Punto auxPosicion = new Punto(posicionDeReferencia.getX(), posicionDeReferencia.getY());
+		Punto auxPosicion = new Punto(posicionDeReferencia.obtenerX(), posicionDeReferencia.obtenerY());
 		auxPosicion.incrementarEnX();
 		return auxPosicion;
 	}

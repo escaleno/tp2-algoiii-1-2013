@@ -46,6 +46,12 @@ public class Tablero implements ObjetoVivo
 	
 	public void ejecutarTurno()
 	{
+		
+		for(Barco unBarco:listaBarcos)
+		{
+			unBarco.mover();
+		}
+		
 		for(Disparo disparoactual:disparosEfectuados)
 		{	
 			for(Barco unBarco:listaBarcos)
@@ -56,10 +62,6 @@ public class Tablero implements ObjetoVivo
 					Barco barcodestruido=unBarco;
 					this.getBarcos().remove(unBarco);
 					barcosHundidos.add(barcodestruido);					
-				}
-				else
-				{
-					unBarco.mover();
 				}			
 			}
 		}

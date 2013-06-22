@@ -7,14 +7,14 @@ public class OrientacionVertical implements Orientacion {
 	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco, 
 			int tamanio) {
 		// TODO Auto-generated method stub
-		return puntoDeInicioBarco.getX();
+		return puntoDeInicioBarco.obtenerX();
 	}
 	
 	@Override
 	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, 
 			int tamanio){
 		// TODO Auto-generated method stub
-		return (puntoDeInicioBarco.getY()+tamanio);
+		return (puntoDeInicioBarco.obtenerY()+tamanio);
 	}
 
 //	@Override
@@ -31,7 +31,7 @@ public class OrientacionVertical implements Orientacion {
 
 	@Override
 	public Punto getSiguientePosicion(Punto posicionDeReferencia) {
-		Punto auxPosicion = new Punto(posicionDeReferencia.getX(), posicionDeReferencia.getY());
+		Punto auxPosicion = new Punto(posicionDeReferencia.obtenerX(), posicionDeReferencia.obtenerY());
 		auxPosicion.incrementarEnY();
 		return auxPosicion;
 		

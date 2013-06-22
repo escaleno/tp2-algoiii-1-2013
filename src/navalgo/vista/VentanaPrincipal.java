@@ -1,23 +1,30 @@
 package navalgo.vista;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import navalgo.controlador.*;
+//import navalgo.controlador.*;
+import navalgo.modelo.Barco;
+import navalgo.modelo.Buque;
+import navalgo.modelo.Destructor;
+import navalgo.modelo.DisparoConvencional;
+import navalgo.modelo.Lancha;
+import navalgo.modelo.MinaSubmarinaPuntualConRetardo;
+import navalgo.modelo.OrientacionHorizontal;
+import navalgo.modelo.OrientacionVertical;
+import navalgo.modelo.Parte;
+import navalgo.modelo.Punto;
+import navalgo.modelo.Rompehielos;
 import navalgo.modelo.Tablero;
 import fiuba.algo3.titiritero.modelo.*;
 import fiuba.algo3.titiritero.dibujables.*;
@@ -86,8 +93,6 @@ public class VentanaPrincipal {
 
 		
 		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
-		final Tablero modelo = new Tablero(10,10,1,1);
-		this.gameLoop.agregar(modelo); 
 		
 		for (int tx = 1; tx < 10; tx++) {
 			Posicion posicion = new Posicion(tx*x, 1);
@@ -100,6 +105,21 @@ public class VentanaPrincipal {
 			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
 			this.gameLoop.agregar(linea);
 		}
+		
+		final Tablero tablero = new Tablero(10,10,1,1);
+		this.gameLoop.agregar(tablero);
+		Lancha unalancha = new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
+		Buque unbuque = new Buque(new Punto(1,3),new OrientacionVertical(),0,1);;
+		Destructor undestructor = new Destructor(new Punto(1,5),new OrientacionHorizontal(),1,1);
+		Rompehielos unrompehielo = new Rompehielos(new Punto(2,1),new OrientacionVertical(),0,1);
+		
+		tablero.agregarBarco(unalancha);
+		tablero.agregarBarco(unbuque);
+		tablero.agregarBarco(undestructor);
+		tablero.agregarBarco(unrompehielo);
+		
+		
+		
 		final JButton btnDispConvencional = new JButton("Disparo Conviecional");
 		final JButton btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
 		final JButton btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
@@ -200,11 +220,17 @@ public class VentanaPrincipal {
 			 	
 		});
 		
+		for (Barco barco : tablero.getBarcos()){
+			for (Parte parte : barco.getCuerpo()){
+				this.gameLoop.agregar(parte);
+			}
+		}
 		frame.getContentPane().add(btnDispConvencional);
 		frame.getContentPane().add(btnMinaSubXContacto);
 		frame.getContentPane().add(btnMinaSubConRetAlc);
 		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
 		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
+		
 		
 		//panel.setVisible(false);
 	}

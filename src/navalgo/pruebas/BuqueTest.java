@@ -179,63 +179,63 @@ public class BuqueTest extends TestCase {
 		 	);
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(4, posicion.getX());
-	 	assertEquals(3, posicion.getY());
+	 	assertEquals(4, posicion.obtenerX());
+	 	assertEquals(3, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(5, posicion.getX());
-	 	assertEquals(4, posicion.getY());
+	 	assertEquals(5, posicion.obtenerX());
+	 	assertEquals(4, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(6, posicion.getX());
-	 	assertEquals(5, posicion.getY());
+	 	assertEquals(6, posicion.obtenerX());
+	 	assertEquals(5, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(7, posicion.getX());
-	 	assertEquals(6, posicion.getY());
+	 	assertEquals(7, posicion.obtenerX());
+	 	assertEquals(6, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(8, posicion.getX());
-	 	assertEquals(7, posicion.getY());
+	 	assertEquals(8, posicion.obtenerX());
+	 	assertEquals(7, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(9, posicion.getX());
-	 	assertEquals(6, posicion.getY());
+	 	assertEquals(9, posicion.obtenerX());
+	 	assertEquals(6, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(10, posicion.getX());
-	 	assertEquals(5, posicion.getY());
+	 	assertEquals(10, posicion.obtenerX());
+	 	assertEquals(5, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(9, posicion.getX());
-	 	assertEquals(4, posicion.getY());
+	 	assertEquals(9, posicion.obtenerX());
+	 	assertEquals(4, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(8, posicion.getX());
-	 	assertEquals(3, posicion.getY());
+	 	assertEquals(8, posicion.obtenerX());
+	 	assertEquals(3, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(7, posicion.getX());
-	 	assertEquals(2, posicion.getY());
+	 	assertEquals(7, posicion.obtenerX());
+	 	assertEquals(2, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(6, posicion.getX());
-	 	assertEquals(1, posicion.getY());
+	 	assertEquals(6, posicion.obtenerX());
+	 	assertEquals(1, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(5, posicion.getX());
-	 	assertEquals(2, posicion.getY());
+	 	assertEquals(5, posicion.obtenerX());
+	 	assertEquals(2, posicion.obtenerY());
 	 	
 	}
 	
@@ -249,58 +249,58 @@ public class BuqueTest extends TestCase {
 		 	);
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(4, posicion.getX());
-	 	assertEquals(3, posicion.getY());
+	 	assertEquals(4, posicion.obtenerX());
+	 	assertEquals(3, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(5, posicion.getX());
-	 	assertEquals(4, posicion.getY());
+	 	assertEquals(5, posicion.obtenerX());
+	 	assertEquals(4, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(6, posicion.getX());
-	 	assertEquals(5, posicion.getY());
+	 	assertEquals(6, posicion.obtenerX());
+	 	assertEquals(5, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(7, posicion.getX());
-	 	assertEquals(6, posicion.getY());
+	 	assertEquals(7, posicion.obtenerX());
+	 	assertEquals(6, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(6, posicion.getX());
-	 	assertEquals(7, posicion.getY());
+	 	assertEquals(6, posicion.obtenerX());
+	 	assertEquals(7, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(5, posicion.getX());
-	 	assertEquals(8, posicion.getY());
+	 	assertEquals(5, posicion.obtenerX());
+	 	assertEquals(8, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(4, posicion.getX());
-	 	assertEquals(9, posicion.getY());
+	 	assertEquals(4, posicion.obtenerX());
+	 	assertEquals(9, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(3, posicion.getX());
-	 	assertEquals(10, posicion.getY());
+	 	assertEquals(3, posicion.obtenerX());
+	 	assertEquals(10, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(2, posicion.getX());
-	 	assertEquals(9, posicion.getY());
+	 	assertEquals(2, posicion.obtenerX());
+	 	assertEquals(9, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(1, posicion.getX());
-	 	assertEquals(8, posicion.getY());
+	 	assertEquals(1, posicion.obtenerX());
+	 	assertEquals(8, posicion.obtenerY());
 	 	
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
-	 	assertEquals(2, posicion.getX());
-	 	assertEquals(7, posicion.getY());
+	 	assertEquals(2, posicion.obtenerX());
+	 	assertEquals(7, posicion.obtenerY());
 	}
 //	
 //	public void testRandom(){
