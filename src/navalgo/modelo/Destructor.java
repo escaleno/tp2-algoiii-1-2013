@@ -13,8 +13,11 @@ public class Destructor extends Barco {
 
 
 	public void recibirAtaque(MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto) {
-		//no hace nada
-		
+		for (Parte parte : this.getCuerpo()) {
+			if (parte.getPosicion().equals(unaMinaSubmarinaPorContacto.getPosicion())){
+				unaMinaSubmarinaPorContacto.marcarComoDetonado();
+			}
+		}
 	}
 
 

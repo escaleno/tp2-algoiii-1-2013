@@ -17,9 +17,13 @@ import javax.swing.JPanel;
 import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
+import navalgo.modelo.Disparo;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.Lancha;
+import navalgo.modelo.MinaSubmarinaDobleConRetardo;
+import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.MinaSubmarinaPuntualConRetardo;
+import navalgo.modelo.MinaSubmarinaTripleConRetardo;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Parte;
@@ -34,6 +38,7 @@ public class VentanaPrincipal {
 
 	private JFrame frame;
 	private GameLoop gameLoop;
+	private int tipoDeDisparo = 0;
 
 	/**
 	 * Launch the application.
@@ -106,7 +111,7 @@ public class VentanaPrincipal {
 			this.gameLoop.agregar(linea);
 		}
 		
-		final Tablero tablero = new Tablero(10,10,1,1);
+		final Tablero tablero = new Tablero(10,10,1,1,this.gameLoop);
 		this.gameLoop.agregar(tablero);
 		Lancha unalancha = new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
 		Buque unbuque = new Buque(new Punto(1,3),new OrientacionVertical(),0,1);;
@@ -139,6 +144,7 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlc.setEnabled(true);
 				btnMinaSubConRetAlcDoble.setEnabled(true);
 				btnMinaSubConRetAlcTriple.setEnabled(true);
+				tipoDeDisparo = 1;
 			}
 		});
 		
@@ -149,6 +155,7 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlc.setEnabled(true);
 				btnMinaSubConRetAlcDoble.setEnabled(true);
 				btnMinaSubConRetAlcTriple.setEnabled(true);
+				tipoDeDisparo = 2;
 			}
 		});
 		
@@ -159,6 +166,7 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlc.setEnabled(false);
 				btnMinaSubConRetAlcDoble.setEnabled(true);
 				btnMinaSubConRetAlcTriple.setEnabled(true);
+				tipoDeDisparo = 3;
 			}
 		});
 		
@@ -169,6 +177,7 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlc.setEnabled(true);
 				btnMinaSubConRetAlcDoble.setEnabled(false);
 				btnMinaSubConRetAlcTriple.setEnabled(true);
+				tipoDeDisparo = 4;
 			}
 		});
 		
@@ -179,6 +188,7 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlc.setEnabled(true);
 				btnMinaSubConRetAlcDoble.setEnabled(true);
 				btnMinaSubConRetAlcTriple.setEnabled(false);
+				tipoDeDisparo = 5;
 			}
 		});
 				
@@ -191,9 +201,36 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlc.setEnabled(true);
 				btnMinaSubConRetAlcDoble.setEnabled(true);
 				btnMinaSubConRetAlcTriple.setEnabled(true);
+				Disparo disparo = null;
+				int x = ((event.getX()/(panel.getWidth()/10)) +1);
+				int y = ((event.getY()/(panel.getHeight()/10)) +1);
+				switch (tipoDeDisparo) {
+				case 1:
+					disparo = new DisparoConvencional(new Punto(x, y));
+					break;
+				case 2:
+					disparo = new MinaSubmarinaPorContacto(new Punto(x, y));
+					break;
+				case 3:
+					disparo = new MinaSubmarinaPuntualConRetardo(new Punto(x, y));
+					break;
+				case 4:
+					disparo = new MinaSubmarinaDobleConRetardo(new Punto(x, y),tablero);
+					break;
+				case 5:
+					disparo = new MinaSubmarinaTripleConRetardo(new Punto(x, y),tablero);
+					break;
+				default:
+					break;
+				}
+				tipoDeDisparo = 0;
+				if (disparo != null){
+					tablero.agregarDisparo(disparo);
+					gameLoop.agregar(disparo);
+				}
 				System.out.println("Click mouse");
-				System.out.println("X" + ((event.getX()/(panel.getWidth()/10)) +1) );
-				System.out.println("Y" + ((event.getY()/(panel.getHeight()/10))+1) );
+				System.out.println("X" + x );
+				System.out.println("Y" + y );
 				//modelo.moverA(arg0.getX(), arg0.getY());	
 			}});
 				

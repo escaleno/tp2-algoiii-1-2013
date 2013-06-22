@@ -12,7 +12,6 @@ public class MinaSubmarinaTripleConRetardo extends MinaSubmarinaConAlcance {
 
 	public void atacar(Barco unBarco) 
 	{
-		this.chequearDetonacion();
 		unBarco.recibirAtaque(this);
 
 	}

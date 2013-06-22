@@ -3,6 +3,7 @@ package navalgo.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 import navalgo.modelo.Barco;
@@ -12,11 +13,13 @@ public class Tablero implements ObjetoVivo
 {
 	private ArrayList<Barco> listaBarcos;
 	private ArrayList<Disparo> disparosEfectuados;
+	ArrayList<Disparo> disparosRemover = new ArrayList<Disparo>();
 	private ArrayList<Barco> barcosHundidos;
 	private int cantidadFilas;
 	private int cantidadColumnas;
 	private int cantidadMinimaDeFilas;
 	private int cantidadMinimaDeColumnas;
+	private GameLoop game;
 	
 	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas)
 	{
@@ -33,6 +36,11 @@ public class Tablero implements ObjetoVivo
 		}
 	}
 	
+	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas , GameLoop game)
+	{
+		this(nf,nc,minimoFilas,minimoColumnas);
+		this.game = game;
+	}
 	
 	public void agregarBarco(Barco b)
 	{
@@ -47,11 +55,6 @@ public class Tablero implements ObjetoVivo
 	public void ejecutarTurno()
 	{
 		
-		for(Barco unBarco:listaBarcos)
-		{
-			unBarco.mover();
-		}
-		
 		for(Disparo disparoactual:disparosEfectuados)
 		{	
 			for(Barco unBarco:listaBarcos)
@@ -60,11 +63,32 @@ public class Tablero implements ObjetoVivo
 				if(unBarco.estaDestruido())
 				{
 					Barco barcodestruido=unBarco;
-					this.getBarcos().remove(unBarco);
 					barcosHundidos.add(barcodestruido);					
 				}			
 			}
+			if (disparoactual.detonado())
+			{
+				disparosRemover.add(disparoactual);
+			}
 		}
+		
+		for(Barco unBarco:listaBarcos)
+		{
+			unBarco.mover();
+		}
+		
+		for (Disparo disp : disparosRemover){
+			game.remover(disp);
+		}
+		
+		for (Barco barco : barcosHundidos) {
+			for (Parte parte : barco.getCuerpo()) {
+				game.remover(parte);
+			}
+		}
+		listaBarcos.removeAll(barcosHundidos);
+		disparosEfectuados.removeAll(disparosRemover);
+		disparosRemover.clear();
 		//this.borrarDisparosExplotados();		
 	}
 

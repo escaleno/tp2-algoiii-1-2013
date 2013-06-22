@@ -14,7 +14,7 @@ public class DisparoConvencional extends Disparo {
 	public void atacar(Barco unBarco) 
 	{
 		unBarco.recibirAtaque(this);
-		this.chequearDetonacion();
+		this.marcarComoDetonado();
 		
 	}
 
