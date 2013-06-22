@@ -32,16 +32,18 @@ public class VentanaPrincipal {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal window = new VentanaPrincipal();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		VentanaPrincipal window = new VentanaPrincipal();
+		window.gameLoop.iniciarEjecucion();
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					VentanaPrincipal window = new VentanaPrincipal();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	/**
@@ -61,12 +63,43 @@ public class VentanaPrincipal {
 	 * @throws IOException 
 	 */
 	private void initialize() throws IOException {
-		frame = new JFrame();
+		frame = new JFrame("Nabalgo");
+		frame.setVisible(true);
+		frame.setFocusable(true);
 		frame.setForeground(Color.blue);
 		frame.setBounds(1,1, 620, 740);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		final JPanel panel = new SuperficiePanel();
+		
+//		panel.setBackground(new Color(0, 0, 0));
+		//FONDO DE LA SUPERFICIE DE DIBUJO
+		panel.setBackground(Color.BLUE);
+		
+		//ubicacion y tamanio de la superficie de dibujo
+		panel.setBounds(50, 50, 500, 500);
+		frame.getContentPane().add(panel);
+		int y = panel.getHeight()/10;
+		int x = panel.getWidth()/10;
+		
+
+		
+		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
+		final Tablero modelo = new Tablero(10,10,1,1);
+		this.gameLoop.agregar(modelo); 
+		
+		for (int tx = 1; tx < 10; tx++) {
+			Posicion posicion = new Posicion(tx*x, 1);
+			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
+			this.gameLoop.agregar(linea);
+		}
+		
+		for (int ty = 1; ty < 10; ty++) {
+			Posicion posicion = new Posicion(1, ty*y);
+			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
+			this.gameLoop.agregar(linea);
+		}
 		final JButton btnDispConvencional = new JButton("Disparo Conviecional");
 		final JButton btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
 		final JButton btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
@@ -78,12 +111,6 @@ public class VentanaPrincipal {
 		btnMinaSubConRetAlc.setBounds(40, 610, 170, 25);
 		btnMinaSubConRetAlcDoble.setBounds(215, 610, 170, 25);
 		btnMinaSubConRetAlcTriple.setBounds(390, 610, 170, 25);
-		
-		frame.getContentPane().add(btnDispConvencional);
-		frame.getContentPane().add(btnMinaSubXContacto);
-		frame.getContentPane().add(btnMinaSubConRetAlc);
-		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
-		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
 		
 		btnDispConvencional.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -134,37 +161,6 @@ public class VentanaPrincipal {
 				btnMinaSubConRetAlcTriple.setEnabled(false);
 			}
 		});
-		
-		
-		final JPanel panel = new SuperficiePanel();
-		
-//		panel.setBackground(new Color(0, 0, 0));
-		//FONDO DE LA SUPERFICIE DE DIBUJO
-		panel.setBackground(Color.GRAY);
-		
-		//ubicacion y tamanio de la superficie de dibujo
-		panel.setBounds(50, 50, 500, 500);
-		frame.getContentPane().add(panel);
-		int y = panel.getHeight()/10;
-		int x = panel.getWidth()/10;
-		
-
-		
-		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
-		final Tablero modelo = new Tablero(10,10,1,1);
-		this.gameLoop.agregar(modelo); 
-		
-		for (int tx = 1; tx < 10; tx++) {
-			Posicion posicion = new Posicion(tx*x, 1);
-			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
-			this.gameLoop.agregar(linea);
-		}
-		
-		for (int ty = 1; ty < 10; ty++) {
-			Posicion posicion = new Posicion(1, ty*y);
-			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
-			this.gameLoop.agregar(linea);
-		}
 				
 		panel.addMouseListener(new MouseAdapter() {
 					
@@ -180,8 +176,6 @@ public class VentanaPrincipal {
 				System.out.println("Y" + ((event.getY()/(panel.getHeight()/10))+1) );
 				//modelo.moverA(arg0.getX(), arg0.getY());	
 			}});
-
-		frame.setFocusable(true);
 				
 		frame.addKeyListener(new KeyListener(
 				) {
@@ -205,36 +199,13 @@ public class VentanaPrincipal {
 			}  
 			 	
 		});
-		JButton btnIniciar = new JButton("Iniciar");
-		btnIniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				panel.setBackground(Color.BLUE);
-				btnMinaSubXContacto.setVisible(true);
-				btnDispConvencional.setVisible(true);
-				btnMinaSubConRetAlc.setVisible(true);
-				btnMinaSubConRetAlcDoble.setVisible(true);
-				btnMinaSubConRetAlcTriple.setVisible(true);
-				gameLoop.iniciarEjecucion();
-			}
-		});
-		btnIniciar.setBounds(42, 16, 77, 25);
-		frame.getContentPane().add(btnIniciar);
 		
+		frame.getContentPane().add(btnDispConvencional);
+		frame.getContentPane().add(btnMinaSubXContacto);
+		frame.getContentPane().add(btnMinaSubConRetAlc);
+		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
+		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
 		
-		JButton btnDetener = new JButton("Detener");
-		btnDetener.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnMinaSubXContacto.setVisible(false);
-				btnDispConvencional.setVisible(false);
-				btnMinaSubConRetAlc.setVisible(false);
-				btnMinaSubConRetAlcDoble.setVisible(false);
-				btnMinaSubConRetAlcTriple.setVisible(false);
-				gameLoop.detenerEjecucion();
-				
-			}
-		});
-		btnDetener.setBounds(325, 16, 92, 25);
-		frame.getContentPane().add(btnDetener);
 		//panel.setVisible(false);
 	}
 	
