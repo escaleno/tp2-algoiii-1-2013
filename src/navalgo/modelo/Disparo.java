@@ -1,6 +1,10 @@
 package navalgo.modelo;
 
-public abstract class Disparo 
+import java.awt.Color;
+
+import fiuba.algo3.titiritero.dibujables.Cuadrado;
+
+public abstract class Disparo extends Cuadrado
 {
 	//lo utilizo en el tablero, lo logico seria sacar del tablero los disparos detonados
 	protected boolean detonado;
@@ -25,7 +29,8 @@ public abstract class Disparo
 	 * constructor
 	 */
 	public Disparo(Punto unaPosicion){
-		
+		super(50,50, unaPosicion);
+		setColor(Color.CYAN);
 		this.posicion = unaPosicion;
 	}
 	
@@ -68,12 +73,6 @@ public abstract class Disparo
 	public void marcarComoDetonado()
 	{
 		detonado=true;
-	}
-	
-	public void chequearDetonacion()
-	{
-		if (turnosRestantes==0)
-			this.marcarComoDetonado();
 	}
 	
 }

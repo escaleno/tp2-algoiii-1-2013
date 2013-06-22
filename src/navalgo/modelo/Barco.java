@@ -168,6 +168,7 @@ public abstract class Barco {
 			for (Parte parte : this.getCuerpo()) {
 				if (parte.getPosicion().equals(disparo.getPosicion())) {
 					parte.asimilarDisparo();
+					disparo.marcarComoDetonado();
 					break;
 				}
 				
@@ -198,6 +199,7 @@ public abstract class Barco {
 					}
 				}
 			}
+			disparo.marcarComoDetonado();
 		} else {
 			disparo.setTurnosRestantes(turnoRestante-1);
 		}

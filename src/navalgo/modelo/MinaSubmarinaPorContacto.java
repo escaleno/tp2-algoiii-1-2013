@@ -13,7 +13,6 @@ public class MinaSubmarinaPorContacto extends Disparo {
 	
 	public void atacar(Barco unBarco) 
 	{
-		this.chequearDetonacion();
 		unBarco.recibirAtaque(this);
 		
 	}
