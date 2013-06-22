@@ -1,15 +1,15 @@
 package navalgo.modelo;
 
-import java.awt.Color;
-import fiuba.algo3.titiritero.dibujables.Cuadrado;
+import java.io.IOException;
 
-public class Parte extends Cuadrado {
+public class Parte extends MiImagen {
 	
 	/*representa la cantidad de disparos que soporta, cuando
 	 * vale cero representa que fue totalmente destruida
 	 */
 	private int resistencia;
 	
+	private String nombre;
 	/*
 	 * representa su posicion (x,y) en el tablero
 	 */
@@ -17,9 +17,18 @@ public class Parte extends Cuadrado {
 	
 	
 	/*constructor */
-	public Parte(int resistencia, Punto posicion){
-		super(50,50,posicion);
-		this.setColor(Color.GREEN);
+	public Parte(int resistencia, Punto posicion) throws IOException{
+		super(Parte.class.getResource("/res/Nada.png"),posicion);
+		//super(50,50, posicion);
+		this.nombre = "Nada.png";
+		this.resistencia = resistencia;
+		this.posicion = posicion;
+	}
+	
+	public Parte(int resistencia,Punto posicion, String nombre) throws IOException{
+		super(Parte.class.getResource("/res/"+nombre), posicion);
+		//super(50,50, posicion);
+		this.nombre = nombre;
 		this.resistencia = resistencia;
 		this.posicion = posicion;
 	}
@@ -55,9 +64,19 @@ public class Parte extends Cuadrado {
 		//Valido Estado
 		if (this.resistencia > 0)
 		{
-			this.setColor(Color.YELLOW);
+			try {
+				this.setImagen(Parte.class.getResource("/res/Daniado/"+this.nombre));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
-			this.setColor(Color.RED);
+			try {
+				this.setImagen(Parte.class.getResource("/res/Hundido/"+this.nombre));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

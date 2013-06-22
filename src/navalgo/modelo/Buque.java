@@ -3,7 +3,7 @@ package navalgo.modelo;
 public class Buque extends Barco {
 	
 	public Buque(Punto unaPosicion, Orientacion unaOrientacion, int direccionX,  int direccionY) {
-		super(unaPosicion, unaOrientacion, 4, 1, direccionX, direccionY);
+		super(unaPosicion, unaOrientacion, 4, 1, direccionX, direccionY,"Buque");
 	}
 	
 

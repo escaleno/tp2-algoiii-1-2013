@@ -1,16 +1,17 @@
 package navalgo.modelo;
 
-public class OrientacionVertical implements Orientacion {
+public class OrientacionVertical extends Orientacion {
 
-	
-	@Override
+	public OrientacionVertical() {
+		super("Vertical");
+	}
+
 	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco, 
 			int tamanio) {
 		// TODO Auto-generated method stub
 		return puntoDeInicioBarco.obtenerX();
 	}
 	
-	@Override
 	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, 
 			int tamanio){
 		// TODO Auto-generated method stub
@@ -29,7 +30,6 @@ public class OrientacionVertical implements Orientacion {
 //		}
 //	}
 
-	@Override
 	public Punto getSiguientePosicion(Punto posicionDeReferencia) {
 		Punto auxPosicion = new Punto(posicionDeReferencia.obtenerX(), posicionDeReferencia.obtenerY());
 		auxPosicion.incrementarEnY();

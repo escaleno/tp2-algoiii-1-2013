@@ -1,12 +1,15 @@
 
 package navalgo.modelo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Barco {
 
 	/*representa la ubicacion inicial (x,y) de la primera parte del barco*/
 	private Punto posicion;
+	
+	private String nombre = "Nada";
 	 	
 	/*Indica su orientacion, puede ser horizontal o vertical*/
 	private Orientacion orientacion;
@@ -46,21 +49,57 @@ public abstract class Barco {
 		
 	}
 	
+	/*constructor*/
+	public Barco(Punto posicion, Orientacion orientacion,int tamanio, int resistencia, int direccionX, int direccionY, String nombre) {
+		
+		this.direccionX = direccionX;
+		this.direccionY = direccionY;
+		if(this.direccionX==0 && this.direccionY==0)
+		{
+			this.direccionX = 1;
+			this.direccionY =-1;
+		}
+		this.posicion = posicion;
+		this.orientacion = orientacion;
+		this.tamanio = tamanio;
+		this.resistencia = resistencia;
+		this.cuerpo = new ArrayList<Parte>();
+		this.nombre = nombre;
+		this.construirCuerpo2();	
+	}
+	
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	private void construirCuerpo(){
 		Parte parteAux = null;
 		Punto posicionDeReferencia = new Punto(this.posicion.obtenerX(),this.posicion.obtenerY());
-		parteAux = new Parte(this.resistencia, this.posicion); //la primera parte es la posicionInicial del barco
+		try {
+			//la primera parte es la posicionInicial del barco
+			parteAux = new Parte(this.resistencia, this.posicion);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		this.cuerpo.add(parteAux);
 		
 		for (int i = 1; i < this.tamanio; i++) {
-			parteAux = new Parte(this.resistencia,this.orientacion.getSiguientePosicion(posicionDeReferencia));
+			try {
+				parteAux = new Parte(this.resistencia,this.orientacion.getSiguientePosicion(posicionDeReferencia));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.cuerpo.add(parteAux);
 			posicionDeReferencia = parteAux.getPosicion();
 		}
 	}
 	
+	
+	/*metodo del constructor para cargar el cuerpo del barco*/
+	private void construirCuerpo2(){
+		Punto posicionDeReferencia = new Punto(this.posicion.obtenerX(),this.posicion.obtenerY());
+		this.cuerpo.addAll(this.orientacion.getPartes(this.tamanio, this.resistencia, this.nombre, posicionDeReferencia));
+	}
 	/*accesors*/
 	public Punto getPosicion(){
 		
