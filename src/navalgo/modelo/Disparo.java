@@ -2,9 +2,9 @@ package navalgo.modelo;
 
 import java.awt.Color;
 
-import fiuba.algo3.titiritero.dibujables.Cuadrado;
+import fiuba.algo3.titiritero.dibujables.Circulo;
 
-public abstract class Disparo extends Cuadrado
+public abstract class Disparo extends Circulo
 {
 	//lo utilizo en el tablero, lo logico seria sacar del tablero los disparos detonados
 	protected boolean detonado;
@@ -29,7 +29,7 @@ public abstract class Disparo extends Cuadrado
 	 * constructor
 	 */
 	public Disparo(Punto unaPosicion){
-		super(50,50, unaPosicion);
+		super(50, unaPosicion);
 		setColor(Color.CYAN);
 		this.posicion = unaPosicion;
 	}
