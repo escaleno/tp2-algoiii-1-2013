@@ -3,8 +3,11 @@ package navalgo.modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.JPanel;
+
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 import navalgo.modelo.Barco;
 import navalgo.modelo.Disparo;
@@ -31,8 +34,7 @@ public class Tablero implements ObjetoVivo
 			cantidadFilas=nf;
 			cantidadColumnas=nc;
 			this.cantidadMinimaDeFilas = minimoFilas;
-			this.cantidadMinimaDeColumnas = minimoColumnas;
-			
+			this.cantidadMinimaDeColumnas = minimoColumnas;		
 		}
 	}
 	
@@ -76,14 +78,15 @@ public class Tablero implements ObjetoVivo
 		{
 			unBarco.mover();
 		}
+		if (game != null) {
+			for (Disparo disp : disparosRemover){
+				game.remover(disp);
+			}
 		
-		for (Disparo disp : disparosRemover){
-			game.remover(disp);
-		}
-		
-		for (Barco barco : barcosHundidos) {
-			for (Parte parte : barco.getCuerpo()) {
-				game.remover(parte);
+			for (Barco barco : barcosHundidos) {
+				for (Parte parte : barco.getCuerpo()) {
+					game.remover(parte);
+				}
 			}
 		}
 		listaBarcos.removeAll(barcosHundidos);
