@@ -230,10 +230,11 @@ public class VentanaPrincipal {
 		direccion = DerAbajo.getValue();
 		Destructor undestructor = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		direccion = DerAbajo.getValue();
-		Rompehielos unrompehielo = new Rompehielos(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		//Falta Agregar las imagenes de los romehielos Verticales
+		Rompehielos unrompehielo = new Rompehielos(randomPunto.getValue(),new OrientacionHorizontal(),direccion.getX(),direccion.getY());
 		direccion = DerAbajo.getValue();
 		//Falta Agregar las imagenes de los romehielos Verticales
-		Portaavion portaavion = new Portaavion(randomPunto.getValue(),new OrientacionHorizontal(),direccion.getX(),direccion.getY());
+		Portaavion portaavion = new Portaavion(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		tablero.agregarBarco(unalancha);
 		tablero.agregarBarco(unbuque);
 		tablero.agregarBarco(undestructor);
