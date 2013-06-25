@@ -18,8 +18,16 @@ import navalgo.dibujables.MiImagen;
 import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
+import navalgo.modelo.Direccion;
 import navalgo.modelo.Disparo;
 import navalgo.modelo.DisparoConvencional;
+import navalgo.modelo.EstrategiaDireccionDerAbajo;
+import navalgo.modelo.EstrategiaDireccionRandom;
+import navalgo.modelo.EstrategiaOrientacionRandom;
+import navalgo.modelo.EstrategiaPuntoRandom;
+import navalgo.modelo.GeneradorRandomDireccion;
+import navalgo.modelo.GeneradorRandomOrientacion;
+import navalgo.modelo.GeneradorRandomPunto;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.MinaSubmarinaDobleConRetardo;
 import navalgo.modelo.MinaSubmarinaPorContacto;
@@ -211,11 +219,18 @@ public class VentanaPrincipal {
 		
 		final Tablero tablero = new Tablero(10,10,1,1,this.gameLoop);
 		this.gameLoop.agregar(tablero);
-		Lancha unalancha = new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
-		Buque unbuque = new Buque(new Punto(1,3),new OrientacionVertical(),0,1);;
-		Destructor undestructor = new Destructor(new Punto(1,5),new OrientacionHorizontal(),1,1);
-		Rompehielos unrompehielo = new Rompehielos(new Punto(2,1),new OrientacionHorizontal(),0,1);
-		Portaavion portaavion = new Portaavion(new Punto(2, 7), new OrientacionVertical(), 1, 0);
+		
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionRandom());
+		Direccion direccion = DerAbajo.getValue();
+		GeneradorRandomOrientacion randomOrientacion = new GeneradorRandomOrientacion(new EstrategiaOrientacionRandom());
+		GeneradorRandomPunto randomPunto = new GeneradorRandomPunto(new EstrategiaPuntoRandom());
+		Lancha unalancha = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		direccion = DerAbajo.getValue();
+		Buque unbuque = new Buque(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		direccion = DerAbajo.getValue();
+		Destructor undestructor = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		direccion = DerAbajo.getValue();
+		Rompehielos unrompehielo = new Rompehielos(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		
 		tablero.agregarBarco(unalancha);
 		tablero.agregarBarco(unbuque);
