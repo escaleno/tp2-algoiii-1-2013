@@ -204,4 +204,71 @@ public class TableroTest extends TestCase
 			assertTrue(alguntablero.getDisparos().get(0)==unaminasubmarina);
 			
 		}*/
+		
+		@Test
+		public void testCorretoDescuentoPorDisparoConvencional()
+		{
+			alguntablero.descontarPuntosPorDisparo(disparo);
+			assertEquals(9800,alguntablero.getPuntos());
+		}
+		
+		@Test
+		public void testCorrectoDescuentoPuntosPorMinaSubmarinaPuntualConRetardo()
+		{
+			MinaSubmarinaPuntualConRetardo unamina=new MinaSubmarinaPuntualConRetardo(new Punto(3,2));
+			alguntablero.descontarPuntosPorDisparo(unamina);
+			assertEquals(9950,alguntablero.getPuntos());
+		}
+		
+		@Test
+		public void testCorrectoDescuentoPuntosPorMinaSubmarinaDobleConRetardo()
+		{
+			MinaSubmarinaDobleConRetardo unamina=new MinaSubmarinaDobleConRetardo(new Punto(3,2), alguntablero);
+			alguntablero.descontarPuntosPorDisparo(unamina);
+			assertEquals(9900,alguntablero.getPuntos());
+		}
+		
+		@Test
+		public void testCorrectoDescuentoPuntosPorMinaSubmarinaTripleConRetardo()
+		{
+			MinaSubmarinaTripleConRetardo unamina=new MinaSubmarinaTripleConRetardo(new Punto(3,2), alguntablero);
+			alguntablero.descontarPuntosPorDisparo(unamina);
+			assertEquals(9875,alguntablero.getPuntos());
+		}
+		
+		@Test
+		public void testCorrectoDescuentoPuntosPorMinaSubmarinaPuntualPorContacto()
+		{
+			MinaSubmarinaPorContacto unamina=new MinaSubmarinaPorContacto(new Punto(3,2));
+			alguntablero.descontarPuntosPorDisparo(unamina);
+			assertEquals(9850,alguntablero.getPuntos());
+		}
+		
+		@Test
+		public void testCorrectoSeteoDeCondicionesIniciales()
+		{
+			assertFalse(alguntablero.estaGanado());
+			assertFalse(alguntablero.estaPerdido());
+		}
+		
+		//intento setear las condiciones para que el juego pase a estar ganado
+
+		@Test
+		public void testProbarCuandoEstaGanado()
+		{
+			alguntablero.moverBarcosAListadoDeHundidos();			
+			assertTrue(alguntablero.estaGanado());
+		}
+		
+		//intento setear las condiciones para que el juego este perdido
+		@Test
+		public void testProbarCuandoEstaPerdido()
+		{
+			for (int i=0; i<=51; i++)
+			{	
+				alguntablero.descontarPuntosPorDisparo(disparo);
+			}
+			assertTrue(alguntablero.estaPerdido());
+		}
+		
 }
