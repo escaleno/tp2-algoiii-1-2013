@@ -1,4 +1,4 @@
-package navalgo.modelo;
+package navalgo.dibujables;
 
 
 import java.awt.Graphics;
@@ -19,13 +19,12 @@ public class MiImagen implements ObjetoDibujable {
     private ObjetoPosicionable posicionable;
 
     public MiImagen(URL imagenUrl, ObjetoPosicionable posicionable) throws IOException {
-    	this.posicionable = posicionable;
 		this.imagen = ImageIO.read(imagenUrl);
+		this.posicionable = posicionable;
     }
     
-    public void setImagen(URL imagenUrl) throws IOException{
-		this.imagen = ImageIO.read(imagenUrl);
-		
+    public void setImagen(BufferedImage imagen){
+		this.imagen = imagen;
 	}
 	@Override
 	public void dibujar(SuperficieDeDibujo superficieDeDibujo) {

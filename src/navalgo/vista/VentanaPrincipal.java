@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 //import navalgo.controlador.*;
+import navalgo.dibujables.MiImagen;
 import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
@@ -183,6 +184,10 @@ public class VentanaPrincipal {
 		frame.getContentPane().add(panel);
 		int y = panel.getHeight()/10;
 		int x = panel.getWidth()/10;
+		
+		Punto.setTamanioDePosicionX(x);
+		Punto.setTamanioDePosicionY(y);
+		
 		this.gameLoop = new GameLoop(250,(SuperficieDeDibujo) panel);
 		frame.getContentPane().add(btnDispConvencional);
 		frame.getContentPane().add(btnMinaSubXContacto);
@@ -280,7 +285,8 @@ public class VentanaPrincipal {
 		
 		for (Barco barco : tablero.getBarcos()){
 			for (Parte parte : barco.getCuerpo()){
-				this.gameLoop.agregar(parte);
+				MiImagen vParteDeBarco = new VistaParteDeBarco(parte);
+				this.gameLoop.agregar(vParteDeBarco);
 			}
 		}
 		

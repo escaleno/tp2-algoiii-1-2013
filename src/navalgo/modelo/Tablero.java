@@ -1,5 +1,6 @@
 
 package navalgo.modelo;
+import java.io.IOException;
 import java.util.ArrayList;
 //import java.util.Iterator;
 
@@ -11,6 +12,7 @@ import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 import navalgo.modelo.Barco;
 import navalgo.modelo.Disparo;
+import navalgo.vista.VistaParteDeBarco;
 
 public class Tablero implements ObjetoVivo
 {
@@ -86,7 +88,15 @@ public class Tablero implements ObjetoVivo
 		
 			for (Barco barco : barcosHundidos) {
 				for (Parte parte : barco.getCuerpo()) {
-					game.remover(parte);
+					VistaParteDeBarco vPdB;
+					try {
+						vPdB = new VistaParteDeBarco(parte);
+						game.remover(vPdB);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}
 			}
 		}

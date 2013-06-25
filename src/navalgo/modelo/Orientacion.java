@@ -34,24 +34,15 @@ public abstract class Orientacion {
 		
 		Parte parteAux = null;
 		ArrayList<Parte> partes = new ArrayList<Parte>();
-		try {
-			//la primera parte es la posicionInicial del barco
-			parteAux = new Parte(resistencia, posicionDeReferencia, (nombre + this.nombre + 1 + ".png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		//la primera parte es la posicionInicial del barco
+		parteAux = new Parte(resistencia, posicionDeReferencia, (nombre + this.nombre + 1 ));
 		partes.add(parteAux);
 		
 		for (int i = 1; i < tamanio; i++) {
-			try {
-				parteAux = new Parte(resistencia,
-						this.getSiguientePosicion(posicionDeReferencia),
-						(nombre + this.nombre + (i+1) + ".png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+			parteAux = new Parte(resistencia,
+					this.getSiguientePosicion(posicionDeReferencia),
+					(nombre + this.nombre + (i+1)));
 			partes.add(parteAux);
 			posicionDeReferencia = parteAux.getPosicion();
 		}
