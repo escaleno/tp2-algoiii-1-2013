@@ -29,8 +29,8 @@ public class LanchaTest extends TestCase {
 	DisparoConvencional disparoConvencional52;
 	DisparoConvencional disparoConvencional62;
 	
-	int direccionX = 1;
-	int direccionY = 1;
+	int direccionX;
+	int direccionY;
 	
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
@@ -46,9 +46,15 @@ public class LanchaTest extends TestCase {
 		posicion62 = new Punto(6, 2);
 		posicion12Y15 = new Punto(12, 15);
 		
-		orientacionHorizontal = new OrientacionHorizontal();
-		orientacionVertical = new OrientacionVertical();
+		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		orientacionHorizontal = horizontal.getValue();
+		GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+		orientacionVertical = vertical.getValue();
 		
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		Direccion direccion = DerAbajo.getValue();
+		direccionX = direccion.getX();
+		direccionY = direccion.getY();
 		
 		unaLanchaHorizontal = new Lancha(posicion32, orientacionHorizontal, direccionX, direccionY);
 		unaLanchaVertical = new Lancha(posicion32, orientacionVertical, direccionX, direccionY);

@@ -26,10 +26,14 @@ public class TableroTest extends TestCase
 		{
 			alguntablero=new Tablero(10,10,1,1);
 			//genero 4 barcos con direcciones
-			unrompehielo=new Rompehielos(new Punto(2,1),new OrientacionVertical(),0,1);//intento que la direccion sea hacia abajo, aunque el rango es de [1..10,1..10]
-			unalancha=new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
-			unbuque=new Buque(new Punto(1,3),new OrientacionVertical(),0,1);
-			undestructor=new Destructor(new Punto(1,5),new OrientacionHorizontal(),1,0);
+			GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+			Orientacion orientacionHorizontal = horizontal.getValue();
+			GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+			Orientacion orientacionVertical = vertical.getValue();
+			unrompehielo=new Rompehielos(new Punto(2,1),orientacionVertical,0,1);//intento que la direccion sea hacia abajo, aunque el rango es de [1..10,1..10]
+			unalancha=new Lancha(new Punto(1,1),orientacionHorizontal,1,0);
+			unbuque=new Buque(new Punto(1,3),orientacionVertical,0,1);
+			undestructor=new Destructor(new Punto(1,5),orientacionHorizontal,1,0);
 			//los inserto en el tablero
 			alguntablero.agregarBarco(unalancha);
 			alguntablero.agregarBarco(unrompehielo);
