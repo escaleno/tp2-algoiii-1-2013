@@ -14,6 +14,7 @@ import navalgo.modelo.Barco;
 import navalgo.modelo.Disparo;
 import navalgo.vista.VistaParteDeBarco;
 
+@SuppressWarnings("unused")
 public class Tablero implements ObjetoVivo
 {
 	private ArrayList<Barco> listaBarcos;
@@ -25,6 +26,9 @@ public class Tablero implements ObjetoVivo
 	private int cantidadMinimaDeFilas;
 	private int cantidadMinimaDeColumnas;
 	private int contparaRealizarTurnos = 0;
+	private int puntos;
+	private boolean perdido;
+	private boolean ganado;
 	private GameLoop game;
 	
 	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas)
@@ -37,7 +41,10 @@ public class Tablero implements ObjetoVivo
 			cantidadFilas=nf;
 			cantidadColumnas=nc;
 			this.cantidadMinimaDeFilas = minimoFilas;
-			this.cantidadMinimaDeColumnas = minimoColumnas;		
+			this.cantidadMinimaDeColumnas = minimoColumnas;
+			puntos=10000;
+			perdido=false;
+			ganado=false;
 		}
 	}
 	
@@ -71,6 +78,7 @@ public class Tablero implements ObjetoVivo
 					barcosHundidos.add(barcodestruido);					
 				}			
 			}
+			this.descontarPuntosPorDisparo(disparoactual);
 			if (disparoactual.detonado())
 			{
 				disparosRemover.add(disparoactual);
@@ -148,5 +156,54 @@ public class Tablero implements ObjetoVivo
 		} else {
 			this.contparaRealizarTurnos++;
 		}
+	}
+	
+	public void descontarPuntosPorDisparo(Disparo disparoEjecutado)
+	{
+		if(puntos-disparoEjecutado.getCosto()>=0)
+		{
+			puntos-=disparoEjecutado.getCosto();
+			if ((puntos>0)&&(this.getBarcos().size()==0))
+			{
+				this.CambiarAGanado();
+			}
+		}
+		else
+		{
+			if (this.listaBarcos.size()>0)
+			{
+				CambiarAPerdido();
+			}
+		}
+	}
+	
+	public int getPuntos()
+	{
+		return puntos;
+	}
+
+	public boolean estaPerdido() {
+		return perdido;
+	}
+
+	public void CambiarAPerdido() {
+		this.perdido = true;
+	}
+	
+	public boolean estaGanado()
+	{
+		return ganado; 
+	}
+	
+	public void CambiarAGanado()
+	{
+		ganado=true;
+	}
+	
+	//lo uso para setear la condicion de ganado
+	public void moverBarcosAListadoDeHundidos()
+	{
+		listaBarcos.removeAll(listaBarcos);
+		this.CambiarAGanado();
 	}
 }
