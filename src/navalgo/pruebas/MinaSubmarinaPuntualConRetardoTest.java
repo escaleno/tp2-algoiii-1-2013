@@ -2,6 +2,12 @@ package navalgo.pruebas;
 
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
+import navalgo.modelo.Direccion;
+import navalgo.modelo.EstrategiaDireccionDerAbajo;
+import navalgo.modelo.EstrategiaOrientacionHorizontal;
+import navalgo.modelo.EstrategiaOrientacionVertical;
+import navalgo.modelo.GeneradorRandomDireccion;
+import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.MinaSubmarinaPuntualConRetardo;
 import navalgo.modelo.Orientacion;
@@ -20,14 +26,21 @@ public class MinaSubmarinaPuntualConRetardoTest extends TestCase {
 	Destructor unDestructor;
 	Portaavion unPortaavion;
 	Rompehielos unRompehielos;
-	int direccionX = 1;
-	int direccionY = 1;
+	int direccionX;
+	int direccionY;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		posicion32 = new Punto(3,2);
 		unaMinaSubmarinaSubmarinaPuntualConRetardo = new MinaSubmarinaPuntualConRetardo(posicion32);
-		orientacionHorizontal = new OrientacionHorizontal();
+		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		orientacionHorizontal = horizontal.getValue();
+		
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		Direccion direccion = DerAbajo.getValue();
+		direccionX = direccion.getX();
+		direccionY = direccion.getY();
+		
 		unaMinaSubmarinaSubmarinaPuntualConRetardo = new MinaSubmarinaPuntualConRetardo(posicion32);
 		unaLancha = new Lancha(posicion32,orientacionHorizontal, direccionX, direccionY);
 		unBuque = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);

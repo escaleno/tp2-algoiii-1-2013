@@ -2,7 +2,13 @@ package navalgo.pruebas;
 
 import navalgo.modelo.Barco;
 import navalgo.modelo.Destructor;
+import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
+import navalgo.modelo.EstrategiaDireccionDerAbajo;
+import navalgo.modelo.EstrategiaOrientacionHorizontal;
+import navalgo.modelo.EstrategiaOrientacionVertical;
+import navalgo.modelo.GeneradorRandomDireccion;
+import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
@@ -31,8 +37,8 @@ public class DestructorTest extends TestCase {
 	DisparoConvencional disparoConvencional42;
 	DisparoConvencional disparoConvencional52;
 	
-	int direccionX = 1;
-	int direccionY = 1;
+	int direccionX;
+	int direccionY;
 	
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto32;
 	MinaSubmarinaPorContacto minaSubmarinaPorContacto33;
@@ -49,8 +55,14 @@ public class DestructorTest extends TestCase {
 		posicion14Y2 = new Punto(14,2);
 		
 		
-		orientacionHorizontal = new OrientacionHorizontal();
-		orientacionVertical = new OrientacionVertical();
+		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		orientacionHorizontal = horizontal.getValue();
+		GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+		orientacionVertical = vertical.getValue();
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		Direccion direccion = DerAbajo.getValue();
+		direccionX = direccion.getX();
+		direccionY = direccion.getY();
 		
 		unDestructorHorizontal = new Destructor(posicion32, orientacionHorizontal, direccionX, direccionY);
 		

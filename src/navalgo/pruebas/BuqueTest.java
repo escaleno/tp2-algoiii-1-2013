@@ -2,13 +2,21 @@ package navalgo.pruebas;
 
 import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
+import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
+import navalgo.modelo.EstrategiaDireccion;
+import navalgo.modelo.EstrategiaDireccionDerAbajo;
+import navalgo.modelo.EstrategiaOrientacionHorizontal;
+import navalgo.modelo.EstrategiaOrientacionVertical;
+import navalgo.modelo.GeneradorRandomDireccion;
+import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
+import navalgo.modelo.EstrategiaOrientacion;
 import junit.framework.TestCase;
 
 public class BuqueTest extends TestCase {
@@ -25,8 +33,8 @@ public class BuqueTest extends TestCase {
 	Punto posicion62;
 	Punto posicion20Y12;
 	
-	int direccionX = 1;
-	int direccionY = 1;
+	int direccionX;
+	int direccionY;
 	
 	Orientacion orientacionHorizontal;
 	Orientacion orientacionVertical;
@@ -54,8 +62,14 @@ public class BuqueTest extends TestCase {
 		posicion62 = new Punto(6, 2);
 		posicion20Y12 = new Punto(20, 12);
 		
-		orientacionHorizontal = new OrientacionHorizontal();
-		orientacionVertical = new OrientacionVertical();
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		Direccion direccion = DerAbajo.getValue();
+		direccionX = direccion.getX();
+		direccionY = direccion.getY();
+		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		orientacionHorizontal = horizontal.getValue();
+		GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+		orientacionVertical = vertical.getValue();
 		
 		unBuqueHorizontal = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);
 		
@@ -172,10 +186,12 @@ public class BuqueTest extends TestCase {
 	
 	public void testBuqueMoverseVertical(){
 		Punto posicion = null;
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		Direccion direccion = DerAbajo.getValue();
 		Buque Barco = new Buque(
 			 new Punto(3,2),
 			 orientacionVertical,
-			 1,1
+			 direccion.getX(),direccion.getY()
 		 	);
 	 	Barco.mover();
 	 	posicion = Barco.getPosicion();
