@@ -28,6 +28,7 @@ import navalgo.modelo.MinaSubmarinaTripleConRetardo;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Parte;
+import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
 import navalgo.modelo.Tablero;
@@ -92,7 +93,7 @@ public class VentanaPrincipal {
 	
 	private void generarBotones()
 	{
-		btnDispConvencional = new JButton("Disparo Conviecional");
+		btnDispConvencional = new JButton("Disparo Convencional");
 		btnMinaSubXContacto = new JButton("MinaSub. Por Contacto");
 		btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
 		btnMinaSubConRetAlcDoble = new JButton("Mina con Ret. y Alc. 2");
@@ -213,12 +214,14 @@ public class VentanaPrincipal {
 		Lancha unalancha = new Lancha(new Punto(1,1),new OrientacionHorizontal(),1,0);
 		Buque unbuque = new Buque(new Punto(1,3),new OrientacionVertical(),0,1);;
 		Destructor undestructor = new Destructor(new Punto(1,5),new OrientacionHorizontal(),1,1);
-		Rompehielos unrompehielo = new Rompehielos(new Punto(2,1),new OrientacionVertical(),0,1);
+		Rompehielos unrompehielo = new Rompehielos(new Punto(2,1),new OrientacionHorizontal(),0,1);
+		Portaavion portaavion = new Portaavion(new Punto(2, 7), new OrientacionVertical(), 1, 0);
 		
 		tablero.agregarBarco(unalancha);
 		tablero.agregarBarco(unbuque);
 		tablero.agregarBarco(undestructor);
 		tablero.agregarBarco(unrompehielo);
+		tablero.agregarBarco(portaavion);
 		
 				
 		panel.addMouseListener(new MouseAdapter() {
