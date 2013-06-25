@@ -241,6 +241,36 @@ public class VentanaPrincipal {
 		tablero.agregarBarco(unrompehielo);
 		tablero.agregarBarco(portaavion);
 		
+//		Lancha lanchaV = new Lancha(new Punto(1, 1), new OrientacionVertical(), 0, 1);
+//		Lancha lanchaH = new Lancha(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
+//		
+//		Buque buqueV = new Buque(new Punto(1, 1), new OrientacionVertical(), 0, 1);
+//		Buque buqueH = new Buque(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
+		
+		
+//		tablero.agregarBarco(lanchaV);
+//		tablero.agregarBarco(lanchaH);
+//		
+//		tablero.agregarBarco(buqueV);
+//		tablero.agregarBarco(buqueH);
+//		
+//		Destructor destructorV = new Destructor(new Punto(1, 1), new OrientacionVertical(), 0, 1);
+//		Destructor destructorH = new Destructor(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
+		
+//		tablero.agregarBarco(destructorH);
+//		tablero.agregarBarco(destructorV);
+
+//		Rompehielos rompehielosV = new Rompehielos(new Punto(1, 1), new OrientacionVertical(), 0, 1);
+//		Rompehielos rompehielosH = new Rompehielos(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
+		
+//		tablero.agregarBarco(rompehielosH);
+//		tablero.agregarBarco(rompehielosV);
+		
+//		Portaavion portaavionV = new Portaavion(new Punto(1, 1), new OrientacionVertical(), 0, 1);
+//		Portaavion portaavionH = new Portaavion(new Punto(4, 1), new OrientacionHorizontal(), 1, 0);
+//		
+//		tablero.agregarBarco(portaavionH);
+//		tablero.agregarBarco(portaavionV);
 				
 		panel.addMouseListener(new MouseAdapter() {
 					
