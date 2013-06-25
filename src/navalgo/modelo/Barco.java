@@ -73,22 +73,12 @@ public abstract class Barco {
 	private void construirCuerpo(){
 		Parte parteAux = null;
 		Punto posicionDeReferencia = new Punto(this.posicion.obtenerX(),this.posicion.obtenerY());
-		try {
-			//la primera parte es la posicionInicial del barco
-			parteAux = new Parte(this.resistencia, this.posicion);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		//la primera parte es la posicionInicial del barco
+		parteAux = new Parte(this.resistencia, this.posicion);
 		this.cuerpo.add(parteAux);
 		
 		for (int i = 1; i < this.tamanio; i++) {
-			try {
-				parteAux = new Parte(this.resistencia,this.orientacion.getSiguientePosicion(posicionDeReferencia));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			parteAux = new Parte(this.resistencia,this.orientacion.getSiguientePosicion(posicionDeReferencia));
 			this.cuerpo.add(parteAux);
 			posicionDeReferencia = parteAux.getPosicion();
 		}

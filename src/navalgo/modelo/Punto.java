@@ -7,6 +7,8 @@ public class Punto implements ObjetoPosicionable
 	/*coordenadas en (x,y)*/
 	private int x;
 	private int y;
+	private static int tamanioDePosicionX = 0;
+	private static int tamanioDePosicionY = 0;
 	
 	public int obtenerX() 
 	{
@@ -59,14 +61,20 @@ public class Punto implements ObjetoPosicionable
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
-		return 50*(this.x-1);
+		return tamanioDePosicionX*(this.x-1);
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return 50*(this.y-1);
+		return tamanioDePosicionY*(this.y-1);
+	}
+
+	public static void setTamanioDePosicionX(int tamanio) {
+		tamanioDePosicionX = tamanio;
+	}
+	
+	public static void setTamanioDePosicionY(int tamanio) {
+		tamanioDePosicionY = tamanio;
 	}
 
 };

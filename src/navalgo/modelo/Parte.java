@@ -2,12 +2,13 @@ package navalgo.modelo;
 
 import java.io.IOException;
 
-public class Parte extends MiImagen {
+public class Parte {
 	
 	/*representa la cantidad de disparos que soporta, cuando
 	 * vale cero representa que fue totalmente destruida
 	 */
 	private int resistencia;
+	private int estado = 0;
 	
 	private String nombre;
 	/*
@@ -17,17 +18,13 @@ public class Parte extends MiImagen {
 	
 	
 	/*constructor */
-	public Parte(int resistencia, Punto posicion) throws IOException{
-		super(Parte.class.getResource("/res/Nada.png"),posicion);
-		//super(50,50, posicion);
-		this.nombre = "Nada.png";
+	public Parte(int resistencia, Punto posicion) {
+		this.nombre = "Nada";
 		this.resistencia = resistencia;
 		this.posicion = posicion;
 	}
 	
-	public Parte(int resistencia,Punto posicion, String nombre) throws IOException{
-		super(Parte.class.getResource("/res/"+nombre), posicion);
-		//super(50,50, posicion);
+	public Parte(int resistencia,Punto posicion, String nombre) {
 		this.nombre = nombre;
 		this.resistencia = resistencia;
 		this.posicion = posicion;
@@ -64,28 +61,19 @@ public class Parte extends MiImagen {
 		//Valido Estado
 		if (this.resistencia > 0)
 		{
-			try {
-				this.setImagen(Parte.class.getResource("/res/Daniado/"+this.nombre));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			estado = 1;
 		} else {
-			try {
-				this.setImagen(Parte.class.getResource("/res/Hundido/"+this.nombre));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			estado = 2;
 		}
 	}
-	
-	public int getX(){
-		return posicion.obtenerX()*10;
+
+	public int getEstado() {
+		return this.estado;
 	}
 	
-	public int getY(){
-		return posicion.obtenerY()*10;
+	public String getNomber() {
+		System.out.println(this.nombre);
+		return this.nombre;
 	}
 
 }
