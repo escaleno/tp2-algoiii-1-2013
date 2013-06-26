@@ -8,7 +8,6 @@ import fiuba.algo3.titiritero.modelo.GameLoop;
 
 public class EscuchaMinaSubmarinaPuntualConRetardo implements ActionListener {
 
-	private GameLoop gameLoop;
 	private VentanaPrincipal vp;
 	
 	public EscuchaMinaSubmarinaPuntualConRetardo(VentanaPrincipal vpInicial){
@@ -16,13 +15,11 @@ public class EscuchaMinaSubmarinaPuntualConRetardo implements ActionListener {
 		this.vp=vpInicial;
 	}
 
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
-//		gameLoop = vp.getGameLoop();	
-//		gameLoop.detenerEjecucion();
-		System.out.println("MinaSubmarinaPuntualConRetardo...");
+		this.vp.habilitarTodos();
+		this.vp.cambiarTipoDeDisparo(3);
+		this.vp.deshabilitarbotonMinaSubConRetAlc();
 	}
 
 }

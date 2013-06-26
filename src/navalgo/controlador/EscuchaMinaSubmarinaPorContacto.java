@@ -8,7 +8,6 @@ import fiuba.algo3.titiritero.modelo.GameLoop;
 
 public class EscuchaMinaSubmarinaPorContacto implements ActionListener {
 
-	private GameLoop gameLoop;
 	private VentanaPrincipal vp;
 	
 	public EscuchaMinaSubmarinaPorContacto(VentanaPrincipal vpInicial){
@@ -19,10 +18,9 @@ public class EscuchaMinaSubmarinaPorContacto implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
-//		gameLoop = vp.getGameLoop();
-//		gameLoop.detenerEjecucion();
-		System.out.println("MinaSubmarinaPorContacto...");
+		this.vp.habilitarTodos();
+		this.vp.cambiarTipoDeDisparo(2);
+		this.vp.deshabilitarbotonMinaSubXContacto();
 	}
 
 }

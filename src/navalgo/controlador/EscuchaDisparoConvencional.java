@@ -8,7 +8,6 @@ import fiuba.algo3.titiritero.modelo.GameLoop;
 
 public class EscuchaDisparoConvencional implements ActionListener {
 
-	private GameLoop gameLoop;
 	private VentanaPrincipal vp;
 	
 	public EscuchaDisparoConvencional(VentanaPrincipal vpInicial){
@@ -19,11 +18,9 @@ public class EscuchaDisparoConvencional implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
-//		gameLoop = vp.getGameLoop();		
-//		gameLoop.detenerEjecucion();
-		System.out.println("Disparo convencional...");
-		
+		this.vp.habilitarTodos();
+		this.vp.cambiarTipoDeDisparo(1);
+		this.vp.deshabilitarbotonDispConvencional();
 	}
 
 }

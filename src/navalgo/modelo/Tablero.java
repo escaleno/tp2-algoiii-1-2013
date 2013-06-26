@@ -21,37 +21,39 @@ public class Tablero implements ObjetoVivo
 	private ArrayList<Disparo> disparosEfectuados;
 	ArrayList<Disparo> disparosRemover = new ArrayList<Disparo>();
 	private ArrayList<Barco> barcosHundidos;
-	private int cantidadFilas;
-	private int cantidadColumnas;
-	private int cantidadMinimaDeFilas;
-	private int cantidadMinimaDeColumnas;
+	private int filaFin;
+	private int columnaFin;
+	private int filaInicio;
+	private int columnaInicio;
 	private int contparaRealizarTurnos = 0;
 	private int puntos;
 	private boolean perdido;
 	private boolean ganado;
-	private GameLoop game;
 	
-	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas)
+	public Tablero(int filaInicio, int filaFin,int columnaInicio, int columnaFin)
 	{
-		if ((nf>0)&&(nc>0) && (minimoFilas > 0) && (minimoColumnas > 0))
+		if ((filaFin>0)&&(columnaFin>0) && (filaInicio > 0) && (columnaInicio > 0))
 		{	
-			listaBarcos=new ArrayList<Barco>();
-			disparosEfectuados=new ArrayList<Disparo>();
-			barcosHundidos=new ArrayList<Barco>();
-			cantidadFilas=nf;
-			cantidadColumnas=nc;
-			this.cantidadMinimaDeFilas = minimoFilas;
-			this.cantidadMinimaDeColumnas = minimoColumnas;
-			puntos=10000;
-			perdido=false;
-			ganado=false;
+			this.listaBarcos=new ArrayList<Barco>();
+			this.disparosEfectuados=new ArrayList<Disparo>();
+			this.barcosHundidos=new ArrayList<Barco>();
+			this.disparosRemover=new ArrayList<Disparo>();
+			this.filaFin=filaFin;
+			this.columnaFin=columnaFin;
+			this.filaInicio = filaInicio;
+			this.columnaInicio = columnaInicio;
+			this.puntos=10000;
+			this.perdido=false;
+			this.ganado=false;
 		}
 	}
 	
-	public Tablero(int nf, int nc, int minimoFilas, int minimoColumnas , GameLoop game)
-	{
-		this(nf,nc,minimoFilas,minimoColumnas);
-		this.game = game;
+	public int obtenerMaximaDeFilas(){
+		return (this.filaFin-this.filaInicio+1);
+	}
+	
+	public int obtenerMaximaDeColumnas(){
+		return (this.columnaFin-this.columnaInicio+1);
 	}
 	
 	public void agregarBarco(Barco b)
@@ -66,6 +68,11 @@ public class Tablero implements ObjetoVivo
 	
 	public void ejecutarTurno()
 	{
+		
+		for(Barco unBarco:listaBarcos)
+		{
+			unBarco.mover();
+		}
 		
 		for(Disparo disparoactual:disparosEfectuados)
 		{	
@@ -85,33 +92,12 @@ public class Tablero implements ObjetoVivo
 			}
 		}
 		
-		for(Barco unBarco:listaBarcos)
-		{
-			unBarco.mover();
-		}
-		if (game != null) {
-			for (Disparo disp : disparosRemover){
-				game.remover(disp);
-			}
 		
-			for (Barco barco : barcosHundidos) {
-				for (Parte parte : barco.getCuerpo()) {
-					VistaParteDeBarco vPdB;
-					try {
-						vPdB = new VistaParteDeBarco(parte);
-						game.remover(vPdB);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-				}
-			}
-		}
 		listaBarcos.removeAll(barcosHundidos);
-		disparosEfectuados.removeAll(disparosRemover);
-		disparosRemover.clear();	
+		disparosEfectuados.removeAll(disparosRemover);	
 	}
+	
+	
 	
 	public ArrayList<Barco> getBarcos()
 	{
@@ -123,6 +109,10 @@ public class Tablero implements ObjetoVivo
 		return disparosEfectuados;
 	}
 	
+	public ArrayList<Disparo> getDisparosDetonados(){
+		return disparosRemover;
+	}
+	
 	public ArrayList<Barco> getDestruidos()
 	{
 		return barcosHundidos;
@@ -130,22 +120,22 @@ public class Tablero implements ObjetoVivo
 	
 	public int getCantidadFilas()
 	{
-		return cantidadFilas;
+		return filaFin;
 	}
 
 	public int getCantidadColumnas()
 	{
-		return cantidadColumnas;
+		return columnaFin;
 	}
 	
 	public int getCantidadMinimaDeFilas(){
 		
-		return this.cantidadMinimaDeFilas;
+		return this.filaInicio;
 	}
 	
 	public int getCantidadMinimaDeColumnas(){
 		
-		return this.cantidadMinimaDeColumnas;
+		return this.columnaInicio;
 	}
 	
 
