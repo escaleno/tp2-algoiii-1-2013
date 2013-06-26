@@ -24,7 +24,7 @@ public class TableroTest extends TestCase
 		@Before
 		public void setUp()
 		{
-			alguntablero=new Tablero(10,10,1,1);
+			alguntablero=new Tablero(1,10,1,10);
 			//genero 4 barcos con direcciones
 			GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
 			Orientacion orientacionHorizontal = horizontal.getValue();
@@ -77,6 +77,13 @@ public class TableroTest extends TestCase
 			assertEquals(alguntablero.getBarcos().get(1),unrompehielo);
 			assertEquals(alguntablero.getBarcos().get(2),unbuque);
 			assertEquals(alguntablero.getBarcos().get(3),undestructor);			
+		}
+		
+		@Test
+		public void testObtengoMaximoCantidadDeColumnasYFilas()
+		{
+			assertEquals(10,alguntablero.obtenerMaximaDeColumnas());
+			assertEquals(10,alguntablero.obtenerMaximaDeFilas());
 		}
 		
 /*		@Test

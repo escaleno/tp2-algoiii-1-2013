@@ -1,12 +1,6 @@
 package navalgo.vista;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -14,14 +8,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 //import navalgo.controlador.*;
+import navalgo.controlador.ControladorDeMouse;
+import navalgo.controlador.ControladorDeTablero;
+import navalgo.controlador.EscuchaDisparoConvencional;
+import navalgo.controlador.EscuchaMinaSubmarinaDobleConRetardo;
+import navalgo.controlador.EscuchaMinaSubmarinaPorContacto;
+import navalgo.controlador.EscuchaMinaSubmarinaPuntualConRetardo;
+import navalgo.controlador.EscuchaMinaSubmarinaTripleConRetardo;
 import navalgo.dibujables.MiImagen;
 import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
 import navalgo.modelo.Direccion;
-import navalgo.modelo.Disparo;
-import navalgo.modelo.DisparoConvencional;
-import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.EstrategiaDireccionRandom;
 import navalgo.modelo.EstrategiaOrientacionRandom;
 import navalgo.modelo.EstrategiaPuntoRandom;
@@ -29,12 +27,6 @@ import navalgo.modelo.GeneradorRandomDireccion;
 import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.GeneradorRandomPunto;
 import navalgo.modelo.Lancha;
-import navalgo.modelo.MinaSubmarinaDobleConRetardo;
-import navalgo.modelo.MinaSubmarinaPorContacto;
-import navalgo.modelo.MinaSubmarinaPuntualConRetardo;
-import navalgo.modelo.MinaSubmarinaTripleConRetardo;
-import navalgo.modelo.OrientacionHorizontal;
-import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Parte;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
@@ -54,6 +46,10 @@ public class VentanaPrincipal {
 	private JButton btnMinaSubConRetAlc;
 	private JButton btnMinaSubConRetAlcDoble;
 	private JButton btnMinaSubConRetAlcTriple;
+	private Tablero tablero;
+	private ControladorDeTablero controlDeTablero; //Lo hice nada mas para borrar los disparos
+	private int TamanioDeCasillaX;
+	private int TamanioDeCasillaY;
 
 	/**
 	 * Launch the application.
@@ -61,16 +57,6 @@ public class VentanaPrincipal {
 	public static void main(String[] args) {
 		VentanaPrincipal window = new VentanaPrincipal();
 		window.gameLoop.iniciarEjecucion();
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					VentanaPrincipal window = new VentanaPrincipal();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
 	}
 
 	/**
@@ -84,6 +70,14 @@ public class VentanaPrincipal {
 			e.printStackTrace();
 		}
 	}
+	
+	public GameLoop obtenerGameLoop(){
+		return this.gameLoop;
+	}
+	
+	public Tablero obtenerTablero(){
+		return this.tablero;
+	}
 
 	public void habilitarTodos()
 	{
@@ -94,11 +88,43 @@ public class VentanaPrincipal {
 		btnMinaSubConRetAlcTriple.setEnabled(true);
 	}
 	
+	public void cambiarTipoDeDisparo(int tipoDeDisparo)
+	{
+		this.tipoDeDisparo = tipoDeDisparo;
+	}
+	
+	
+	public void deshabilitarbotonDispConvencional()
+	{
+		this.deshabilitar(this.btnDispConvencional);
+	}
+	
+	public void deshabilitarbotonMinaSubXContacto()
+	{
+		this.deshabilitar(this.btnMinaSubXContacto);
+	}
+	
+	public void deshabilitarbotonMinaSubConRetAlc()
+	{
+		this.deshabilitar(this.btnMinaSubConRetAlc);
+	}
+	
+	public void deshabilitarbotonMinaSubConRetAlcDoble()
+	{
+		this.deshabilitar(this.btnMinaSubConRetAlcDoble);
+	}
+	
+	public void deshabilitarbotonMinaSubConRetAlcTriple()
+	{
+		this.deshabilitar(this.btnMinaSubConRetAlcTriple);
+	}
+	
 	public void deshabilitar(JButton unBoton)
 	{
 		unBoton.setEnabled(false);
 	}
 	
+	//Crea Todos los Botones y lo ubica en el Tablero
 	private void generarBotones()
 	{
 		btnDispConvencional = new JButton("Disparo Convencional");
@@ -111,11 +137,28 @@ public class VentanaPrincipal {
 		btnMinaSubConRetAlc.setBounds(40, 610, 170, 25);
 		btnMinaSubConRetAlcDoble.setBounds(215, 610, 170, 25);
 		btnMinaSubConRetAlcTriple.setBounds(390, 610, 170, 25);
-
-	}
-	
-	public void mostrar()
-	{
+		
+		btnDispConvencional.addActionListener(
+				new EscuchaDisparoConvencional(this));
+		
+		btnMinaSubXContacto.addActionListener(
+				new EscuchaMinaSubmarinaPorContacto(this));
+		
+		btnMinaSubConRetAlc.addActionListener(
+				new EscuchaMinaSubmarinaPuntualConRetardo(this));
+		
+		btnMinaSubConRetAlcDoble.addActionListener(
+				new EscuchaMinaSubmarinaDobleConRetardo(this));
+		
+		btnMinaSubConRetAlcTriple.addActionListener(
+				new EscuchaMinaSubmarinaTripleConRetardo(this));
+		
+		frame.getContentPane().add(btnDispConvencional);
+		frame.getContentPane().add(btnMinaSubXContacto);
+		frame.getContentPane().add(btnMinaSubConRetAlc);
+		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
+		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
+		
 		btnDispConvencional.setFocusable(true);
 		btnMinaSubXContacto.setFocusable(true);
 		btnMinaSubConRetAlc.setFocusable(true);
@@ -127,6 +170,45 @@ public class VentanaPrincipal {
 		btnMinaSubConRetAlcDoble.setVisible(true);
 		btnMinaSubConRetAlcTriple.setVisible(true);
 	}
+	
+	public void generadorDeBarcos() throws IOException{
+		GeneradorRandomOrientacion randomOrientacion = new GeneradorRandomOrientacion(new EstrategiaOrientacionRandom());
+		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionRandom());
+		GeneradorRandomPunto randomPunto = new GeneradorRandomPunto(new EstrategiaPuntoRandom());
+		
+		Direccion direccion = DerAbajo.getValue();
+		Lancha unalancha = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		direccion = DerAbajo.getValue();
+		Buque unbuque = new Buque(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		direccion = DerAbajo.getValue();
+		Destructor undestructor = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		direccion = DerAbajo.getValue();
+		Rompehielos unrompehielo = new Rompehielos(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		direccion = DerAbajo.getValue();
+		Portaavion portaavion = new Portaavion(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		this.tablero.agregarBarco(unalancha);
+		this.tablero.agregarBarco(unbuque);
+		this.tablero.agregarBarco(undestructor);
+		this.tablero.agregarBarco(unrompehielo);
+		this.tablero.agregarBarco(portaavion);
+
+		this.controlDeTablero = new ControladorDeTablero(this.tablero, this.gameLoop);
+		 
+		for (Barco barco : tablero.getBarcos()){
+			for (Parte parte : barco.getCuerpo()){
+				MiImagen vParteDeBarco = new VistaParteDeBarco(parte);
+				this.gameLoop.agregar(vParteDeBarco);
+				this.controlDeTablero.agregarMapaDeVistasDePartes(parte, vParteDeBarco);	
+			}
+		}
+		this.gameLoop.agregarObservador(this.controlDeTablero);
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws IOException 
@@ -141,209 +223,64 @@ public class VentanaPrincipal {
 		frame.getContentPane().setLayout(null);
 		
 		generarBotones();
-		
-		btnDispConvencional.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				habilitarTodos();
-				deshabilitar(btnDispConvencional);
-				tipoDeDisparo = 1;
-			}
-		});
-		
-		btnMinaSubXContacto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				habilitarTodos();
-				deshabilitar(btnMinaSubXContacto);
-				tipoDeDisparo = 2;
-			}
-		});
-		
-		btnMinaSubConRetAlc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				habilitarTodos();
-				deshabilitar(btnMinaSubConRetAlc);
-				tipoDeDisparo = 3;
-			}
-		});
-		
-		btnMinaSubConRetAlcDoble.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				habilitarTodos();
-				deshabilitar(btnMinaSubConRetAlcDoble);
-				tipoDeDisparo = 4;
-			}
-		});
-		
-		btnMinaSubConRetAlcTriple.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				habilitarTodos();
-				deshabilitar(btnMinaSubConRetAlcTriple);
-				tipoDeDisparo = 5;
-			}
-		});
+		//Creo Superficie de Dibujo
 		final JPanel panel = new SuperficiePanel();
 		
-//		panel.setBackground(new Color(0, 0, 0));
 		//FONDO DE LA SUPERFICIE DE DIBUJO
 		panel.setBackground(Color.BLUE);
 		
 		//ubicacion y tamanio de la superficie de dibujo
 		panel.setBounds(50, 50, 500, 500);
 		frame.getContentPane().add(panel);
-		int y = panel.getHeight()/10;
-		int x = panel.getWidth()/10;
 		
-		Punto.setTamanioDePosicionX(x);
-		Punto.setTamanioDePosicionY(y);
+		this.gameLoop = new GameLoop(200,(SuperficieDeDibujo) panel);
+			
+		dibujoCuadrantesEnTablero(panel);
 		
-		this.gameLoop = new GameLoop(250,(SuperficieDeDibujo) panel);
-		frame.getContentPane().add(btnDispConvencional);
-		frame.getContentPane().add(btnMinaSubXContacto);
-		frame.getContentPane().add(btnMinaSubConRetAlc);
-		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
-		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
-		mostrar();
-		//Hago lineas de X para diferenciar el tablero
+		panel.addMouseListener(new ControladorDeMouse(this));
+		
+		generadorDeBarcos();
+		
+	}
+	
+	public void dibujoCuadrantesEnTablero(JPanel panel){
+		
+		this.tablero = new Tablero(1,10,1,10);
+		this.gameLoop.agregar(tablero);
+		//Dibujo lineas del Tablero en X
+		this.TamanioDeCasillaX = panel.getHeight()/this.tablero.obtenerMaximaDeColumnas();
+		Punto.setTamanioDePosicionX(this.TamanioDeCasillaX);
 		for (int tx = 1; tx < 10; tx++) {
-			Posicion posicion = new Posicion(tx*x, 1);
+			Posicion posicion = new Posicion(tx*this.TamanioDeCasillaX, 1);
 			Figura linea = new Cuadrado(3, panel.getHeight(), posicion);
 			this.gameLoop.agregar(linea);
 		}
-		//Hago lineas de Y para diferenciar el tablero
+		
+		//Dibujo lineas del Tablero en Y
+		this.TamanioDeCasillaY = panel.getWidth()/this.tablero.obtenerMaximaDeFilas();
+		Punto.setTamanioDePosicionY(this.TamanioDeCasillaY);
 		for (int ty = 1; ty < 10; ty++) {
-			Posicion posicion = new Posicion(1, ty*y);
+			Posicion posicion = new Posicion(1, ty*this.TamanioDeCasillaY);
 			Figura linea = new Cuadrado(panel.getWidth(), 3, posicion);
 			this.gameLoop.agregar(linea);
 		}
-		
-		final Tablero tablero = new Tablero(10,10,1,1,this.gameLoop);
-		this.gameLoop.agregar(tablero);
-		
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionRandom());
-		Direccion direccion = DerAbajo.getValue();
-		GeneradorRandomOrientacion randomOrientacion = new GeneradorRandomOrientacion(new EstrategiaOrientacionRandom());
-		GeneradorRandomPunto randomPunto = new GeneradorRandomPunto(new EstrategiaPuntoRandom());
-		Lancha unalancha = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
-		direccion = DerAbajo.getValue();
-		Buque unbuque = new Buque(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
-		direccion = DerAbajo.getValue();
-		Destructor undestructor = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
-		direccion = DerAbajo.getValue();
-		//Falta Agregar las imagenes de los romehielos Verticales
-		Rompehielos unrompehielo = new Rompehielos(randomPunto.getValue(),new OrientacionHorizontal(),direccion.getX(),direccion.getY());
-		direccion = DerAbajo.getValue();
-		//Falta Agregar las imagenes de los romehielos Verticales
-		Portaavion portaavion = new Portaavion(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
-		tablero.agregarBarco(unalancha);
-		tablero.agregarBarco(unbuque);
-		tablero.agregarBarco(undestructor);
-		tablero.agregarBarco(unrompehielo);
-		tablero.agregarBarco(portaavion);
-		
-//		Lancha lanchaV = new Lancha(new Punto(1, 1), new OrientacionVertical(), 0, 1);
-//		Lancha lanchaH = new Lancha(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
-//		
-//		Buque buqueV = new Buque(new Punto(1, 1), new OrientacionVertical(), 0, 1);
-//		Buque buqueH = new Buque(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
-		
-		
-//		tablero.agregarBarco(lanchaV);
-//		tablero.agregarBarco(lanchaH);
-//		
-//		tablero.agregarBarco(buqueV);
-//		tablero.agregarBarco(buqueH);
-//		
-//		Destructor destructorV = new Destructor(new Punto(1, 1), new OrientacionVertical(), 0, 1);
-//		Destructor destructorH = new Destructor(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
-		
-//		tablero.agregarBarco(destructorH);
-//		tablero.agregarBarco(destructorV);
+	}
 
-//		Rompehielos rompehielosV = new Rompehielos(new Punto(1, 1), new OrientacionVertical(), 0, 1);
-//		Rompehielos rompehielosH = new Rompehielos(new Punto(7, 1), new OrientacionHorizontal(), 1, 0);
-		
-//		tablero.agregarBarco(rompehielosH);
-//		tablero.agregarBarco(rompehielosV);
-		
-//		Portaavion portaavionV = new Portaavion(new Punto(1, 1), new OrientacionVertical(), 0, 1);
-//		Portaavion portaavionH = new Portaavion(new Punto(4, 1), new OrientacionHorizontal(), 1, 0);
-//		
-//		tablero.agregarBarco(portaavionH);
-//		tablero.agregarBarco(portaavionV);
-				
-		panel.addMouseListener(new MouseAdapter() {
-					
-			@Override
-			public void mouseClicked(MouseEvent event) {
-				habilitarTodos();
-				Disparo disparo = null;
-				int x = ((event.getX()/(panel.getWidth()/10)) +1);
-				int y = ((event.getY()/(panel.getHeight()/10)) +1);
-				switch (tipoDeDisparo) {
-				case 1:
-					disparo = new DisparoConvencional(new Punto(x, y));
-					break;
-				case 2:
-					disparo = new MinaSubmarinaPorContacto(new Punto(x, y));
-					break;
-				case 3:
-					disparo = new MinaSubmarinaPuntualConRetardo(new Punto(x, y));
-					break;
-				case 4:
-					disparo = new MinaSubmarinaDobleConRetardo(new Punto(x, y),tablero);
-					break;
-				case 5:
-					disparo = new MinaSubmarinaTripleConRetardo(new Punto(x, y),tablero);
-					break;
-				default:
-					break;
-				}
-				tipoDeDisparo = 0;
-				if (disparo != null){
-					tablero.agregarDisparo(disparo);
-					gameLoop.agregar(disparo);
-				}
-				System.out.println("Click mouse");
-				System.out.println("X" + x );
-				System.out.println("Y" + y );
-				//modelo.moverA(arg0.getX(), arg0.getY());	
-			}});
-				
-		frame.addKeyListener(new KeyListener(
-				) {
-			
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				System.out.println("Key pressed");
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-			
-				System.out.println("Ping");
-				
-			}  
-			 	
-		});
-		
-		
-		for (Barco barco : tablero.getBarcos()){
-			for (Parte parte : barco.getCuerpo()){
-				MiImagen vParteDeBarco = new VistaParteDeBarco(parte);
-				this.gameLoop.agregar(vParteDeBarco);
-			}
-		}
-		
-		//panel.setVisible(false);
+	public int obtenerTipoDeDisparo() {
+		return this.tipoDeDisparo;
+	}
+	public int obtenerTamanioDeCasillaX() {
+		return this.TamanioDeCasillaX;
+	}
+
+	public int obtenerTamanioDeCasillaY() {
+		return this.TamanioDeCasillaY;
 	}
 	
+	public ControladorDeTablero obtenerControlDeTablero() {
+		return this.controlDeTablero;
+	}
+
 	class Posicion implements ObjetoPosicionable {
 		int x;
 		int y;

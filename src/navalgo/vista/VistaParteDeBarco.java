@@ -16,18 +16,4 @@ public class VistaParteDeBarco extends ImagensParteBarcos{
 		this.setEstado(parteDeBarco.getEstado());
 		super.dibujar(superficieDeDibujo);
 	}
-	
-	public Parte getParteDeBarco(){
-		return this.parteDeBarco;
-	}
-//Sobre Escribi los metodos Para poder borrar los objetos Dibujables del Framwork
-	public boolean equals( Object vParteDeBarco ){
-		return (vParteDeBarco instanceof VistaParteDeBarco &&
-		 this.parteDeBarco.equals(((VistaParteDeBarco)vParteDeBarco).getParteDeBarco()));
-	}
-	
-	public int hashCode(){
-		return this.parteDeBarco.hashCode();
-	}
-
 }

@@ -72,7 +72,6 @@ public class Parte {
 	}
 	
 	public String getNomber() {
-		System.out.println(this.nombre);
 		return this.nombre;
 	}
 
