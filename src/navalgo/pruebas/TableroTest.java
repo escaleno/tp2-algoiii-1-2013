@@ -56,19 +56,19 @@ public class TableroTest extends TestCase
 		
 		@Test
 		public void testGetCantidadMinimaDeFilas(){
-			assertEquals(1,alguntablero.getCantidadMinimaDeFilas());
+			assertEquals(1,alguntablero.getInicioDeFilas());
 		}
 		
 		@Test
 		public void testGetCantidadMinimaDeColumnas(){
-			assertEquals(1, alguntablero.getCantidadMinimaDeColumnas());
+			assertEquals(1, alguntablero.getInicioDeColumnas());
 		}
 		
 		@Test
 		public void testCorrectoSeteoDeDimensiones()
 		{
-			assertEquals(10,alguntablero.getCantidadFilas());
-			assertEquals(10,alguntablero.getCantidadColumnas());
+			assertEquals(10,alguntablero.getFinDeFilas());
+			assertEquals(10,alguntablero.getFinDeColumnas());
 		}
 		@Test
 		public void testCorrectoPosicionamientoDeBarcosInicial()

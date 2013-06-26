@@ -9,8 +9,6 @@ import navalgo.modelo.EstrategiaOrientacionVertical;
 import navalgo.modelo.GeneradorRandomDireccion;
 import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.Orientacion;
-import navalgo.modelo.OrientacionHorizontal;
-import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;

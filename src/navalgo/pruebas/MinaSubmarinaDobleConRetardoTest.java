@@ -9,8 +9,6 @@ import navalgo.modelo.GeneradorRandomDireccion;
 import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.MinaSubmarinaDobleConRetardo;
 import navalgo.modelo.Orientacion;
-import navalgo.modelo.OrientacionHorizontal;
-import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Tablero;
 import junit.framework.TestCase;
@@ -67,7 +65,7 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		direccionX = direccion.getX();
 		direccionY = direccion.getY();
 		
-		tablero = new Tablero(10, 10, 1, 1);		
+		tablero = new Tablero(1, 10, 1, 10);		
 		unaMinaEnX2Y3 = new MinaSubmarinaDobleConRetardo(posicionX2Y3,tablero);
 		unaMinaEnX1Y3 = new MinaSubmarinaDobleConRetardo(posicionX1Y3, tablero);
 		unaMinaEnX1Y1 = new MinaSubmarinaDobleConRetardo(posicionX1Y1, tablero);

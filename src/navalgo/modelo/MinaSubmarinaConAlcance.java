@@ -22,7 +22,7 @@ public abstract class MinaSubmarinaConAlcance extends Disparo {
 	private void construirPuntosDeAlcance(Tablero tablero){
 		for (int i = this.posicion.obtenerX() - this.alcance; i <= this.posicion.obtenerX() + this.alcance; i++) {
 			for (int j = this.posicion.obtenerY() - this.alcance; j <= this.posicion.obtenerY() + this.alcance; j++) {
-			  if( ( (i >= tablero.getCantidadMinimaDeFilas()) && (i <= tablero.getCantidadFilas()) ) && ( (j >= tablero.getCantidadMinimaDeColumnas()) && (j <= tablero.getCantidadColumnas()) ) && ( (i != this.posicion.obtenerX() ) || ( j != this.posicion.obtenerY() )) ){
+				if( ( (i >= tablero.getInicioDeColumnas()) && (i <= tablero.getFinDeColumnas()) ) && ( (j >= tablero.getInicioDeFilas()) && (j <= tablero.getFinDeFilas()) ) && ( (i != this.posicion.obtenerX() ) || ( j != this.posicion.obtenerY() )) ){
 					Punto unPunto = new Punto(i, j);
 					puntosDeAlcance.add(unPunto);
 				}
