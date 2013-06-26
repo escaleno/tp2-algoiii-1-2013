@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 //import java.util.Iterator;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import fiuba.algo3.titiritero.modelo.GameLoop;
@@ -12,6 +13,7 @@ import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 import navalgo.modelo.Barco;
 import navalgo.modelo.Disparo;
+import navalgo.vista.VentanaPrincipal;
 import navalgo.vista.VistaParteDeBarco;
 
 @SuppressWarnings("unused")
@@ -26,6 +28,7 @@ public class Tablero implements ObjetoVivo
 	private int filaInicio;
 	private int columnaInicio;
 	private int contparaRealizarTurnos = 0;
+	private VentanaPrincipal ventanaactual;
 	private int puntos;
 	private boolean perdido;
 	private boolean ganado;
@@ -155,7 +158,10 @@ public class Tablero implements ObjetoVivo
 			puntos-=disparoEjecutado.getCosto();
 			if ((puntos>0)&&(this.getBarcos().size()==0))
 			{
-				this.CambiarAGanado();
+				this.CambiarAGanado();			
+				this.cambiarBoton(this.ventanaactual.obtenerBotonEstado(),"Estado: Ganado");
+				String nuevaleyenda="Puntaje: " + (((Integer)this.getPuntos()).toString());
+				this.cambiarBoton(this.ventanaactual.obtenerBotonPuntaje(), nuevaleyenda);
 			}
 		}
 		else
@@ -163,6 +169,10 @@ public class Tablero implements ObjetoVivo
 			if (this.listaBarcos.size()>0)
 			{
 				CambiarAPerdido();
+				this.cambiarBoton(this.ventanaactual.obtenerBotonEstado(),"Estado: Perdido");
+				String nuevaleyenda="Puntaje: " + (((Integer)this.getPuntos()).toString());
+				this.cambiarBoton(this.ventanaactual.obtenerBotonPuntaje(), nuevaleyenda);
+
 			}
 		}
 	}
@@ -195,5 +205,18 @@ public class Tablero implements ObjetoVivo
 	{
 		listaBarcos.removeAll(listaBarcos);
 		this.CambiarAGanado();
+	}
+	
+	public void cambiarBoton(JButton unboton,String leyenda)
+	{
+		JButton botonnuevo= new JButton(leyenda);
+		botonnuevo.setBounds(unboton.getHorizontalAlignment(), unboton.getVerticalAlignment(), 170, 25);
+		ventanaactual.CambiarBotonPuntaje(botonnuevo);	
+	}
+	
+	
+	public void ligarAVentanaPrincipal(VentanaPrincipal ventana)
+	{
+		this.ventanaactual=ventana;
 	}
 }
