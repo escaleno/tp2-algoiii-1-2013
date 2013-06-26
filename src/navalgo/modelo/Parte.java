@@ -1,7 +1,5 @@
 package navalgo.modelo;
 
-import java.io.IOException;
-
 public class Parte {
 	
 	/*representa la cantidad de disparos que soporta, cuando

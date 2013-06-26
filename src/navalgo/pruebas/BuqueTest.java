@@ -4,7 +4,6 @@ import navalgo.modelo.Barco;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
-import navalgo.modelo.EstrategiaDireccion;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.EstrategiaOrientacionVertical;
@@ -12,11 +11,8 @@ import navalgo.modelo.GeneradorRandomDireccion;
 import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
-import navalgo.modelo.OrientacionHorizontal;
-import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
-import navalgo.modelo.EstrategiaOrientacion;
 import junit.framework.TestCase;
 
 public class BuqueTest extends TestCase {

@@ -118,22 +118,22 @@ public class Tablero implements ObjetoVivo
 		return barcosHundidos;
 	}
 	
-	public int getCantidadFilas()
+	public int getFinDeFilas()
 	{
 		return filaFin;
 	}
 
-	public int getCantidadColumnas()
+	public int getFinDeColumnas()
 	{
 		return columnaFin;
 	}
 	
-	public int getCantidadMinimaDeFilas(){
+	public int getInicioDeFilas(){
 		
 		return this.filaInicio;
 	}
 	
-	public int getCantidadMinimaDeColumnas(){
+	public int getInicioDeColumnas(){
 		
 		return this.columnaInicio;
 	}

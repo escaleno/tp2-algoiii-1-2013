@@ -9,8 +9,6 @@ import navalgo.modelo.EstrategiaOrientacionVertical;
 import navalgo.modelo.GeneradorRandomDireccion;
 import navalgo.modelo.GeneradorRandomOrientacion;
 import navalgo.modelo.Orientacion;
-import navalgo.modelo.OrientacionHorizontal;
-import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
@@ -19,7 +17,6 @@ import junit.framework.TestCase;
 public class PortaavionTest extends TestCase {
 
 	private Barco unPortaavionHorizontal;
-	private Barco unPortaavionVertical;
 	Punto posicion32;
 	Punto otraPos32;
 	Punto posicion33;
@@ -74,7 +71,6 @@ public class PortaavionTest extends TestCase {
 		
 		
 		unPortaavionHorizontal = new Portaavion(otraPos32,orientacionHorizontal, direccionX, direccionY);
-		unPortaavionVertical = new Portaavion(posicion32,orientacionVertical, direccionX, direccionY);
 		disparoConvencional32 = new DisparoConvencional(posicion32);
 		disparoConvencional33 = new DisparoConvencional(posicion33);
 		disparoConvencional34 = new DisparoConvencional(posicion34);
