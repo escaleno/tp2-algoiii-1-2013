@@ -88,6 +88,8 @@ public class Tablero implements ObjetoVivo
 					barcosHundidos.add(barcodestruido);					
 				}			
 			}
+			
+			disparoactual.restarUnTurno();
 			this.descontarPuntosPorDisparo(disparoactual);
 			if (disparoactual.detonado())
 			{

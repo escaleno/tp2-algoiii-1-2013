@@ -201,8 +201,6 @@ public abstract class Barco {
 				}
 				
 			}
-		} else {
-			disparo.setTurnosRestantes(turnoRestante-1);
 		}
 	}
 	
@@ -228,9 +226,7 @@ public abstract class Barco {
 				}
 			}
 			disparo.marcarComoDetonado();
-		} else {
-			disparo.setTurnosRestantes(turnoRestante-1);
-		}
+		} 
 	}
 	
 	/*
