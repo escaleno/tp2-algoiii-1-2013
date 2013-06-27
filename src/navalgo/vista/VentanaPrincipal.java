@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //import navalgo.controlador.*;
@@ -46,8 +47,8 @@ public class VentanaPrincipal {
 	private JButton btnMinaSubConRetAlc;
 	private JButton btnMinaSubConRetAlcDoble;
 	private JButton btnMinaSubConRetAlcTriple;
-	private JButton btnPuntaje;
-	private JButton btnEstado;
+	private JLabel	Puntaje;
+	private JLabel 	Estado;
 	private Tablero tablero;
 	private ControladorDeTablero controlDeTablero; //Lo hice nada mas para borrar los disparos
 	private int TamanioDeCasillaX;
@@ -134,15 +135,15 @@ public class VentanaPrincipal {
 		btnMinaSubConRetAlc = new JButton("MinaSub. con Retardo");
 		btnMinaSubConRetAlcDoble = new JButton("Mina con Ret. y Alc. 2");
 		btnMinaSubConRetAlcTriple = new JButton("Mina con Ret. y Alc. 3");
-		btnPuntaje = new JButton("Puntaje: 10000");
-		btnEstado = new JButton("Estado: Jugandose");
+		Puntaje = new JLabel("Puntaje: 10000");
+		Estado = new JLabel("Estado: Jugandose");
 		btnDispConvencional.setBounds(100, 565, 170, 25);
 		btnMinaSubXContacto.setBounds(300, 565, 170, 25);
 		btnMinaSubConRetAlc.setBounds(40, 610, 170, 25);
 		btnMinaSubConRetAlcDoble.setBounds(215, 610, 170, 25);
 		btnMinaSubConRetAlcTriple.setBounds(390, 610, 170, 25);
-		btnPuntaje.setBounds(40, 650, 170, 25);
-		btnEstado.setBounds(250, 650, 170, 25);
+		Puntaje.setBounds(40, 650, 170, 25);
+		Estado.setBounds(250, 650, 170, 25);
 		
 		btnDispConvencional.addActionListener(
 				new EscuchaDisparoConvencional(this));
@@ -164,23 +165,23 @@ public class VentanaPrincipal {
 		frame.getContentPane().add(btnMinaSubConRetAlc);
 		frame.getContentPane().add(btnMinaSubConRetAlcDoble);
 		frame.getContentPane().add(btnMinaSubConRetAlcTriple);
-		frame.getContentPane().add(btnPuntaje);
-		frame.getContentPane().add(btnEstado);
+		frame.getContentPane().add(Puntaje);
+		frame.getContentPane().add(Estado);
 		
 		btnDispConvencional.setFocusable(true);
 		btnMinaSubXContacto.setFocusable(true);
 		btnMinaSubConRetAlc.setFocusable(true);
 		btnMinaSubConRetAlcDoble.setFocusable(true);
 		btnMinaSubConRetAlcTriple.setFocusable(true);
-		btnPuntaje.setFocusable(false);
-		btnEstado.setFocusable(false);
+		Puntaje.setFocusable(false);
+		Estado.setFocusable(false);
 		btnDispConvencional.setVisible(true);
 		btnMinaSubXContacto.setVisible(true);
 		btnMinaSubConRetAlc.setVisible(true);
 		btnMinaSubConRetAlcDoble.setVisible(true);
 		btnMinaSubConRetAlcTriple.setVisible(true);
-		btnPuntaje.setVisible(true);
-		btnEstado.setVisible(true);
+		Puntaje.setVisible(true);
+		Estado.setVisible(true);
 	}
 	
 	public void generadorDeBarcos() throws IOException{
@@ -294,26 +295,16 @@ public class VentanaPrincipal {
 		return this.controlDeTablero;
 	}
 	
-	public JButton obtenerBotonPuntaje()
+	public JLabel obtenerEtiquetaPuntaje()
 	{
-		return btnPuntaje;
+		return Puntaje;
 	}
 	
-	public JButton obtenerBotonEstado()
+	public JLabel obtenerEtiquetaEstado()
 	{
-		return btnEstado;
+		return Estado;
 	}
 	
-	public void CambiarBotonPuntaje(JButton botonnuevo)
-	{
-		btnPuntaje=botonnuevo;
-	}
-	
-	public void CambiarBotonEstado(JButton nuevobotonestado)
-	{
-		btnEstado=nuevobotonestado;
-	}
-
 	class Posicion implements ObjetoPosicionable {
 		int x;
 		int y;

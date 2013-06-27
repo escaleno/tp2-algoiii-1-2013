@@ -137,7 +137,7 @@ public class TableroTest extends TestCase
 		@Test
 		public void testNoDestruccionRompehielosX2DisparosDirectos()
 		{
-			alguntablero.ejecutarTurno();
+			alguntablero.ejecutarTurnoParaTest();
 			assertFalse(undestructor.estaDestruido());
 		}
 		
@@ -215,7 +215,7 @@ public class TableroTest extends TestCase
 		@Test
 		public void testCorretoDescuentoPorDisparoConvencional()
 		{
-			alguntablero.descontarPuntosPorDisparo(disparo);
+			alguntablero.descontarPuntosPorDisparoParaTest(disparo);
 			assertEquals(9800,alguntablero.getPuntos());
 		}
 		
@@ -273,7 +273,7 @@ public class TableroTest extends TestCase
 		{
 			for (int i=0; i<=51; i++)
 			{	
-				alguntablero.descontarPuntosPorDisparo(disparo);
+				alguntablero.descontarPuntosPorDisparoParaTest(disparo);
 			}
 			assertTrue(alguntablero.estaPerdido());
 		}
