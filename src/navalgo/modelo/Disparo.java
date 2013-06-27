@@ -75,4 +75,8 @@ public abstract class Disparo extends Circulo
 		detonado=true;
 	}
 	
+	public void restarUnTurno(){
+		this.turnosRestantes--;
+	}
+	
 }
