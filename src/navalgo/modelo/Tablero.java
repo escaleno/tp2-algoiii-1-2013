@@ -102,6 +102,38 @@ public class Tablero implements ObjetoVivo
 		disparosEfectuados.removeAll(disparosRemover);	
 	}
 	
+	public void ejecutarTurnoParaTest()
+	{
+		
+		for(Barco unBarco:listaBarcos)
+		{
+			unBarco.mover();
+		}
+		
+		for(Disparo disparoactual:disparosEfectuados)
+		{	
+			for(Barco unBarco:listaBarcos)
+			{	
+				disparoactual.atacar(unBarco);
+				if(unBarco.estaDestruido())
+				{
+					Barco barcodestruido=unBarco;
+					barcosHundidos.add(barcodestruido);					
+				}			
+			}
+			
+			disparoactual.restarUnTurno();
+			this.descontarPuntosPorDisparo(disparoactual);
+			if (disparoactual.detonado())
+			{
+				disparosRemover.add(disparoactual);
+			}
+		}
+		
+		
+		listaBarcos.removeAll(barcosHundidos);
+		disparosEfectuados.removeAll(disparosRemover);	
+	}
 	
 	
 	public ArrayList<Barco> getBarcos()
@@ -155,15 +187,16 @@ public class Tablero implements ObjetoVivo
 	
 	public void descontarPuntosPorDisparo(Disparo disparoEjecutado)
 	{
-		if(puntos-disparoEjecutado.getCosto()>=0)
+		if((puntos-disparoEjecutado.getCosto())>=0)
 		{
 			puntos-=disparoEjecutado.getCosto();
+			ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: " + this.puntos);
+
 			if ((puntos>0)&&(this.getBarcos().size()==0))
 			{
-				this.CambiarAGanado();			
-				this.cambiarBoton(this.ventanaactual.obtenerBotonEstado(),"Estado: Ganado");
-				String nuevaleyenda="Puntaje: " + (((Integer)this.getPuntos()).toString());
-				this.cambiarBoton(this.ventanaactual.obtenerBotonPuntaje(), nuevaleyenda);
+				this.CambiarAGanado();
+				ventanaactual.obtenerEtiquetaEstado().setText("Estado: Ganado");
+				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: " + this.puntos);;
 			}
 		}
 		else
@@ -171,10 +204,9 @@ public class Tablero implements ObjetoVivo
 			if (this.listaBarcos.size()>0)
 			{
 				CambiarAPerdido();
-				this.cambiarBoton(this.ventanaactual.obtenerBotonEstado(),"Estado: Perdido");
-				String nuevaleyenda="Puntaje: " + (((Integer)this.getPuntos()).toString());
-				this.cambiarBoton(this.ventanaactual.obtenerBotonPuntaje(), nuevaleyenda);
-
+				ventanaactual.obtenerEtiquetaEstado().setText("Estado: Ganado");
+				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: " + this.puntos);;
+				
 			}
 		}
 	}
@@ -208,17 +240,29 @@ public class Tablero implements ObjetoVivo
 		listaBarcos.removeAll(listaBarcos);
 		this.CambiarAGanado();
 	}
-	
-	public void cambiarBoton(JButton unboton,String leyenda)
-	{
-		JButton botonnuevo= new JButton(leyenda);
-		botonnuevo.setBounds(unboton.getHorizontalAlignment(), unboton.getVerticalAlignment(), 170, 25);
-		ventanaactual.CambiarBotonPuntaje(botonnuevo);	
-	}
-	
-	
+		
 	public void ligarAVentanaPrincipal(VentanaPrincipal ventana)
 	{
 		this.ventanaactual=ventana;
+	}
+
+	public void descontarPuntosPorDisparoParaTest(DisparoConvencional disparo) 
+	{
+		if(puntos-disparo.getCosto()>=0)
+		{
+			puntos-=disparo.getCosto();
+			if ((puntos>0)&&(this.getBarcos().size()==0))
+			{
+				this.CambiarAGanado();			
+			}
+		}
+		else
+		{
+			if (this.listaBarcos.size()>0)
+			{
+				CambiarAPerdido();
+				
+			}
+		}	
 	}
 }
