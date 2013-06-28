@@ -90,7 +90,7 @@ public class Tablero implements ObjetoVivo
 			}
 			
 			disparoactual.restarUnTurno();
-			this.descontarPuntosPorDisparo(disparoactual);
+			this.descontarPuntosPorDisparoParaTest(disparoactual);
 			if (disparoactual.detonado())
 			{
 				disparosRemover.add(disparoactual);
@@ -123,7 +123,7 @@ public class Tablero implements ObjetoVivo
 			}
 			
 			disparoactual.restarUnTurno();
-			this.descontarPuntosPorDisparo(disparoactual);
+			this.descontarPuntosPorDisparoParaTest(disparoactual);
 			if (disparoactual.detonado())
 			{
 				disparosRemover.add(disparoactual);
@@ -185,28 +185,25 @@ public class Tablero implements ObjetoVivo
 		}
 	}
 	
-	public void descontarPuntosPorDisparo(Disparo disparoEjecutado)
+	public void descontarPuntosPorDisparoParaTest(Disparo disparoEjecutado) 
 	{
 		if((puntos-disparoEjecutado.getCosto())>=0)
 		{
-			puntos-=disparoEjecutado.getCosto();
-			ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: " + this.puntos);
-
+			if (disparoEjecutado.getCosto()==disparoEjecutado.getCostoInicial())
+			{	
+				puntos-=disparoEjecutado.getCosto();
+				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: "+ this.getPuntos());
+			}         
 			if ((puntos>0)&&(this.getBarcos().size()==0))
 			{
 				this.CambiarAGanado();
-				ventanaactual.obtenerEtiquetaEstado().setText("Estado: Ganado");
-				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: " + this.puntos);;
 			}
 		}
 		else
 		{
 			if (this.listaBarcos.size()>0)
 			{
-				CambiarAPerdido();
-				ventanaactual.obtenerEtiquetaEstado().setText("Estado: Ganado");
-				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: " + this.puntos);;
-				
+				CambiarAPerdido();			
 			}
 		}
 	}
@@ -250,7 +247,11 @@ public class Tablero implements ObjetoVivo
 	{
 		if(puntos-disparo.getCosto()>=0)
 		{
-			puntos-=disparo.getCosto();
+			if (disparo.getCosto()==disparo.getCostoInicial())
+			{	
+				puntos-=disparo.getCosto();
+			}
+			
 			if ((puntos>0)&&(this.getBarcos().size()==0))
 			{
 				this.CambiarAGanado();			

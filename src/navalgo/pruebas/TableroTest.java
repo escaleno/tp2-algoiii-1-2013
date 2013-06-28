@@ -223,7 +223,7 @@ public class TableroTest extends TestCase
 		public void testCorrectoDescuentoPuntosPorMinaSubmarinaPuntualConRetardo()
 		{
 			MinaSubmarinaPuntualConRetardo unamina=new MinaSubmarinaPuntualConRetardo(new Punto(3,2));
-			alguntablero.descontarPuntosPorDisparo(unamina);
+			alguntablero.descontarPuntosPorDisparoParaTest(unamina);
 			assertEquals(9950,alguntablero.getPuntos());
 		}
 		
@@ -231,7 +231,7 @@ public class TableroTest extends TestCase
 		public void testCorrectoDescuentoPuntosPorMinaSubmarinaDobleConRetardo()
 		{
 			MinaSubmarinaDobleConRetardo unamina=new MinaSubmarinaDobleConRetardo(new Punto(3,2), alguntablero);
-			alguntablero.descontarPuntosPorDisparo(unamina);
+			alguntablero.descontarPuntosPorDisparoParaTest(unamina);
 			assertEquals(9900,alguntablero.getPuntos());
 		}
 		
@@ -239,7 +239,7 @@ public class TableroTest extends TestCase
 		public void testCorrectoDescuentoPuntosPorMinaSubmarinaTripleConRetardo()
 		{
 			MinaSubmarinaTripleConRetardo unamina=new MinaSubmarinaTripleConRetardo(new Punto(3,2), alguntablero);
-			alguntablero.descontarPuntosPorDisparo(unamina);
+			alguntablero.descontarPuntosPorDisparoParaTest(unamina);
 			assertEquals(9875,alguntablero.getPuntos());
 		}
 		
@@ -247,7 +247,7 @@ public class TableroTest extends TestCase
 		public void testCorrectoDescuentoPuntosPorMinaSubmarinaPuntualPorContacto()
 		{
 			MinaSubmarinaPorContacto unamina=new MinaSubmarinaPorContacto(new Punto(3,2));
-			alguntablero.descontarPuntosPorDisparo(unamina);
+			alguntablero.descontarPuntosPorDisparoParaTest(unamina);
 			assertEquals(9850,alguntablero.getPuntos());
 		}
 		
