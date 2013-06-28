@@ -12,6 +12,8 @@ public abstract class Disparo extends Circulo
 	/*representa el costo de utilizar un disparo*/
 	protected int costo;
 	
+	protected int costoInicial;
+	
 	/*represeta la posicion en el tablero en el cual se efectua
 	 * el disparo
 	 */
@@ -79,4 +81,8 @@ public abstract class Disparo extends Circulo
 		this.turnosRestantes--;
 	}
 	
+	public int getCostoInicial()
+	{
+		return costoInicial;
+	}
 }
