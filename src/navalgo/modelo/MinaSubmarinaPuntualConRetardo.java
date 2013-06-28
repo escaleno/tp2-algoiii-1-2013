@@ -9,6 +9,7 @@ public class MinaSubmarinaPuntualConRetardo extends Disparo {
 		this.alcance = 0;
 		this.turnosRestantes = 3;
 		this.detonado=false;
+		this.cambioTurno=false;
 	}
 
 	

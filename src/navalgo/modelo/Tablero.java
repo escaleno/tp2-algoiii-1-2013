@@ -90,7 +90,7 @@ public class Tablero implements ObjetoVivo
 			}
 			
 			disparoactual.restarUnTurno();
-			this.descontarPuntosPorDisparoParaTest(disparoactual);
+			this.descontarPuntosPorDisparo(disparoactual);
 			if (disparoactual.detonado())
 			{
 				disparosRemover.add(disparoactual);
@@ -136,6 +136,28 @@ public class Tablero implements ObjetoVivo
 	}
 	
 	
+	public void descontarPuntosPorDisparoParaTest(Disparo disparoEjecutado) {
+		if((puntos-disparoEjecutado.getCosto())>=0)
+		{
+			if (disparoEjecutado.getCosto()==disparoEjecutado.getCostoInicial())
+			{	
+				puntos-=disparoEjecutado.getCosto();
+			}         
+			if ((puntos>0)&&(this.getBarcos().size()==0))
+			{
+				this.CambiarAGanado();
+			}
+		}
+		else
+		{
+			if (this.listaBarcos.size()>0)
+			{
+				CambiarAPerdido();			
+			}
+		}
+		
+	}
+
 	public ArrayList<Barco> getBarcos()
 	{
 		return listaBarcos;
@@ -185,11 +207,11 @@ public class Tablero implements ObjetoVivo
 		}
 	}
 	
-	public void descontarPuntosPorDisparoParaTest(Disparo disparoEjecutado) 
+	public void descontarPuntosPorDisparo(Disparo disparoEjecutado) 
 	{
 		if((puntos-disparoEjecutado.getCosto())>=0)
 		{
-			if (disparoEjecutado.getCosto()==disparoEjecutado.getCostoInicial())
+			if (disparoEjecutado.getCosto()==disparoEjecutado.getCostoInicial()&&(disparoEjecutado.getCambioTurnoConRespectoAlInicial()==false))
 			{	
 				puntos-=disparoEjecutado.getCosto();
 				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: "+ this.getPuntos());
@@ -206,6 +228,7 @@ public class Tablero implements ObjetoVivo
 				CambiarAPerdido();			
 			}
 		}
+		disparoEjecutado.CambioTurnoConRespectoAlInicial();
 	}
 	
 	public int getPuntos()

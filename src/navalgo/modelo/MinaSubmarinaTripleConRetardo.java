@@ -8,6 +8,7 @@ public class MinaSubmarinaTripleConRetardo extends MinaSubmarinaConAlcance {
 		this.costoInicial = 125;
 		this.turnosRestantes = 3;
 		this.detonado=false;
+		this.cambioTurno=false;
 	}
 
 

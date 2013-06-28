@@ -8,6 +8,7 @@ public class MinaSubmarinaDobleConRetardo extends MinaSubmarinaConAlcance {
 		this.costoInicial = 100;
 		this.turnosRestantes = 3;
 		this.detonado=false;
+		this.cambioTurno=false;
 	}
 
 	public void atacar(Barco unBarco) 

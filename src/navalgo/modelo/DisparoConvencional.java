@@ -9,6 +9,7 @@ public class DisparoConvencional extends Disparo {
 		this.turnosRestantes = 0;
 		this.alcance = 0;
 		this.detonado=false;
+		this.cambioTurno=true;//lo seteo asi para no alterar el funcionamiento, ya que funciona bien y se descuenta 1 sola vez
 	}
 
 	
