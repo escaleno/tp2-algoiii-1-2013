@@ -9,6 +9,7 @@ public class MinaSubmarinaPorContacto extends Disparo {
 		this.alcance = 0;
 		this.turnosRestantes = 0;
 		this.detonado=false;
+		this.cambioTurno=false;
 	}
 
 	

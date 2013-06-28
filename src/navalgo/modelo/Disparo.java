@@ -14,6 +14,8 @@ public abstract class Disparo extends Circulo
 	
 	protected int costoInicial;
 	
+	protected boolean cambioTurno;
+	
 	/*represeta la posicion en el tablero en el cual se efectua
 	 * el disparo
 	 */
@@ -85,4 +87,14 @@ public abstract class Disparo extends Circulo
 	{
 		return costoInicial;
 	}
+	
+	public boolean getCambioTurnoConRespectoAlInicial()
+	{
+		return cambioTurno;
+	}
+	
+	public void CambioTurnoConRespectoAlInicial()
+	{
+		cambioTurno=true;
+	}	
 }
