@@ -71,7 +71,7 @@ public class Tablero implements ObjetoVivo
 	
 	public void ejecutarTurno()
 	{
-		
+		this.descontarPuntosPorPasoDeTiempo();
 		for(Barco unBarco:listaBarcos)
 		{
 			unBarco.mover();
@@ -104,7 +104,7 @@ public class Tablero implements ObjetoVivo
 	
 	public void ejecutarTurnoParaTest()
 	{
-		
+		//this.descontarPuntosPorPasoDeTiempo();		
 		for(Barco unBarco:listaBarcos)
 		{
 			unBarco.mover();
@@ -288,5 +288,18 @@ public class Tablero implements ObjetoVivo
 				
 			}
 		}	
+	}
+	
+	public void descontarPuntosPorPasoDeTiempo()
+	{
+		if (puntos-10>0)
+		{
+			this.puntos-=10;	
+		}
+		else
+		{
+			this.perdido=true;
+		}
+		
 	}
 }
