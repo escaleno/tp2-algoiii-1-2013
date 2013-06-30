@@ -1,8 +1,8 @@
 package navalgo.modelo;
 
-public class GeneradorRandomOrientacion {
+public class GeneradorOrientacion {
 	EstrategiaOrientacion estrategia;
-	public GeneradorRandomOrientacion(EstrategiaOrientacion estrategia ){
+	public GeneradorOrientacion(EstrategiaOrientacion estrategia ){
 		this.estrategia = estrategia;
 	}
 	
