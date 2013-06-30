@@ -1,9 +1,9 @@
 package navalgo.modelo;
 
-public class GeneradorRandomPunto {
+public class GeneradorPunto {
 	private EstrategiaPunto estrategia;
 	
-	public GeneradorRandomPunto(EstrategiaPunto estrategia) {
+	public GeneradorPunto(EstrategiaPunto estrategia) {
 		this.estrategia = estrategia;
 	}
 	

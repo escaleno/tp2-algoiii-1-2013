@@ -1,9 +1,9 @@
 package navalgo.modelo;
 
-public class GeneradorRandomDireccion {
+public class GeneradorDireccion {
 	EstrategiaDireccion estrategia;
 	
-	public GeneradorRandomDireccion(EstrategiaDireccion estrategia){
+	public GeneradorDireccion(EstrategiaDireccion estrategia){
 		this.estrategia = estrategia;
 	}
 	

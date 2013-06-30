@@ -17,7 +17,7 @@ public abstract class Barco {
 	private int tamanio;
 	
 	/*indica la cantidad dano que requiere cada casilla para ser destruida*/
-	private int resistencia;
+	protected int resistencia;
 	
 	/*representa el cuerpo del barco que esta compuesto por casillas
 	 * 
@@ -135,11 +135,7 @@ public abstract class Barco {
 		return this.resistencia;
 	}
 	
-	public void setResistencia(int unaResistencia){
-		
-		this.resistencia = unaResistencia;
-		
-	}
+
 	
 	/*retorna true si esta totalmente destruido*/
 	public boolean estaDestruido(){
