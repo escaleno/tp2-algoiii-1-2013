@@ -7,8 +7,8 @@ import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.EstrategiaOrientacionVertical;
-import navalgo.modelo.GeneradorRandomDireccion;
-import navalgo.modelo.GeneradorRandomOrientacion;
+import navalgo.modelo.GeneradorDireccion;
+import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.PosicionInvalidaException;
@@ -58,13 +58,13 @@ public class BuqueTest extends TestCase {
 		posicion62 = new Punto(6, 2);
 		posicion20Y12 = new Punto(20, 12);
 		
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();
 		direccionX = direccion.getX();
 		direccionY = direccion.getY();
-		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
 		orientacionHorizontal = horizontal.getValue();
-		GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+		GeneradorOrientacion vertical = new GeneradorOrientacion(new EstrategiaOrientacionVertical());
 		orientacionVertical = vertical.getValue();
 		
 		unBuqueHorizontal = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);
@@ -182,7 +182,7 @@ public class BuqueTest extends TestCase {
 	
 	public void testBuqueMoverseVertical(){
 		Punto posicion = null;
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();
 		Buque Barco = new Buque(
 			 new Punto(3,2),
