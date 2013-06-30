@@ -6,8 +6,8 @@ import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.EstrategiaOrientacionHorizontal;
-import navalgo.modelo.GeneradorRandomDireccion;
-import navalgo.modelo.GeneradorRandomOrientacion;
+import navalgo.modelo.GeneradorDireccion;
+import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.Orientacion;
 import navalgo.modelo.Portaavion;
@@ -35,10 +35,10 @@ public class DisparoConvencionalTest extends TestCase {
 		posicion32 = new Punto(3,2);
 		unDisparoConvencional = new DisparoConvencional(posicion32);
 		
-		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
 		orientacionHorizontal = horizontal.getValue();
 		
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();
 		direccionX = direccion.getX();
 		direccionY = direccion.getY();

@@ -24,9 +24,9 @@ import navalgo.modelo.Direccion;
 import navalgo.modelo.EstrategiaDireccionRandom;
 import navalgo.modelo.EstrategiaOrientacionRandom;
 import navalgo.modelo.EstrategiaPuntoRandom;
-import navalgo.modelo.GeneradorRandomDireccion;
-import navalgo.modelo.GeneradorRandomOrientacion;
-import navalgo.modelo.GeneradorRandomPunto;
+import navalgo.modelo.GeneradorDireccion;
+import navalgo.modelo.GeneradorOrientacion;
+import navalgo.modelo.GeneradorPunto;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.Parte;
 import navalgo.modelo.Portaavion;
@@ -185,9 +185,9 @@ public class VentanaPrincipal {
 	}
 	
 	public void generadorDeBarcos() throws IOException{
-		GeneradorRandomOrientacion randomOrientacion = new GeneradorRandomOrientacion(new EstrategiaOrientacionRandom());
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionRandom());
-		GeneradorRandomPunto randomPunto = new GeneradorRandomPunto(new EstrategiaPuntoRandom());
+		GeneradorOrientacion randomOrientacion = new GeneradorOrientacion(new EstrategiaOrientacionRandom());
+		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionRandom());
+		GeneradorPunto randomPunto = new GeneradorPunto(new EstrategiaPuntoRandom());
 		
 		Direccion direccion = DerAbajo.getValue();
 		Lancha unalancha = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());

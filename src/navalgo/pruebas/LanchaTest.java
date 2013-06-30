@@ -46,12 +46,12 @@ public class LanchaTest extends TestCase {
 		posicion62 = new Punto(6, 2);
 		posicion12Y15 = new Punto(12, 15);
 		
-		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
 		orientacionHorizontal = horizontal.getValue();
-		GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+		GeneradorOrientacion vertical = new GeneradorOrientacion(new EstrategiaOrientacionVertical());
 		orientacionVertical = vertical.getValue();
 		
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();
 		direccionX = direccion.getX();
 		direccionY = direccion.getY();

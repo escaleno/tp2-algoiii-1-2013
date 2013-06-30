@@ -5,8 +5,8 @@ import navalgo.modelo.Direccion;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.EstrategiaOrientacionVertical;
-import navalgo.modelo.GeneradorRandomDireccion;
-import navalgo.modelo.GeneradorRandomOrientacion;
+import navalgo.modelo.GeneradorDireccion;
+import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.MinaSubmarinaTripleConRetardo;
 import navalgo.modelo.Orientacion;
@@ -105,12 +105,12 @@ public class MinaSubmarinaTripleConRetardoTest extends TestCase {
 		posX6Y4 = new Punto(6, 4);
 		posX6Y5 = new Punto(6, 5);
 		posX6Y6 = new Punto(6, 6);
-		GeneradorRandomOrientacion horizontal = new GeneradorRandomOrientacion(new EstrategiaOrientacionHorizontal());
+		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
 		orientacionHorizontal = horizontal.getValue();
-		GeneradorRandomOrientacion vertical = new GeneradorRandomOrientacion(new EstrategiaOrientacionVertical());
+		GeneradorOrientacion vertical = new GeneradorOrientacion(new EstrategiaOrientacionVertical());
 		orientacionVertical = vertical.getValue();
 		
-		GeneradorRandomDireccion DerAbajo = new GeneradorRandomDireccion(new EstrategiaDireccionDerAbajo());
+		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();
 		direccionX = direccion.getX();
 		direccionY = direccion.getY();
