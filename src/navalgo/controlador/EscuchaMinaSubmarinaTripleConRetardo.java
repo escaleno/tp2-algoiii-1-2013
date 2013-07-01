@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import navalgo.vista.VentanaPrincipal;
-import fiuba.algo3.titiritero.modelo.GameLoop;
 
 public class EscuchaMinaSubmarinaTripleConRetardo implements ActionListener {
 
