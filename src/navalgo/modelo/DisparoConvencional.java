@@ -1,11 +1,11 @@
 package navalgo.modelo;
 
 public class DisparoConvencional extends Disparo {
-
+	public static int COSTO = 200;
 	public DisparoConvencional(Punto unaPosicion){
 		super (unaPosicion);
-		this.costo = 200;
-		this.costoInicial = 200;
+		this.costo = COSTO;
+		this.costoInicial = COSTO;
 		this.turnosRestantes = 0;
 		this.alcance = 0;
 		this.detonado=false;

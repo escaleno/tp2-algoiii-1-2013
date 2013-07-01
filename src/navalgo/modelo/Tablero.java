@@ -28,7 +28,6 @@ public class Tablero implements ObjetoVivo
 	private int filaInicio;
 	private int columnaInicio;
 	private int contparaRealizarTurnos = 0;
-	private VentanaPrincipal ventanaactual;
 	private int puntos;
 	private boolean perdido;
 	private boolean ganado;
@@ -45,12 +44,15 @@ public class Tablero implements ObjetoVivo
 			this.columnaFin=columnaFin;
 			this.filaInicio = filaInicio;
 			this.columnaInicio = columnaInicio;
-			this.puntos=10000;
-			this.perdido=false;
-			this.ganado=false;
+			reiniciarPuntos();
 		}
 	}
 	
+	public void reiniciarPuntos(){
+		this.puntos=10000;
+		this.perdido=false;
+		this.ganado=false;
+	}
 	public int obtenerMaximaDeFilas(){
 		return (this.filaFin-this.filaInicio+1);
 	}
@@ -66,12 +68,13 @@ public class Tablero implements ObjetoVivo
 	
 	public void agregarDisparo(Disparo d)
 	{
+		descontarPuntosPorDisparo(d);
 		disparosEfectuados.add(d);
 	}
 	
 	public void ejecutarTurno()
 	{
-		this.descontarPuntosPorPasoDeTiempo();
+		
 		for(Barco unBarco:listaBarcos)
 		{
 			unBarco.mover();
@@ -90,72 +93,19 @@ public class Tablero implements ObjetoVivo
 			}
 			
 			disparoactual.restarUnTurno();
-			this.descontarPuntosPorDisparo(disparoactual);
 			if (disparoactual.detonado())
 			{
 				disparosRemover.add(disparoactual);
 			}
 		}
-		
-		
+		if (this.getPuntos()>=0 && listaBarcos.isEmpty())
+		{
+			CambiarAGanado();
+		} else {
+			this.descontarPuntosPorPasoDeTiempo();
+		}
 		listaBarcos.removeAll(barcosHundidos);
 		disparosEfectuados.removeAll(disparosRemover);	
-	}
-	
-	public void ejecutarTurnoParaTest()
-	{
-		//this.descontarPuntosPorPasoDeTiempo();		
-		for(Barco unBarco:listaBarcos)
-		{
-			unBarco.mover();
-		}
-		
-		for(Disparo disparoactual:disparosEfectuados)
-		{	
-			for(Barco unBarco:listaBarcos)
-			{	
-				disparoactual.atacar(unBarco);
-				if(unBarco.estaDestruido())
-				{
-					Barco barcodestruido=unBarco;
-					barcosHundidos.add(barcodestruido);					
-				}			
-			}
-			
-			disparoactual.restarUnTurno();
-			this.descontarPuntosPorDisparoParaTest(disparoactual);
-			if (disparoactual.detonado())
-			{
-				disparosRemover.add(disparoactual);
-			}
-		}
-		
-		
-		listaBarcos.removeAll(barcosHundidos);
-		disparosEfectuados.removeAll(disparosRemover);	
-	}
-	
-	
-	public void descontarPuntosPorDisparoParaTest(Disparo disparoEjecutado) {
-		if((puntos-disparoEjecutado.getCosto())>=0)
-		{
-			if (disparoEjecutado.getCosto()==disparoEjecutado.getCostoInicial())
-			{	
-				puntos-=disparoEjecutado.getCosto();
-			}         
-			if ((puntos>0)&&(this.getBarcos().size()==0))
-			{
-				this.CambiarAGanado();
-			}
-		}
-		else
-		{
-			if (this.listaBarcos.size()>0)
-			{
-				CambiarAPerdido();			
-			}
-		}
-		
 	}
 
 	public ArrayList<Barco> getBarcos()
@@ -209,26 +159,10 @@ public class Tablero implements ObjetoVivo
 	
 	public void descontarPuntosPorDisparo(Disparo disparoEjecutado) 
 	{
-		if((puntos-disparoEjecutado.getCosto())>=0)
+		if (this.listaBarcos.size()>0)
 		{
-			if (disparoEjecutado.getCosto()==disparoEjecutado.getCostoInicial()&&(disparoEjecutado.getCambioTurnoConRespectoAlInicial()==false))
-			{	
-				puntos-=disparoEjecutado.getCosto();
-				ventanaactual.obtenerEtiquetaPuntaje().setText("Puntaje: "+ this.getPuntos());
-			}         
-			if ((puntos>0)&&(this.getBarcos().size()==0))
-			{
-				this.CambiarAGanado();
-			}
+			puntos-=disparoEjecutado.getCosto();
 		}
-		else
-		{
-			if (this.listaBarcos.size()>0)
-			{
-				CambiarAPerdido();			
-			}
-		}
-		disparoEjecutado.CambioTurnoConRespectoAlInicial();
 	}
 	
 	public int getPuntos()
@@ -260,41 +194,12 @@ public class Tablero implements ObjetoVivo
 		listaBarcos.removeAll(listaBarcos);
 		this.CambiarAGanado();
 	}
-		
-	public void ligarAVentanaPrincipal(VentanaPrincipal ventana)
-	{
-		this.ventanaactual=ventana;
-	}
-
-	public void descontarPuntosPorDisparoParaTest(DisparoConvencional disparo) 
-	{
-		if(puntos-disparo.getCosto()>=0)
-		{
-			if (disparo.getCosto()==disparo.getCostoInicial())
-			{	
-				puntos-=disparo.getCosto();
-			}
-			
-			if ((puntos>0)&&(this.getBarcos().size()==0))
-			{
-				this.CambiarAGanado();			
-			}
-		}
-		else
-		{
-			if (this.listaBarcos.size()>0)
-			{
-				CambiarAPerdido();
-				
-			}
-		}	
-	}
 	
 	public void descontarPuntosPorPasoDeTiempo()
 	{
-		if (puntos-10>0)
+		if (puntos-10>0 && this.listaBarcos.size()>0)
 		{
-			this.puntos-=10;	
+			this.puntos-=10;
 		}
 		else
 		{
@@ -302,4 +207,5 @@ public class Tablero implements ObjetoVivo
 		}
 		
 	}
+	
 }

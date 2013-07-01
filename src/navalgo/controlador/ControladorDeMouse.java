@@ -31,29 +31,34 @@ public class ControladorDeMouse extends MouseAdapter {
 		int y = ((event.getY()/this.vp.obtenerTamanioDeCasillaY()) +1);
 		switch (this.vp.obtenerTipoDeDisparo()) {
 		case 1:
-			disparo = new DisparoConvencional(new Punto(x, y));
+			if (tablero.getPuntos()>=DisparoConvencional.COSTO)
+				disparo = new DisparoConvencional(new Punto(x, y));
 			break;
 		case 2:
-			disparo = new MinaSubmarinaPorContacto(new Punto(x, y));
+			if (tablero.getPuntos()>=MinaSubmarinaPorContacto.COSTO)
+				disparo = new MinaSubmarinaPorContacto(new Punto(x, y));
 			break;
 		case 3:
-			disparo = new MinaSubmarinaPuntualConRetardo(new Punto(x, y));
+			if (tablero.getPuntos()>=MinaSubmarinaPuntualConRetardo.COSTO)
+				disparo = new MinaSubmarinaPuntualConRetardo(new Punto(x, y));
 			break;
 		case 4:
-			disparo = new MinaSubmarinaDobleConRetardo(new Punto(x, y),tablero);
+			if (tablero.getPuntos()>=MinaSubmarinaDobleConRetardo.COSTO)
+				disparo = new MinaSubmarinaDobleConRetardo(new Punto(x, y),tablero);
 			break;
 		case 5:
-			disparo = new MinaSubmarinaTripleConRetardo(new Punto(x, y),tablero);
+			if (tablero.getPuntos()>=MinaSubmarinaTripleConRetardo.COSTO)
+				disparo = new MinaSubmarinaTripleConRetardo(new Punto(x, y),tablero);
 			break;
 		default:
 			break;
 		}
 		this.vp.cambiarTipoDeDisparo(0);
 		if (disparo != null){
-			tablero.agregarDisparo(disparo);
-			game.agregar(disparo);
-			//Cambiar despues por Vista de Disparos
-			this.vp.obtenerControlDeTablero().agregarMapaDeVistasDeDisparos(disparo, disparo);
-		}	
+				tablero.agregarDisparo(disparo);
+				game.agregar(disparo);
+				//Cambiar despues por Vista de Disparos
+				this.vp.obtenerControlDeTablero().agregarMapaDeVistasDeDisparos(disparo, disparo); 
+		}
 	}
 }

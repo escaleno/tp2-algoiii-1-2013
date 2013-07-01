@@ -209,8 +209,11 @@ public class VentanaPrincipal {
 		this.tablero.agregarBarco(undestructor);
 		this.tablero.agregarBarco(unrompehielo);
 		this.tablero.agregarBarco(portaavion);
-
-		this.controlDeTablero = new ControladorDeTablero(this.tablero, this.gameLoop);
+		
+		if (this.controlDeTablero == null){
+			this.controlDeTablero = new ControladorDeTablero(this);
+			this.gameLoop.agregarObservador(this.controlDeTablero);
+		}
 		 
 		for (Barco barco : tablero.getBarcos()){
 			for (Parte parte : barco.getCuerpo()){
@@ -219,7 +222,6 @@ public class VentanaPrincipal {
 				this.controlDeTablero.agregarMapaDeVistasDePartes(parte, vParteDeBarco);	
 			}
 		}
-		this.gameLoop.agregarObservador(this.controlDeTablero);
 	}
 	
 	/**
@@ -259,7 +261,6 @@ public class VentanaPrincipal {
 	public void dibujoCuadrantesEnTablero(JPanel panel){
 		
 		this.tablero = new Tablero(1,10,1,10);
-		this.tablero.ligarAVentanaPrincipal(this);
 		this.gameLoop.agregar(tablero);
 		//Dibujo lineas del Tablero en X
 		this.TamanioDeCasillaX = panel.getHeight()/this.tablero.obtenerMaximaDeColumnas();
