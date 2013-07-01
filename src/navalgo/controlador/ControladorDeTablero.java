@@ -60,10 +60,10 @@ public class ControladorDeTablero implements ObservadorDeGameLoop {
 		this.vp.obtenerEtiquetaPuntaje().setText("Puntaje: "+ tablero.getPuntos());
 		
 		if (tablero.estaPerdido()) {
-			JOptionPane.showMessageDialog(null, "Lamentablemente Usted Perdió");
+			JOptionPane.showMessageDialog(null, "Lamentablemente Usted Perdio");
 			this.reiniciarTablero();
 		} else if (tablero.estaGanado()) {
-			JOptionPane.showMessageDialog(null, "Ganó!!!!");
+			JOptionPane.showMessageDialog(null, "Gano!!!!");
 			this.reiniciarTablero();
 		}
 	}
