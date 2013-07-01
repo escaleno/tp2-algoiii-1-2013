@@ -80,6 +80,7 @@ public abstract class Disparo extends Circulo
 	}
 	
 	public void restarUnTurno(){
+		if(this.turnosRestantes>0)
 		this.turnosRestantes--;
 	}
 	
