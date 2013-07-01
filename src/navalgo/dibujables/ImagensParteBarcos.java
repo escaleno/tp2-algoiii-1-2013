@@ -2,7 +2,7 @@ package navalgo.dibujables;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
+
 
 import javax.imageio.ImageIO;
 
