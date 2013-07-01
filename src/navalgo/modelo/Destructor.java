@@ -6,7 +6,6 @@ public class Destructor extends Barco {
 	 * constructor
 	 */
 	public Destructor(Punto posicion, Orientacion orientacion, int direccionX,  int direccionY) {
-		//super(posicion, orientacion, 3, 1, direccionX, direccionY);
 		super(posicion, orientacion, 3, 1, direccionX, direccionY, "Destructor");
 
 	}
