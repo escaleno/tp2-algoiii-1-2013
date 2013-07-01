@@ -280,14 +280,15 @@ public class TableroTest extends TestCase
 		}
 		
 		//intento setear las condiciones para que el juego este perdido
-//		@Test
-//		public void testProbarCuandoEstaPerdido()
-//		{
-//			for (int i=0; i<=51; i++)
-//			{	
-//				alguntablero.descontarPuntosPorDisparo(disparo);
-//			}
-//			assertTrue(alguntablero.estaPerdido());
-//		}
+		@Test
+		public void testProbarCuandoEstaPerdido()
+		{
+			for (int i=0; i<=51; i++)
+			{	
+				alguntablero.descontarPuntosPorDisparo(disparo);
+			}
+			alguntablero.ejecutarTurno();
+			assertTrue(alguntablero.estaPerdido());
+		}
 		
 }
