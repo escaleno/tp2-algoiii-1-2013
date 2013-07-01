@@ -190,13 +190,19 @@ public class VentanaPrincipal {
 		GeneradorPunto randomPunto = new GeneradorPunto(new EstrategiaPuntoRandom());
 		
 		Direccion direccion = DerAbajo.getValue();
-		Lancha unalancha = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		Lancha lancha1 = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		direccion = DerAbajo.getValue();
+		Lancha lancha2 = new Lancha(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		
 		direccion = DerAbajo.getValue();
 		Buque unbuque = new Buque(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		
 		direccion = DerAbajo.getValue();
-		Destructor undestructor = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		Destructor destructor1 = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
+		
+		direccion = DerAbajo.getValue();
+		Destructor destructor2 = new Destructor(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		
 		direccion = DerAbajo.getValue();
 		Rompehielos unrompehielo = new Rompehielos(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
@@ -204,9 +210,11 @@ public class VentanaPrincipal {
 		direccion = DerAbajo.getValue();
 		Portaavion portaavion = new Portaavion(randomPunto.getValue(),randomOrientacion.getValue(),direccion.getX(),direccion.getY());
 		
-		this.tablero.agregarBarco(unalancha);
+		this.tablero.agregarBarco(lancha1);
+		this.tablero.agregarBarco(lancha2);
 		this.tablero.agregarBarco(unbuque);
-		this.tablero.agregarBarco(undestructor);
+		this.tablero.agregarBarco(destructor1);
+		this.tablero.agregarBarco(destructor2);
 		this.tablero.agregarBarco(unrompehielo);
 		this.tablero.agregarBarco(portaavion);
 		
