@@ -4,10 +4,10 @@ import navalgo.modelo.Barco;
 import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
-import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.GeneradorDireccion;
 import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.PosicionInvalidaException;
@@ -30,7 +30,7 @@ public class PortaavionTest extends TestCase {
 	
 	Punto posicion03;
 	
-	Orientacion orientacionHorizontal;
+	OrientacionHorizontal orientacionHorizontal;
 	OrientacionVertical orientacionVertical;
 	DisparoConvencional disparoConvencional32;
 	DisparoConvencional disparoConvencional33;
@@ -59,8 +59,7 @@ public class PortaavionTest extends TestCase {
 		posicion72 = new Punto(7, 2);
 		posicion03 = new Punto(0, 3);
 		
-		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
-		orientacionHorizontal = horizontal.getValue();
+		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
 		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
