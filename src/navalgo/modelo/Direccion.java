@@ -19,49 +19,5 @@ public enum Direccion {
 	public int getY(){
 		return this.y;
 	}
-	
-	public Direccion nuevaDireccionX(int x ){
-		Direccion nuevaDireccion = null;
-		for (Direccion dir : Direccion.values()) {
-			if (this.y == dir.getY() && x == dir.getX()){
-				nuevaDireccion = dir;
-				break;
-			}
-		}
-		if (nuevaDireccion!=null) {
-			return nuevaDireccion;
-		} else {
-			return this;
-		}
-	}
-	
-	public Direccion nuevaDireccionY(int y ){
-		Direccion nuevaDireccion = null;
-		for (Direccion dir : Direccion.values()) {
-			if ((y == dir.getY())&&(this.x == dir.getX())){
-				nuevaDireccion = dir;
-				break;
-			}
-		}
-		if (nuevaDireccion!=null) {
-			return nuevaDireccion;
-		} else {
-			return this;
-		}
-	}
-	
-	public Direccion nuevaDireccion(int x, int y ){
-		Direccion nuevaDireccion = null;
-		for (Direccion dir : Direccion.values()) {
-			if ((y == dir.getY())&&( x == dir.getX())){
-				nuevaDireccion = dir;
-				break;
-			}
-		}
-		if (nuevaDireccion!=null) {
-			return nuevaDireccion;
-		} else {
-			return this;
-		}
-	}
+
 }
