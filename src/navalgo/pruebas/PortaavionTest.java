@@ -5,8 +5,6 @@ import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.GeneradorDireccion;
-import navalgo.modelo.GeneradorOrientacion;
-import navalgo.modelo.Orientacion;
 import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Portaavion;
