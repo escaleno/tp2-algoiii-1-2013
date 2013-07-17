@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import fiuba.algo3.titiritero.dibujables.Circulo;
 
+
 public abstract class Disparo extends Circulo
 {
 	//lo utilizo en el tablero, lo logico seria sacar del tablero los disparos detonados
