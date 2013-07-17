@@ -21,7 +21,8 @@ public class Tablero implements ObjetoVivo
 {
 	private ArrayList<Barco> listaBarcos;
 	private ArrayList<Disparo> disparosEfectuados;
-	ArrayList<Disparo> disparosRemover = new ArrayList<Disparo>();
+//	ArrayList<Disparo> disparosRemover = new ArrayList<Disparo>();
+	private ArrayList<Disparo> disparosRemover = new ArrayList<Disparo>();
 	private ArrayList<Barco> barcosHundidos;
 	private int filaFin;
 	private int columnaFin;
@@ -174,28 +175,19 @@ public class Tablero implements ObjetoVivo
 		return perdido;
 	}
 
-	public void CambiarAPerdido() {
-		this.perdido = true;
-	}
 	
 	public boolean estaGanado()
 	{
 		return ganado; 
 	}
 	
-	public void CambiarAGanado()
+	private void CambiarAGanado()
 	{
 		ganado=true;
 	}
+
 	
-	//lo uso para setear la condicion de ganado
-	public void moverBarcosAListadoDeHundidos()
-	{
-		listaBarcos.removeAll(listaBarcos);
-		this.CambiarAGanado();
-	}
-	
-	public void descontarPuntosPorPasoDeTiempo()
+	private void descontarPuntosPorPasoDeTiempo()
 	{
 		if (puntos-10>0 && this.listaBarcos.size()>0)
 		{
