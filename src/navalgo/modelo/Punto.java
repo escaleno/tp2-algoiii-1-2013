@@ -4,7 +4,6 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class Punto implements ObjetoPosicionable
 {
-	/*coordenadas en (x,y)*/
 	private int x;
 	private int y;
 	private static int tamanioDePosicionX = 0;
@@ -30,24 +29,15 @@ public class Punto implements ObjetoPosicionable
 		return this.y;
 	}
 	
-	public void incrementarEnX(){
+	void incrementarEnX(){
 		this.x++;
 	}
 	
-	public void incrementarEnY(){
+	void incrementarEnY(){
 		this.y++;
 	}
+		
 	
-	public void decrementarEnX(){
-		this.x--;
-	}
-	
-	public void decrementarEnY(){
-		this.y--;
-	}
-	
-	
-	/*Constructor*/
 	public Punto(int cx, int cy)
 	{
 		this.x=cx;
