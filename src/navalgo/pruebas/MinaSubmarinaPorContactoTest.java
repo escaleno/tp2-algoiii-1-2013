@@ -4,12 +4,12 @@ import navalgo.modelo.Buque;
 import navalgo.modelo.Destructor;
 import navalgo.modelo.Direccion;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
-import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.GeneradorDireccion;
 import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.Lancha;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.Portaavion;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Rompehielos;
@@ -18,7 +18,7 @@ import junit.framework.TestCase;
 public class MinaSubmarinaPorContactoTest extends TestCase {
 	private MinaSubmarinaPorContacto unaMinaSubmarinaPorContacto;
 	private Punto posicion32;
-	Orientacion orientacionHorizontal;
+	OrientacionHorizontal orientacionHorizontal;
 	Lancha unaLancha;
 	Buque unBuque;
 	Destructor unDestructor;
@@ -32,8 +32,7 @@ public class MinaSubmarinaPorContactoTest extends TestCase {
 		posicion32 = new Punto(3,2);
 		unaMinaSubmarinaPorContacto = new MinaSubmarinaPorContacto(posicion32);
 		
-		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
-		orientacionHorizontal = horizontal.getValue();
+		orientacionHorizontal = new OrientacionHorizontal();
 		
 		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();

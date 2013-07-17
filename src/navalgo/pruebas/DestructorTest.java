@@ -5,11 +5,11 @@ import navalgo.modelo.Destructor;
 import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
-import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.GeneradorDireccion;
 import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
@@ -26,7 +26,7 @@ public class DestructorTest extends TestCase {
 	Punto posicion52;
 	Punto posicion14Y2;
 	
-	Orientacion orientacionHorizontal;
+	OrientacionHorizontal orientacionHorizontal;
 	OrientacionVertical orientacionVertical;
 	
 	DisparoConvencional disparoConvencional32;
@@ -53,8 +53,7 @@ public class DestructorTest extends TestCase {
 		posicion14Y2 = new Punto(14,2);
 		
 		
-		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
-		orientacionHorizontal = horizontal.getValue();
+		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();

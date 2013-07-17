@@ -18,7 +18,7 @@ public class LanchaTest extends TestCase {
 	Punto posicion62;
 	Punto posicion12Y15;
 	
-	Orientacion orientacionHorizontal;
+	OrientacionHorizontal orientacionHorizontal;
 	OrientacionVertical orientacionVertical;
 	
 	DisparoConvencional disparoConvencional32;
@@ -46,8 +46,8 @@ public class LanchaTest extends TestCase {
 		posicion62 = new Punto(6, 2);
 		posicion12Y15 = new Punto(12, 15);
 		
-		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
-		orientacionHorizontal = horizontal.getValue();
+		
+		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
 		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());

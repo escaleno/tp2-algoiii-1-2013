@@ -4,10 +4,10 @@ import navalgo.modelo.Barco;
 import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
-import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.GeneradorDireccion;
 import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
@@ -26,7 +26,7 @@ public class RompehielosTest extends TestCase {
 	Punto posicion52;
 	Punto posicion15Y3;
 	
-	Orientacion orientacionHorizontal;
+	OrientacionHorizontal orientacionHorizontal;
 	OrientacionVertical orientacionVertical;
 	
 	DisparoConvencional disparoConvencional32;
@@ -47,8 +47,7 @@ public class RompehielosTest extends TestCase {
 		posicion52 = new Punto(5, 2);
 		posicion15Y3 = new Punto(15, 3);
 		
-		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
-		orientacionHorizontal = horizontal.getValue();
+		orientacionHorizontal = new OrientacionHorizontal();
 		orientacionVertical = new OrientacionVertical();
 		
 		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());

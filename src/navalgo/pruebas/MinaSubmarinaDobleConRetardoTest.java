@@ -3,11 +3,11 @@ package navalgo.pruebas;
 import navalgo.modelo.Buque;
 import navalgo.modelo.Direccion;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
-import navalgo.modelo.EstrategiaOrientacionHorizontal;
 import navalgo.modelo.GeneradorDireccion;
 import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.MinaSubmarinaDobleConRetardo;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionHorizontal;
 import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.Punto;
 import navalgo.modelo.Tablero;
@@ -27,7 +27,7 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 	Punto posicionX1Y1;
 	Punto posicionX2Y1;
 	Punto posicionX4Y2;
-	Orientacion unaOrientacionHorizontal;
+	OrientacionHorizontal unaOrientacionHorizontal;
 	OrientacionVertical unaOrientacionVertical;
 	MinaSubmarinaDobleConRetardo unaMinaEnX2Y3;
 	MinaSubmarinaDobleConRetardo unaMinaEnX1Y3;
@@ -56,8 +56,8 @@ public class MinaSubmarinaDobleConRetardoTest extends TestCase {
 		posicionX2Y1 = new Punto(2, 1);
 		posicionX4Y2 = new Punto(4, 2);
 		
-		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
-		unaOrientacionHorizontal = horizontal.getValue();
+
+		unaOrientacionHorizontal = new OrientacionHorizontal();
 		unaOrientacionVertical = new OrientacionVertical();
 		GeneradorDireccion DerAbajo = new GeneradorDireccion(new EstrategiaDireccionDerAbajo());
 		Direccion direccion = DerAbajo.getValue();
