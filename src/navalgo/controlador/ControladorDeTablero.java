@@ -19,7 +19,7 @@ import fiuba.algo3.titiritero.modelo.ObservadorDeGameLoop;
 public class ControladorDeTablero implements ObservadorDeGameLoop {
 	private Map<Parte,ObjetoDibujable> MapaDeVistasDePartes = new HashMap<Parte, ObjetoDibujable>();
 	private Map<Disparo,ObjetoDibujable> MapaDeVistasDeDisparos = new HashMap<Disparo,ObjetoDibujable>();
-	VentanaPrincipal vp;
+	private VentanaPrincipal vp;
 	public ControladorDeTablero( VentanaPrincipal vp){
 		this.vp = vp;
 	}
@@ -68,7 +68,7 @@ public class ControladorDeTablero implements ObservadorDeGameLoop {
 		}
 	}
 	
-	public void reiniciarTablero() {
+	private void reiniciarTablero() {
 		Tablero tablero = this.vp.obtenerTablero();
 		GameLoop gameLoop = this.vp.obtenerGameLoop();
 		tablero.reiniciarPuntos();

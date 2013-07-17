@@ -6,7 +6,7 @@ import navalgo.dibujables.ImagensParteBarcos;
 import navalgo.modelo.Parte;
 
 public class VistaParteDeBarco extends ImagensParteBarcos{
-	Parte parteDeBarco;
+	private Parte parteDeBarco;
 	public VistaParteDeBarco(Parte parteDeBarco) throws IOException {
 		super(parteDeBarco.getNomber(), parteDeBarco.getPosicion());
 		this.parteDeBarco = parteDeBarco;
