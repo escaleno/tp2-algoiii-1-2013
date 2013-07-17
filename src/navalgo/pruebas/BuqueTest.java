@@ -6,11 +6,11 @@ import navalgo.modelo.Direccion;
 import navalgo.modelo.DisparoConvencional;
 import navalgo.modelo.EstrategiaDireccionDerAbajo;
 import navalgo.modelo.EstrategiaOrientacionHorizontal;
-import navalgo.modelo.EstrategiaOrientacionVertical;
 import navalgo.modelo.GeneradorDireccion;
 import navalgo.modelo.GeneradorOrientacion;
 import navalgo.modelo.MinaSubmarinaPorContacto;
 import navalgo.modelo.Orientacion;
+import navalgo.modelo.OrientacionVertical;
 import navalgo.modelo.PosicionInvalidaException;
 import navalgo.modelo.Punto;
 import junit.framework.TestCase;
@@ -33,7 +33,7 @@ public class BuqueTest extends TestCase {
 	int direccionY;
 	
 	Orientacion orientacionHorizontal;
-	Orientacion orientacionVertical;
+	OrientacionVertical orientacionVertical;
 	
 	DisparoConvencional disparoConvencional32;
 	DisparoConvencional disparoConvencional33;
@@ -64,8 +64,8 @@ public class BuqueTest extends TestCase {
 		direccionY = direccion.getY();
 		GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
 		orientacionHorizontal = horizontal.getValue();
-		GeneradorOrientacion vertical = new GeneradorOrientacion(new EstrategiaOrientacionVertical());
-		orientacionVertical = vertical.getValue();
+		orientacionVertical = new OrientacionVertical();
+
 		
 		unBuqueHorizontal = new Buque(posicion32, orientacionHorizontal, direccionX, direccionY);
 		
