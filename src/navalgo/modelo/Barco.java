@@ -29,24 +29,7 @@ public abstract class Barco {
 	protected int direccionY;
 	
 	
-	/*constructor*/
-	public Barco(Punto posicion, Orientacion orientacion,int tamanio, int resistencia, int direccionX, int direccionY) {
-		
-		this.direccionX = direccionX;
-		this.direccionY = direccionY;
-		if(this.direccionX==0 && this.direccionY==0)
-		{
-			this.direccionX = 1;
-			this.direccionY =-1;
-		}
-		this.posicion = posicion;
-		this.orientacion = orientacion;
-		this.tamanio = tamanio;
-		this.resistencia = resistencia;
-		this.cuerpo = new ArrayList<Parte>();
-		this.construirCuerpo();
-		
-	}
+	
 	
 	/*constructor*/
 	public Barco(Punto posicion, Orientacion orientacion,int tamanio, int resistencia, int direccionX, int direccionY, String nombre) {
@@ -66,23 +49,7 @@ public abstract class Barco {
 		this.nombre = nombre;
 		this.construirCuerpo2();	
 	}
-	
-	
-	/*metodo del constructor para cargar el cuerpo del barco*/
-	private void construirCuerpo(){
-		Parte parteAux = null;
-		Punto posicionDeReferencia = new Punto(this.posicion.obtenerX(),this.posicion.obtenerY());
-		//la primera parte es la posicionInicial del barco
-		parteAux = new Parte(this.resistencia, this.posicion);
-		this.cuerpo.add(parteAux);
 		
-		for (int i = 1; i < this.tamanio; i++) {
-			parteAux = new Parte(this.resistencia,this.orientacion.getSiguientePosicion(posicionDeReferencia));
-			this.cuerpo.add(parteAux);
-			posicionDeReferencia = parteAux.getPosicion();
-		}
-	}
-	
 	
 	/*metodo del constructor para cargar el cuerpo del barco*/
 	private void construirCuerpo2(){

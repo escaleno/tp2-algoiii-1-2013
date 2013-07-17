@@ -8,7 +8,7 @@ public class ParteTest extends TestCase {
 	private Parte parte;
 	protected void setUp() throws Exception {
 		super.setUp();
-		parte = new Parte(4, new Punto(3, 2));
+		parte = new Parte(4, new Punto(3, 2), "");
 	}
 	
 	public void  testGetResistencia(){
