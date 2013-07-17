@@ -16,7 +16,7 @@ import navalgo.modelo.Tablero;
 import navalgo.vista.VentanaPrincipal;
 
 public class ControladorDeMouse extends MouseAdapter {
-	VentanaPrincipal vp;
+	private VentanaPrincipal vp;
 	public ControladorDeMouse(VentanaPrincipal vp){
 		this.vp = vp;
 	}

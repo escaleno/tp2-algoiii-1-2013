@@ -17,7 +17,7 @@ public abstract class Barco {
 	private int tamanio;
 	
 	/*indica la cantidad dano que requiere cada casilla para ser destruida*/
-	protected int resistencia;
+	private int resistencia;
 	
 	/*representa el cuerpo del barco que esta compuesto por casillas
 	 * 
@@ -25,8 +25,8 @@ public abstract class Barco {
 	protected ArrayList<Parte> cuerpo;
 	
 
-	protected int direccionX;
-	protected int direccionY;
+	private int direccionX;
+	private int direccionY;
 	
 	
 	
@@ -153,7 +153,7 @@ public abstract class Barco {
 	 * verifica el danio de un ataque de que no tiene alcance
 	 */
 	
-	public void recibirAtaqueSinAlcance(Disparo disparo){
+	private void recibirAtaqueSinAlcance(Disparo disparo){
 		int turnoRestante = disparo.getTurnosRestantes();
 		if (turnoRestante == 0){
 			for (Parte parte : this.getCuerpo()) {
@@ -170,7 +170,7 @@ public abstract class Barco {
 	/*
 	 * verifica el danio de un ataque que tiene alcance
 	 */
-	public void realizarAtaqueConAlcance(MinaSubmarinaConAlcance disparo){
+	private void realizarAtaqueConAlcance(MinaSubmarinaConAlcance disparo){
 		int turnoRestante = disparo.getTurnosRestantes();
 		if (turnoRestante == 0){
 			for (Parte parte : this.getCuerpo()) {

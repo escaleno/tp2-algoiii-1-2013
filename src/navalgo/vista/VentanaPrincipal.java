@@ -122,7 +122,7 @@ public class VentanaPrincipal {
 		this.deshabilitar(this.btnMinaSubConRetAlcTriple);
 	}
 	
-	public void deshabilitar(JButton unBoton)
+	private void deshabilitar(JButton unBoton)
 	{
 		unBoton.setEnabled(false);
 	}
@@ -266,7 +266,7 @@ public class VentanaPrincipal {
 		
 	}
 	
-	public void dibujoCuadrantesEnTablero(JPanel panel){
+	private void dibujoCuadrantesEnTablero(JPanel panel){
 		
 		this.tablero = new Tablero(1,10,1,10);
 		this.gameLoop.agregar(tablero);
@@ -312,8 +312,8 @@ public class VentanaPrincipal {
 	
 	
 	class Posicion implements ObjetoPosicionable {
-		int x;
-		int y;
+		private int x;
+		private int y;
 		
 		private Posicion(int x,int y){
 			this.x = x;
