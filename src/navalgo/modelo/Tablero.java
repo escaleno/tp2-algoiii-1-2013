@@ -101,7 +101,7 @@ public class Tablero implements ObjetoVivo
 		}
 		if (this.getPuntos()>=0 && listaBarcos.isEmpty())
 		{
-			CambiarAGanado();
+			cambiarAGanado();
 		} else {
 			this.descontarPuntosPorPasoDeTiempo();
 		}
@@ -158,13 +158,21 @@ public class Tablero implements ObjetoVivo
 		}
 	}
 	
-	public void descontarPuntosPorDisparo(Disparo disparoEjecutado) 
+	private void descontarPuntosPorDisparo(Disparo disparoEjecutado) 
 	{
 		if (this.listaBarcos.size()>0)
 		{
 			puntos-=disparoEjecutado.getCosto();
 		}
 	}
+	
+//	public void descontarPuntosPorDisparo(Disparo disparoEjecutado) 
+//	{
+//		if (this.listaBarcos.size()>0)
+//		{
+//			puntos-=disparoEjecutado.getCosto();
+//		}
+//	}
 	
 	public int getPuntos()
 	{
@@ -181,7 +189,7 @@ public class Tablero implements ObjetoVivo
 		return ganado; 
 	}
 	
-	private void CambiarAGanado()
+	private void cambiarAGanado()
 	{
 		ganado=true;
 	}
