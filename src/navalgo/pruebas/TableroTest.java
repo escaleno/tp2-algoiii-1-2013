@@ -28,8 +28,7 @@ public class TableroTest extends TestCase
 			//genero 4 barcos con direcciones
 			GeneradorOrientacion horizontal = new GeneradorOrientacion(new EstrategiaOrientacionHorizontal());
 			Orientacion orientacionHorizontal = horizontal.getValue();
-			GeneradorOrientacion vertical = new GeneradorOrientacion(new EstrategiaOrientacionVertical());
-			Orientacion orientacionVertical = vertical.getValue();
+			OrientacionVertical orientacionVertical = new OrientacionVertical();
 			unrompehielo=new Rompehielos(new Punto(2,1),orientacionVertical,0,1);//intento que la direccion sea hacia abajo, aunque el rango es de [1..10,1..10]
 			unalancha=new Lancha(new Punto(1,1),orientacionHorizontal,1,0);
 			unbuque=new Buque(new Punto(1,3),orientacionVertical,0,1);
