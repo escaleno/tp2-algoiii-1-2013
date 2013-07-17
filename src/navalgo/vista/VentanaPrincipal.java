@@ -309,16 +309,13 @@ public class VentanaPrincipal {
 		return Puntaje;
 	}
 	
-	public JLabel obtenerEtiquetaEstado()
-	{
-		return Estado;
-	}
+	
 	
 	class Posicion implements ObjetoPosicionable {
 		int x;
 		int y;
 		
-		public Posicion(int x,int y){
+		private Posicion(int x,int y){
 			this.x = x;
 			this.y = y;
 		}

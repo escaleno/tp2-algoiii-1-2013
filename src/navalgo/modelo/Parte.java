@@ -14,13 +14,7 @@ public class Parte {
 	 */
 	private Punto posicion;
 	
-	
-	/*constructor */
-	public Parte(int resistencia, Punto posicion) {
-		this.nombre = "Nada";
-		this.resistencia = resistencia;
-		this.posicion = posicion;
-	}
+
 	
 	public Parte(int resistencia,Punto posicion, String nombre) {
 		this.nombre = nombre;

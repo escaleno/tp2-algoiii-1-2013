@@ -6,15 +6,12 @@ public class OrientacionVertical extends Orientacion {
 		super("Vertical");
 	}
 
-	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco, 
-			int tamanio) {
-		// TODO Auto-generated method stub
+	
+	public int calcularFinDePosicionDelBarcoX(Punto puntoDeInicioBarco, int tamanio) {
 		return puntoDeInicioBarco.obtenerX();
 	}
 	
-	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, 
-			int tamanio){
-		// TODO Auto-generated method stub
+	public int calcularFinDePosicionDelBarcoY(Punto puntoDeInicioBarco, int tamanio){
 		return (puntoDeInicioBarco.obtenerY()+tamanio);
 	}
 

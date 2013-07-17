@@ -94,8 +94,5 @@ public abstract class Disparo extends Circulo
 		return cambioTurno;
 	}
 	
-	public void CambioTurnoConRespectoAlInicial()
-	{
-		cambioTurno=true;
-	}	
+		
 }
