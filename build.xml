@@ -23,6 +23,12 @@
 				</fileset>
 			</classpath>
 		</javac>
+		<copy todir="${build.dir}">
+			<fileset dir="${src.dir}">
+		    	<include name="**/*.png"/>
+		    	<include name="**/*.jpg"/>
+		    </fileset>
+		</copy>
 	</target>
 
 	<target name="correr" depends="compilar">
