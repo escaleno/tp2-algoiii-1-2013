@@ -4,12 +4,9 @@ public class MinaSubmarinaPorContacto extends Disparo {
 	public static int COSTO = 150;
 	public MinaSubmarinaPorContacto(Punto unaPosicion) {
 		super(unaPosicion);
-		this.costo = COSTO;
-		this.costoInicial = COSTO;
+		this.inicializarCosto(COSTO);
 		this.alcance = 0;
 		this.turnosRestantes = 0;
-		this.detonado=false;
-		this.cambioTurno=false;
 	}
 
 	
