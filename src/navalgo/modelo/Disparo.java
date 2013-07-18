@@ -95,5 +95,16 @@ public abstract class Disparo extends Circulo
 		return cambioTurno;
 	}
 	
+	protected void inicializarCosto(int unCosto)
+	{
+		if (unCosto>0)
+		{
+			this.costo=unCosto;
+			this.costoInicial=unCosto;
+			this.detonado=false;
+			this.cambioTurno=false;			
+		}
+	}
+	
 		
 }
